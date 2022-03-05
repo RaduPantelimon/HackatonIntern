@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-16"?>
+<TargetApp Area="0, 0, 0, 0" BrowserType="Chrome" ContentHash="P3OAXmvKnUe-NtwwuAOlPA" Reference="JFWlP8zzUU2YM26ulT-vDw/ZEhYENhHvkuMsR2HhOaI3A" Selector="&lt;html app='chrome.exe' url='https://blokee.mattle.online/lobby/rooms*' /&gt;" Url="https://blokee.mattle.online/lobby/rooms" xmlns="http://schemas.uipath.com/workflow/activities/uix">
+  <imageRef attrName="IconBase64" xmlns="">0fz0_2i8vLkGktooSpg8o5w</imageRef>
+  <imageRef attrName="InformativeScreenshot" originalValue="fac5562f8b36e8540f1bcae427c8f07e.png" xmlns="">01tMLf4x2Q0Ojk__zJoV6cg</imageRef>
+</TargetApp>

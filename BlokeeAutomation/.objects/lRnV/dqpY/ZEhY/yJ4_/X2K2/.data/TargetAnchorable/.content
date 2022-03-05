@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-16"?>
+<TargetAnchorable BrowserURL="https://blokee.mattle.online/lobby/rooms" ContentHash="jyd5grGW3EuxUwpbpSMdEw" DesignTimeRectangle="427, 326, 84, 48" ElementType="Button" FriendlyName="'Start'" FullSelectorArgument="[String.Format(&quot;&lt;webctrl parentid='render-target' tag='DIV' class='regular room ui segment' innertext='Room {0}*' /&gt;&lt;webctrl aaname='Start' tag='BUTTON' /&gt;&quot;, RoomNo)]" FuzzySelectorArgument="[String.Format(&quot;&lt;webctrl parentid='render-target' tag='DIV' class='regular room ui segment' innertext='Room {0}*' /&gt;&lt;webctrl aaname='Start' tag='BUTTON' type='' check:text='Start' /&gt;&quot;, RoomNo)]" Reference="JFWlP8zzUU2YM26ulT-vDw/X2K24q23rkKOwS-WnnVuTA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='!!! Ready to Start' /&gt;" SearchSteps="Selector" xmlns="http://schemas.uipath.com/workflow/activities/uix">
+  <imageRef attrName="ImageBase64" xmlns="">0H1hEzQNizU6wHcPajVlcBQ</imageRef>
+  <imageRef attrName="InformativeScreenshot" originalValue="790b4083c2edb877cd81fc3c635ef81d.png" xmlns="">0HjGQ8twrKESAXuB9d6VPmA</imageRef>
+</TargetAnchorable>

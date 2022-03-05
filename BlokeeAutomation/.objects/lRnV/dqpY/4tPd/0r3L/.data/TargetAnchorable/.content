@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-16"?>
+<TargetAnchorable BrowserURL="https://blokee.mattle.online/room/QBBmmZivKgsJP2BQo" ContentHash="oU_EqmKR7kqtY3-TO4iHag" DesignTimeRectangle="26, 150, 1584, 22" FriendlyName="'CPU1 minute'" FullSelectorArgument="&lt;webctrl parentid='render-target' tag='DIV' class='players' parentclass='room-game' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='render-target' tag='DIV' class='players' parentclass='room-game' type='' aaname='' check:text='CPU1 minute leftWhen time is up, you will lose the game.10:00raduPTM(1500)1 minute leftWhen time is' /&gt;" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Blokee - Inspired by Blokus - Online Board Game' /&gt;" SearchSteps="Selector" xmlns="http://schemas.uipath.com/workflow/activities/uix">
+  <imageRef attrName="ImageBase64" xmlns="">0w5UAl2wYNUWGekMCMzg3YA</imageRef>
+  <imageRef attrName="InformativeScreenshot" originalValue="7a40eba67899b665b5aa3dea135433b1.png" xmlns="">08KkM_DqSn0CvNTXdoOIrSQ</imageRef>
+</TargetAnchorable>

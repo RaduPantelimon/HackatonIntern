@@ -1,0 +1,13 @@
+﻿{
+  "Id": "97K_EQAA9Uij4tteOS-Zng",
+  "Reference": "JFWlP8zzUU2YM26ulT-vDw/97K_EQAA9Uij4tteOS-Zng",
+  "ParentRef": "JFWlP8zzUU2YM26ulT-vDw/yJ4_GYkKS0ixqV-8dVNv3w",
+  "Name": "JoinButton",
+  "Type": "Element",
+  "TaxonomyType": "Element",
+  "Created": "2022-03-05T14:14:01.8815194Z",
+  "CreatedBy": [
+    "UiPath.Platform, Version=21.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2022-03-05T14:14:01.8815194Z"
+}

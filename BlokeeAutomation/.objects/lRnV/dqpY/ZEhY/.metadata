@@ -1,0 +1,12 @@
+﻿{
+  "Id": "ZEhYENhHvkuMsR2HhOaI3A",
+  "Reference": "JFWlP8zzUU2YM26ulT-vDw/ZEhYENhHvkuMsR2HhOaI3A",
+  "ParentRef": "JFWlP8zzUU2YM26ulT-vDw/dqpYRyq_qUGipJDowZuPWw",
+  "Name": "Lobby",
+  "Type": "Screen",
+  "Created": "2022-03-05T11:25:10.0492398Z",
+  "CreatedBy": [
+    "UiPath.Platform, Version=21.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2022-03-05T11:25:10.0492398Z"
+}

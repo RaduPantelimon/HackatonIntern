@@ -1,0 +1,229 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="GetPlayerIndex" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_BrowserWindow" Type="InArgument(ui:UiElement)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="out_PlayerIndex" Type="OutArgument(x:Int32)" />
+    <x:Property Name="in_PlayerName" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1203,2453</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>GetPlayerIndex_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="32">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="34">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="The player index is a number from 0-4 &#xA;&#xA;This component should work for both the 2 - 4 players variants" DisplayName="GetPlayerIndex" sap:VirtualizedContainerService.HintSize="924,2388" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign DisplayName="Init default Index" sap:VirtualizedContainerService.HintSize="882,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[out_PlayerIndex]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">-1</InArgument>
+      </Assign.Value>
+    </Assign>
+    <uix:NApplicationCard sap2010:Annotation.AnnotationText="Extracting the username of the player currently logged in the Blokus Site" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Blokee - Inspired by Blokus - Online Board Game" sap:VirtualizedContainerService.HintSize="882,1677" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_BrowserWindow]" InteractionMode="Simulate" OpenMode="Never" Version="V1" WindowResize="Maximize">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="848,1420" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="ui:UiElement" Name="PlayersStatusBarElements" />
+              <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="PlayersStatusBars" />
+              <Variable x:TypeArguments="x:Int32" Name="index" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'PlayersStatus'" sap:VirtualizedContainerService.HintSize="806,473" sap2010:WorkflowViewState.IdRef="NCheckState_1" OutUiElement="[PlayersStatusBarElements]">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="376,185" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Found player status bar&quot;]" />
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="376,247" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw Exception="[new Exception(&quot;Could not find player status bar&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;Could not find player status bar&quot;]" />
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="https://blokee.mattle.online/room/QBBmmZivKgsJP2BQo" ContentHash="oU_EqmKR7kqtY3-TO4iHag" DesignTimeRectangle="26, 150, 1584, 22" FriendlyName="'PlayersStatus'" FullSelectorArgument="&lt;webctrl parentid='render-target' tag='DIV' class='players' parentclass='room-game' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='render-target' tag='DIV' class='players' parentclass='room-game' type='' aaname='' check:text='CPU1 minute leftWhen time is up, you will lose the game.10:00raduPTM(1500)1 minute leftWhen time is' /&gt;" ImageBase64="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" InformativeScreenshot="7a40eba67899b665b5aa3dea135433b1.png" Reference="JFWlP8zzUU2YM26ulT-vDw/0r3L3mEPWUu0afMla4y4rA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Blokee - Inspired by Blokus - Online Board Game' /&gt;" SearchSteps="Selector" />
+              </uix:NCheckState.Target>
+            </uix:NCheckState>
+            <ui:FindChildren Children="[PlayersStatusBars]" DisplayName="Find Children" Filter="&lt;webctrl parentid='render-target' tag='DIV' class='ui segment' parentclass='ui column*'/&gt;" sap:VirtualizedContainerService.HintSize="806,68" sap2010:WorkflowViewState.IdRef="FindChildren_1" Scope="FIND_DESCENDANTS">
+              <ui:FindChildren.Target>
+                <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[PlayersStatusBarElements]" Id="101ae509-9664-462e-9cfb-3edcf418be8a">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:FindChildren.Target>
+            </ui:FindChildren>
+            <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="[index]" DisplayName="For Each Status Bar Found" sap:VirtualizedContainerService.HintSize="806,705" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[PlayersStatusBars]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="ui:UiElement">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:UiElement" Name="statusBar" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,570" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="innerText" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="innertext" DisplayName="Get innertextAttribute" sap:VirtualizedContainerService.HintSize="484,96" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
+                      <ui:GetAttribute.Result>
+                        <OutArgument x:TypeArguments="x:String">[innerText]</OutArgument>
+                      </ui:GetAttribute.Result>
+                      <ui:GetAttribute.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[statusBar]" Id="b89e5f54-5b36-4084-9460-5203504ebf67">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:GetAttribute.Target>
+                    </ui:GetAttribute>
+                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="484,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Found player with name: &quot; + innerText]" />
+                    <If Condition="[innerText.StartsWith(in_PlayerName+&quot;(&quot;)]" DisplayName="If Inner Text starts with Player name" sap:VirtualizedContainerService.HintSize="484,239" sap2010:WorkflowViewState.IdRef="If_2">
+                      <If.Then>
+                        <Assign DisplayName="Get Index" sap:VirtualizedContainerService.HintSize="262,61" sap2010:WorkflowViewState.IdRef="Assign_1">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[out_PlayerIndex]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[index]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </If.Then>
+                    </If>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+            </ui:ForEach>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="0, 0, 0, 0" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="fac5562f8b36e8540f1bcae427c8f07e.png" />
+      </uix:NApplicationCard.TargetApp>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uix:NApplicationCard>
+    <If Condition="[out_PlayerIndex &lt; 0 or out_PlayerIndex &gt; 3]" DisplayName="If Index is incorrect" sap:VirtualizedContainerService.HintSize="882,422" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,245" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Index could not be determined correctly. Index found: &quot; + out_PlayerIndex.ToString]" />
+          <Throw Exception="[new Exception(&quot;Index could not be determined correctly&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+        </Sequence>
+      </If.Then>
+    </If>
+  </Sequence>
+</Activity>

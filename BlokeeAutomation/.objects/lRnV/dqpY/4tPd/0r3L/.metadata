@@ -1,0 +1,13 @@
+﻿{
+  "Id": "0r3L3mEPWUu0afMla4y4rA",
+  "Reference": "JFWlP8zzUU2YM26ulT-vDw/0r3L3mEPWUu0afMla4y4rA",
+  "ParentRef": "JFWlP8zzUU2YM26ulT-vDw/4tPdsAhZ80mC63sBjyRSdg",
+  "Name": "PlayersStatus",
+  "Type": "Element",
+  "TaxonomyType": "Element",
+  "Created": "2022-03-05T16:10:26.9647953Z",
+  "CreatedBy": [
+    "UiPath.Platform, Version=21.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2022-03-05T16:10:26.9647953Z"
+}

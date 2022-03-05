@@ -1,0 +1,16 @@
+﻿{
+  "Id": "vnZN5ees1kKl3NFF_D7spw",
+  "Reference": "JFWlP8zzUU2YM26ulT-vDw/vnZN5ees1kKl3NFF_D7spw",
+  "ParentRef": "JFWlP8zzUU2YM26ulT-vDw/4tPdsAhZ80mC63sBjyRSdg",
+  "Name": "PlayerName",
+  "Type": "Element",
+  "TaxonomyType": "Element",
+  "Created": "2022-03-05T17:58:07.4446907Z",
+  "CreatedBy": [
+    "UiPath.Platform, Version=21.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2022-03-05T17:59:19.8338474Z",
+  "UpdatedBy": [
+    "UiPath.Platform, Version=21.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-16"?>
+<TargetAnchorable BrowserURL="https://blokee.mattle.online/lobby/rooms" ContentHash="ekJOZgBFlECD6rFRuL5tBQ" DesignTimeRectangle="1813, 111, 115, 40" ElementType="Text" FriendlyName="'raduPTM profilelogout'" FullSelectorArgument="&lt;webctrl aaname='*profilelogout' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='raduPTM profilelogout' tag='A' type='' check:text='raduPTM profilelogout' /&gt;" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Blokee - Inspired by Blokus - Online Board Game' /&gt;" SearchSteps="Selector" xmlns="http://schemas.uipath.com/workflow/activities/uix">
+  <imageRef attrName="ImageBase64" xmlns="">0zDPO6jqyWkqi_f1xZf6prA</imageRef>
+  <imageRef attrName="InformativeScreenshot" originalValue="c5674e61abc92e2e750f434c4cbf1151.png" xmlns="">0O5w21rZm_E29STLGSpE9UA</imageRef>
+</TargetAnchorable>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-16"?>
+<TargetAnchorable BrowserURL="https://blokee.mattle.online/lobby/rooms" ContentHash="Yu_sMyPbekGogKNWK_qLDg" DesignTimeRectangle="1483, 309, 70, 34" ElementType="Button" FriendlyName="'Join'" FullSelectorArgument="[String.Format(&quot;&lt;webctrl parentid='render-target' tag='DIV' class='regular room ui segment' innertext='Room {0}*' /&gt;&lt;webctrl aaname='Join' tag='BUTTON' /&gt;&quot;, RoomNo)]" FuzzySelectorArgument="[String.Format(&quot;&lt;webctrl parentid='render-target' tag='DIV' class='regular room ui segment' innertext='Room {0}*' /&gt;&lt;webctrl aaname='Join' tag='BUTTON' type='' check:text='Join' /&gt;&quot;, RoomNo)]" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Blokee - Inspired by Blokus - Online Board Game' /&gt;" SearchSteps="Selector" xmlns="http://schemas.uipath.com/workflow/activities/uix">
+  <imageRef attrName="ImageBase64" xmlns="">0Fa7RyZty_kSH2wtzt6tXNg</imageRef>
+  <imageRef attrName="InformativeScreenshot" originalValue="6d4284a3ed2943b019d0de5a9a2b9038.png" xmlns="">0IqDOGhFaZUaPTGlVu3vLyA</imageRef>
+</TargetAnchorable>

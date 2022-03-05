@@ -1,0 +1,13 @@
+﻿{
+  "Id": "ihKHOnt20k6kJWnYxLgikw",
+  "Reference": "JFWlP8zzUU2YM26ulT-vDw/ihKHOnt20k6kJWnYxLgikw",
+  "ParentRef": "JFWlP8zzUU2YM26ulT-vDw/ZEhYENhHvkuMsR2HhOaI3A",
+  "Name": "Lobby Menu",
+  "Type": "Element",
+  "TaxonomyType": "Element",
+  "Created": "2022-03-05T11:25:58.6087759Z",
+  "CreatedBy": [
+    "UiPath.Platform, Version=21.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2022-03-05T11:25:58.6087759Z"
+}

@@ -1,0 +1,16 @@
+﻿{
+  "Id": "yJ4_GYkKS0ixqV-8dVNv3w",
+  "Reference": "JFWlP8zzUU2YM26ulT-vDw/yJ4_GYkKS0ixqV-8dVNv3w",
+  "ParentRef": "JFWlP8zzUU2YM26ulT-vDw/ZEhYENhHvkuMsR2HhOaI3A",
+  "Name": "Room Panel",
+  "Type": "Element",
+  "TaxonomyType": "Element",
+  "Created": "2022-03-05T14:13:23.0703719Z",
+  "CreatedBy": [
+    "UiPath.Platform, Version=21.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2022-03-05T14:13:58.4070765Z",
+  "UpdatedBy": [
+    "UiPath.Platform, Version=21.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

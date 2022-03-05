@@ -1,0 +1,12 @@
+﻿{
+  "Id": "4tPdsAhZ80mC63sBjyRSdg",
+  "Reference": "JFWlP8zzUU2YM26ulT-vDw/4tPdsAhZ80mC63sBjyRSdg",
+  "ParentRef": "JFWlP8zzUU2YM26ulT-vDw/dqpYRyq_qUGipJDowZuPWw",
+  "Name": "GameRoom",
+  "Type": "Screen",
+  "Created": "2022-03-05T16:09:34.4387615Z",
+  "CreatedBy": [
+    "UiPath.Platform, Version=21.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2022-03-05T16:09:34.4387615Z"
+}
