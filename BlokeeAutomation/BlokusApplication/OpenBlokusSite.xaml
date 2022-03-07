@@ -2,16 +2,15 @@
   <x:Members>
     <x:Property Name="in_URL" Type="InArgument(x:String)" />
     <x:Property Name="out_BrowserWindow" Type="OutArgument(ui:UiElement)" />
-    <x:Property Name="out_GameInProgress" Type="OutArgument(x:Boolean)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1558,1375</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1558,1763</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>OpenBlokus_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="60">
+    <scg:List x:TypeArguments="x:String" Capacity="31">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -46,7 +45,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="34">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="33">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -80,64 +79,75 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="OpenBlokus" sap:VirtualizedContainerService.HintSize="1568,1310" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="OpenBlokus" sap:VirtualizedContainerService.HintSize="1568,1698" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard sap2010:Annotation.AnnotationText="OPEN The Blokus Site&#xA;TO DO: Add Retry Mechanism" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Blokee - Inspired by Blokus - Online Board Game" sap:VirtualizedContainerService.HintSize="1526,1218" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="IfNotOpen" OutUiElement="[out_BrowserWindow]" Version="V1" WindowResize="Maximize">
+    <uix:NApplicationCard sap2010:Annotation.AnnotationText="OPEN The Blokus Site&#xA;TO DO: Add Retry Mechanism" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Blokee - Inspired by Blokus - Online Board Game" sap:VirtualizedContainerService.HintSize="1526,1606" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="IfNotOpen" OutUiElement="[out_BrowserWindow]" Version="V1" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1492,920" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1492,1348" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="scriptResult" />
+            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Pick sap:VirtualizedContainerService.HintSize="1450,826" sap2010:WorkflowViewState.IdRef="Pick_1">
-              <PickBranch sap:VirtualizedContainerService.HintSize="384,780" sap2010:WorkflowViewState.IdRef="PickBranch_3">
+            <ui:InjectJsScript InputParameter="{x:Null}" ContinueOnError="True" DisplayName="Inject Js Script 'DIV'" sap:VirtualizedContainerService.HintSize="1450,134" sap2010:WorkflowViewState.IdRef="InjectJsScript_2" ScriptCode="JS Scripts\init.js">
+              <ui:InjectJsScript.ScriptOutput>
+                <OutArgument x:TypeArguments="x:String">[scriptResult]</OutArgument>
+              </ui:InjectJsScript.ScriptOutput>
+              <ui:InjectJsScript.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="91889c34-909c-4745-896e-c7724a847925" InformativeScreenshot="3ac008f971cab03863cabeb17044d04e" Selector="&lt;webctrl css-selector='body' tag='BODY' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:InjectJsScript.Target>
+            </ui:InjectJsScript>
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="1450,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Injection Returned with status: &quot; + scriptResult]" />
+            <Pick sap:VirtualizedContainerService.HintSize="1450,806" sap2010:WorkflowViewState.IdRef="Pick_1">
+              <PickBranch sap:VirtualizedContainerService.HintSize="384,760" sap2010:WorkflowViewState.IdRef="PickBranch_3">
                 <PickBranch.Trigger>
-                  <uix:NCheckState Exists="{x:Null}" DisplayName="Wait for the Lobby  Menu To Appear" EnableIfNotExists="False" sap:VirtualizedContainerService.HintSize="334,296" sap2010:WorkflowViewState.IdRef="NCheckState_5" Timeout="[cint(in_Config(&quot;Blokus_Loading_Timeout&quot;))]">
+                  <uix:NCheckState Exists="{x:Null}" DisplayName="Wait for the Lobby  Menu To Appear" EnableIfNotExists="False" sap:VirtualizedContainerService.HintSize="334,256" sap2010:WorkflowViewState.IdRef="NCheckState_5" Timeout="[cint(in_Config(&quot;Blokus_Loading_Timeout&quot;))]">
                     <uix:NCheckState.Target>
-                      <uix:TargetAnchorable BrowserURL="https://blokee.mattle.online/lobby/rooms" ContentHash="ynIowZ7UdketCTCkCZL8Rw" DesignTimeRectangle="22, 186, 1433, 40" ElementType="Text" FriendlyName="'Lobby Menu'" FullSelectorArgument="&lt;webctrl parentid='render-target' tag='DIV' class='ui top attached tabular menu three item' innertext='GamesForumPlayers' /&gt;" FuzzyAccuracy="0.45" FuzzySelectorArgument="&lt;webctrl parentid='render-target' tag='DIV' class='ui top attached tabular menu three item' innertext='GamesForumPlayers' check:text='Games' /&gt;" ImageBase64="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" InformativeScreenshot="7f439bb625cbdc4ddc52e52bd066ba66.png" Reference="JFWlP8zzUU2YM26ulT-vDw/ihKHOnt20k6kJWnYxLgikw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Blokee - Inspired by Blokus - Online Board Game' /&gt;" SearchSteps="Selector" />
+                      <uix:TargetAnchorable BrowserURL="https://blokee.mattle.online/lobby/rooms" ContentHash="ynIowZ7UdketCTCkCZL8Rw" DesignTimeRectangle="22, 186, 1433, 40" ElementType="Text" FriendlyName="'Lobby Menu'" FullSelectorArgument="&lt;webctrl parentid='render-target' tag='DIV' class='ui top attached tabular menu three item' innertext='GamesForumPlayers' /&gt;" FuzzyAccuracy="0.45" FuzzySelectorArgument="&lt;webctrl parentid='render-target' tag='DIV' class='ui top attached tabular menu three item' innertext='GamesForumPlayers' check:text='Games' /&gt;" ImageBase64="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" InformativeScreenshot="7f439bb625cbdc4ddc52e52bd066ba66.png" Reference="JFWlP8zzUU2YM26ulT-vDw/ihKHOnt20k6kJWnYxLgikw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Blokee - Inspired by Blokus - Online Board Game' /&gt;" SearchSteps="Selector" WaitForReadyArgument="Complete" />
                     </uix:NCheckState.Target>
                   </uix:NCheckState>
                 </PickBranch.Trigger>
                 <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Site Loaded Successfully&quot;]" />
               </PickBranch>
-              <PickBranch sap:VirtualizedContainerService.HintSize="426,780" sap2010:WorkflowViewState.IdRef="PickBranch_2">
+              <PickBranch sap:VirtualizedContainerService.HintSize="426,760" sap2010:WorkflowViewState.IdRef="PickBranch_2">
                 <PickBranch.Trigger>
-                  <uix:NCheckState Exists="{x:Null}" DisplayName="Wait for the Lobby  Menu To Appear" EnableIfNotExists="False" sap:VirtualizedContainerService.HintSize="334,296" sap2010:WorkflowViewState.IdRef="NCheckState_3" Timeout="[cint(in_Config(&quot;Blokus_Loading_Timeout&quot;))]">
+                  <uix:NCheckState Exists="{x:Null}" DisplayName="Wait for the Game Interface To Appear" EnableIfNotExists="False" sap:VirtualizedContainerService.HintSize="334,256" sap2010:WorkflowViewState.IdRef="NCheckState_3" Timeout="[cint(in_Config(&quot;Blokus_Loading_Timeout&quot;))]">
                     <uix:NCheckState.Target>
                       <uix:TargetAnchorable BrowserURL="https://blokee.mattle.online/room/QBBmmZivKgsJP2BQo" ContentHash="oU_EqmKR7kqtY3-TO4iHag" DesignTimeRectangle="26, 150, 1584, 22" FriendlyName="'PlayersStatus'" FullSelectorArgument="&lt;webctrl parentid='render-target' tag='DIV' class='players' parentclass='room-game' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='render-target' tag='DIV' class='players' parentclass='room-game' type='' aaname='' check:text='CPU1 minute leftWhen time is up, you will lose the game.10:00raduPTM(1500)1 minute leftWhen time is' /&gt;" ImageBase64="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" InformativeScreenshot="7a40eba67899b665b5aa3dea135433b1.png" Reference="JFWlP8zzUU2YM26ulT-vDw/0r3L3mEPWUu0afMla4y4rA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Blokee - Inspired by Blokus - Online Board Game' /&gt;" SearchSteps="Selector" />
                     </uix:NCheckState.Target>
                   </uix:NCheckState>
                 </PickBranch.Trigger>
-                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="376,286" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="376,306" sap2010:WorkflowViewState.IdRef="Sequence_7">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Site Loaded Successfully.Game also in progress&quot;]" />
-                  <Assign sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_2">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Boolean">[out_GameInProgress]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Boolean">True</InArgument>
-                    </Assign.Value>
-                  </Assign>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Site Loaded Successfully.Game also in progress.Returning to the homepage&quot;]" />
+                  <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="334,81" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[in_URL]" />
                 </Sequence>
               </PickBranch>
-              <PickBranch sap:VirtualizedContainerService.HintSize="426,780" sap2010:WorkflowViewState.IdRef="PickBranch_1">
+              <PickBranch sap:VirtualizedContainerService.HintSize="426,760" sap2010:WorkflowViewState.IdRef="PickBranch_1">
                 <PickBranch.Trigger>
                   <Delay DisplayName="Delay 9 seconds" Duration="00:00:09" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
                 </PickBranch.Trigger>
@@ -152,6 +162,21 @@
                 </Sequence>
               </PickBranch>
             </Pick>
+            <ui:InjectJsScript InputParameter="{x:Null}" ContinueOnError="True" DisplayName="Inject Js Script 'DIV'" sap:VirtualizedContainerService.HintSize="1450,134" sap2010:WorkflowViewState.IdRef="InjectJsScript_3" ScriptCode="JS Scripts\init.js">
+              <ui:InjectJsScript.ScriptOutput>
+                <OutArgument x:TypeArguments="x:String">[scriptResult]</OutArgument>
+              </ui:InjectJsScript.ScriptOutput>
+              <ui:InjectJsScript.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="91889c34-909c-4745-896e-c7724a847925" InformativeScreenshot="3ac008f971cab03863cabeb17044d04e" Selector="&lt;webctrl css-selector='body' tag='BODY' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:InjectJsScript.Target>
+            </ui:InjectJsScript>
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>

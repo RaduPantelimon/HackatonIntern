@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "AKmf7zZtn0ejn3zbigy4o3zsrwoUspR6o4pMBy47GXskeuX/7uY4w/PY+woWIntp3tupT9qW8z9CIKFRlufgVA==",
+  "dgSpecHash": "z71LpW+QqvTpvPLQTUPUUnZHSStZQT6uSUvJ/a8q3nu5HQ/TrpESr9F9NseQN2Wdf8Ah1fYWTl9++FE7xTiD8Q==",
   "success": true,
-  "projectFilePath": "C:\\UiPath\\Projects\\Hackaton\\BlokeeAutomation\\.local\\",
+  "projectFilePath": "C:\\UiPath\\Projects\\Hackaton\\Code\\BlokeeAutomation\\.local\\",
   "expectedPackageFiles": [
+    "C:\\Users\\radu.bucur\\.nuget\\packages\\avalonedit\\6.0.1\\avalonedit.6.0.1.nupkg.sha512",
     "C:\\Users\\radu.bucur\\.nuget\\packages\\closedxml\\0.87.1\\closedxml.0.87.1.nupkg.sha512",
     "C:\\Users\\radu.bucur\\.nuget\\packages\\csvhelper\\16.0.0\\csvhelper.16.0.0.nupkg.sha512",
     "C:\\Users\\radu.bucur\\.nuget\\packages\\documentformat.openxml\\2.5.0\\documentformat.openxml.2.5.0.nupkg.sha512",
@@ -24,7 +25,7 @@
     "C:\\Users\\radu.bucur\\.nuget\\packages\\microsoft.aspnetcore.signalr.common\\3.1.6\\microsoft.aspnetcore.signalr.common.3.1.6.nupkg.sha512",
     "C:\\Users\\radu.bucur\\.nuget\\packages\\microsoft.aspnetcore.signalr.protocols.json\\3.1.6\\microsoft.aspnetcore.signalr.protocols.json.3.1.6.nupkg.sha512",
     "C:\\Users\\radu.bucur\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
-    "C:\\Users\\radu.bucur\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\radu.bucur\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\radu.bucur\\.nuget\\packages\\microsoft.exchange.webservices\\2.2.0\\microsoft.exchange.webservices.2.2.0.nupkg.sha512",
     "C:\\Users\\radu.bucur\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.6\\microsoft.extensions.configuration.3.1.6.nupkg.sha512",
     "C:\\Users\\radu.bucur\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\3.1.6\\microsoft.extensions.configuration.abstractions.3.1.6.nupkg.sha512",
@@ -43,6 +44,7 @@
     "C:\\Users\\radu.bucur\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
     "C:\\Users\\radu.bucur\\.nuget\\packages\\npoi\\2.4.1\\npoi.2.4.1.nupkg.sha512",
     "C:\\Users\\radu.bucur\\.nuget\\packages\\portable.bouncycastle\\1.8.8\\portable.bouncycastle.1.8.8.nupkg.sha512",
+    "C:\\Users\\radu.bucur\\.nuget\\packages\\restsharp\\106.6.10\\restsharp.106.6.10.nupkg.sha512",
     "C:\\Users\\radu.bucur\\.nuget\\packages\\sharpziplib\\1.2.0\\sharpziplib.1.2.0.nupkg.sha512",
     "C:\\Users\\radu.bucur\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\radu.bucur\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512",
@@ -68,7 +70,8 @@
     "C:\\Users\\radu.bucur\\.nuget\\packages\\uipath.system.activities\\21.4.1\\uipath.system.activities.21.4.1.nupkg.sha512",
     "C:\\Users\\radu.bucur\\.nuget\\packages\\uipath.telemetry.client\\1.3.18\\uipath.telemetry.client.1.3.18.nupkg.sha512",
     "C:\\Users\\radu.bucur\\.nuget\\packages\\uipath.uiautomation.activities\\21.4.4\\uipath.uiautomation.activities.21.4.4.nupkg.sha512",
-    "C:\\Users\\radu.bucur\\.nuget\\packages\\uipath.vision\\3.0.1\\uipath.vision.3.0.1.nupkg.sha512"
+    "C:\\Users\\radu.bucur\\.nuget\\packages\\uipath.vision\\3.0.1\\uipath.vision.3.0.1.nupkg.sha512",
+    "C:\\Users\\radu.bucur\\.nuget\\packages\\uipath.webapi.activities\\1.9.2\\uipath.webapi.activities.1.9.2.nupkg.sha512"
   ],
   "logs": []
 }

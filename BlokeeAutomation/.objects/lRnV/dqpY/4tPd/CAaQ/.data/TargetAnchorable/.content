@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-16"?>
+<TargetAnchorable BrowserURL="https://blokee.mattle.online/room/zpzr6gMqXTgTL3EJa" ContentHash="Dy3je_baW0K8l2hdYQ-lvA" DesignTimeRectangle="8, 111, 1920, 937" FriendlyName="'__meteor_runtime_config…'" FullSelectorArgument="&lt;webctrl css-selector='body' tag='BODY' class='dimmable' /&gt;" FuzzySelectorArgument="&lt;webctrl css-selector='body' tag='BODY' class='dimmable' type='' aaname='           ' check:text='__meteor_runtime_config__ = JSON.parse(decodeURIComponent(&amp;quot;%7B%22meteorRelease%22%3A%22METEOR%402.0' /&gt;" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Blokee - Inspired by Blokus - Online Board Game' /&gt;" SearchSteps="Selector" xmlns="http://schemas.uipath.com/workflow/activities/uix">
+  <imageRef attrName="ImageBase64" xmlns="">0PGybp23mk02z85E0CTGFpA</imageRef>
+  <imageRef attrName="InformativeScreenshot" originalValue="82486195097e7146bb3729428e5fef41.png" xmlns="">0O1BTVq-LVU2YSUysHvkKWQ</imageRef>
+</TargetAnchorable>
