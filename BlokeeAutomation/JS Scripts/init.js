@@ -1,7 +1,17 @@
 function(element, input){
 	
 	function script() 
-	{
+	{	
+		//adding a string.format function, will probably need it a lot here
+		String.prototype.format = function() {
+		  a = this;
+		  for (k in arguments) {
+			a = a.replace("{" + k + "}", arguments[k])
+		  }
+		  return a
+		}
+		
+		//function that will be executed each time I 
 		function SocketInjection(...args) {
 			if (window.sockets.indexOf(this) === -1){
 				window.sockets.push(this);
@@ -74,17 +84,43 @@ function(element, input){
 			return x.hexString(20);
 		};
 		//register new WebSockets into our sockets array
-		window.originalSend = WebSocket.prototype.send;
-		//window.originalOnMessage = WebSocket.prototype.onmessage;
-		
+		window.originalSend = WebSocket.prototype.send;		
 		window.WebSocket.prototype.send = function(...args) { 
 			SocketInjection.call(this, ...args);
 			return window.originalSend.call(this, ...args); 
 		};
-		/*window.WebSocket.prototype.onmessage = function(...args) { 
-			SocketInjection.call(this, ...args);
-			return window.originalOnMessage.call(this, ...args); 
-		};*/
+		
+		var Ticker = window.setInterval(function(){
+			//update the current player
+			var playerSegments= $("div.ticking").parents("div.ui.column");
+			if(playerSegments.length >0)
+			{
+				document.body.setAttribute("uipath-automation-currentPlayer",Array.from(playerSegments[0].parentElement.children).indexOf(playerSegments[0]));
+			}
+			
+			var rawPayload = document.body.getAttribute("uipath-automation-move");
+			if(rawPayload)
+			{
+				var payload = JSON.parse(rawPayload);
+				//send a payload to the server, causing the next move to happen
+				var request = "[\"{\\\"msg\\\":\\\"method\\\",\\\"method\\\":\\\"gamePlayerAction\\\",\\\"params\\\":[{\\\"gameId\\\":\\\"{0}\\\",\\\"action\\\":{\\\"type\\\":\\\"place\\\",\\\"playerIndex\\\":{1},\\\"pieceIndex\\\":{2},\\\"orientation\\\":{3},\\\"position\\\":[{4},{5}]}}],\\\"id\\\":\\\"{6}\\\",\\\"randomSeed\\\":\\\"{7}\\\"}\"]".format( 
+				window.gameId, 
+				payload.playerIndex, 
+				payload.pieceIndex,
+				payload.orientation,
+				payload.positionX,
+				payload.positionY,
+				parseInt(window.payloadId)+1,
+				window.generateRandomSeed());
+				
+				console.log("Sending message:");
+				console.log(request);
+				
+				document.body.setAttribute("uipath-automation-move","");
+				window.sockets[window.sockets.length -1].send(request);
+				
+			}
+		}, 100);
 	}
 	
 	function inject(fn) {

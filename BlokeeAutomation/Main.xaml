@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>915,2265</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>863,1830</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="24">
@@ -36,7 +36,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="27">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="54">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -64,9 +64,10 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="463,2200" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap:VirtualizedContainerService.HintSize="463,1765" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="Config" />
       <Variable x:TypeArguments="ui:UiElement" Name="BlokusBrowser" />
@@ -140,7 +141,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <Sequence DisplayName="Init The Game" sap:VirtualizedContainerService.HintSize="421,1490" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Init The Game" sap:VirtualizedContainerService.HintSize="421,1207" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Int32" Name="PlayerIndex" />
         <Variable x:TypeArguments="x:Boolean" Name="GameInProgress" />
@@ -160,17 +161,18 @@
       </ui:InvokeWorkflowFile>
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke OpenBlokusSite workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="BlokusApplication\OpenBlokusSite.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_URL">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(Config(&quot;Blokus_URL_General&quot;).ToString,&quot;welcome&quot;)" />
-          </InArgument>
-          <OutArgument x:TypeArguments="ui:UiElement" x:Key="out_BrowserWindow">
-            <mva:VisualBasicReference x:TypeArguments="ui:UiElement" ExpressionText="BlokusBrowser" />
-          </OutArgument>
-          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-            <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_URL">[Path.Combine(Config("Blokus_URL_General").ToString,"welcome")]</InArgument>
+          <OutArgument x:TypeArguments="ui:UiElement" x:Key="out_BrowserWindow">[BlokusBrowser]</OutArgument>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ExtractCurrentUserName workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="BlokusApplication\GameRoom\ExtractCurrentUserName.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_BrowserWindow">[BlokusBrowser]</InArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="out_UserName">[CurrentUser]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="379,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Current User: &quot; + CurrentUser]" />
       <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="379,238" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Give me the room number" Title="Let's play Blokus: https://blokee.mattle.online/">
         <ui:InputDialog.Result>
           <OutArgument x:TypeArguments="x:String">[RoomNo]</OutArgument>
@@ -198,24 +200,8 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ExtractCurrentUserName workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="BlokusApplication\GameRoom\ExtractCurrentUserName.xaml">
-        <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_BrowserWindow">[BlokusBrowser]</InArgument>
-          <OutArgument x:TypeArguments="x:String" x:Key="out_UserName">[CurrentUser]</OutArgument>
-        </ui:InvokeWorkflowFile.Arguments>
-      </ui:InvokeWorkflowFile>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="379,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Current User: &quot; + CurrentUser]" />
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetPlayerIndex workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="BlokusApplication\GameRoom\GameOperations\GetPlayerIndex.xaml">
-        <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_BrowserWindow">[BlokusBrowser]</InArgument>
-          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
-          <OutArgument x:TypeArguments="x:Int32" x:Key="out_PlayerIndex">[PlayerIndex]</OutArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_PlayerName">[CurrentUser]</InArgument>
-        </ui:InvokeWorkflowFile.Arguments>
-      </ui:InvokeWorkflowFile>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="379,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Player Index in current game: &quot; + PlayerIndex.ToString]" />
     </Sequence>
-    <Sequence DisplayName="Play Game" sap:VirtualizedContainerService.HintSize="421,487" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <Sequence DisplayName="Play Game" sap:VirtualizedContainerService.HintSize="421,335" sap2010:WorkflowViewState.IdRef="Sequence_4">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Int32" Name="PlayerIndex" />
         <Variable x:TypeArguments="x:Boolean" Name="GameInProgress" />
@@ -225,20 +211,14 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ExtractCurrentUserName workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="BlokusApplication\GameRoom\ExtractCurrentUserName.xaml">
-        <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_BrowserWindow">[BlokusBrowser]</InArgument>
-          <OutArgument x:TypeArguments="x:String" x:Key="out_UserName">[CurrentUser]</OutArgument>
-        </ui:InvokeWorkflowFile.Arguments>
-      </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke PlayGame workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="BlokusApplication\GameRoom\PlayGame.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke PlayGame workflow" sap:VirtualizedContainerService.HintSize="358,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="BlokusApplication\GameRoom\PlayGame.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="x:String" x:Key="in_PlayerName">[CurrentUser]</InArgument>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
           <InArgument x:TypeArguments="ui:UiElement" x:Key="in_BrowserWindow">[BlokusBrowser]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="379,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Current User: &quot; + CurrentUser]" />
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="358,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Current User: &quot; + CurrentUser]" />
     </Sequence>
   </Sequence>
 </Activity>

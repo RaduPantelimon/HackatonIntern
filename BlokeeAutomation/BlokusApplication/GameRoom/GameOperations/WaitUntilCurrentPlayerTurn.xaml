@@ -1,17 +1,18 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="WaitUntilCurrentPlayerTurn" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="WaitUntilCurrentPlayerTurn" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_BrowserWindow" Type="InArgument(ui:UiElement)" />
     <x:Property Name="in_PlayerName" Type="InArgument(x:String)" />
-    <x:Property Name="in_RetryInterval_Seconds" Type="InArgument(x:Int32)" />
-    <x:Property Name="in_MaxNumberrOfAttempts" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_RetryInterval_Miliseconds" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_MaxNumberOfAttempts" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_PlayerIndex" Type="InArgument(x:Int32)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>950,1570</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>863,1431</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>WaitUntilCurrentPlayerTurn_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <sco:Collection x:TypeArguments="x:String">
+    <scg:List x:TypeArguments="x:String" Capacity="37">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -43,10 +44,16 @@
       <x:String>System.Activities.DynamicUpdate</x:String>
       <x:String>UiPath.Platform.ObjectLibrary</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
-    </sco:Collection>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+    </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <sco:Collection x:TypeArguments="AssemblyReference">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="70">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -80,9 +87,12 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-    </sco:Collection>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="WaitUntilCurrentPlayerTurn" sap:VirtualizedContainerService.HintSize="960,1505" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="WaitUntilCurrentPlayerTurn" sap:VirtualizedContainerService.HintSize="661,1366" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="PlayerName" />
       <Variable x:TypeArguments="x:Boolean" Name="TurnStarted" />
@@ -93,7 +103,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="918,160" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="619,160" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -123,79 +133,80 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <uix:NApplicationCard sap2010:Annotation.AnnotationText="Extracting the username of the player currently logged in the Blokus Site" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Blokee - Inspired by Blokus - Online Board Game" sap:VirtualizedContainerService.HintSize="918,1213" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_BrowserWindow]" InteractionMode="Simulate" OpenMode="Never" Version="V1" WindowResize="Maximize">
+    <uix:NApplicationCard sap2010:Annotation.AnnotationText="Extracting the username of the player currently logged in the Blokus Site" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Blokee - Inspired by Blokus - Online Board Game" sap:VirtualizedContainerService.HintSize="619,1074" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_BrowserWindow]" InteractionMode="Simulate" OpenMode="Never" Version="V1" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <ui:InterruptibleDoWhile DisplayName="Do While" sap:VirtualizedContainerService.HintSize="884,956" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_2">
+          <ui:InterruptibleDoWhile DisplayName="Do While" sap:VirtualizedContainerService.HintSize="585,817" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_2">
             <ui:InterruptibleDoWhile.Body>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="848,791" sap2010:WorkflowViewState.IdRef="Sequence_12">
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="549,652" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="result" />
+                  <Variable x:TypeArguments="njl:JObject" Name="BlokusStatus" />
+                  <Variable x:TypeArguments="x:String" Name="currentPlayer" />
+                </Sequence.Variables>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'ActivePlayerTab'" sap:VirtualizedContainerService.HintSize="806,599" sap2010:WorkflowViewState.IdRef="NCheckState_4" Timeout="[in_RetryInterval_Seconds]">
-                  <uix:NCheckState.IfExists>
-                    <Sequence sap:VirtualizedContainerService.HintSize="376,286" sap2010:WorkflowViewState.IdRef="Sequence_10">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Current Player Turn Started&quot;]" />
-                      <Assign DisplayName="Increase Index" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_5">
-                        <Assign.To>
-                          <OutArgument x:TypeArguments="x:Boolean">[TurnStarted]</OutArgument>
-                        </Assign.To>
-                        <Assign.Value>
-                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
-                        </Assign.Value>
-                      </Assign>
-                    </Sequence>
-                  </uix:NCheckState.IfExists>
-                  <uix:NCheckState.IfNotExists>
-                    <Sequence sap:VirtualizedContainerService.HintSize="376,373" sap2010:WorkflowViewState.IdRef="Sequence_11">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Current Player Turn Not Started within time limit&quot;]" />
-                      <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" sap2010:Annotation.AnnotationText="Every Retry Interval, we test if the board still exists, otherwise, we throw an exception" DisplayName="Find Element 'CANVAS'" sap:VirtualizedContainerService.HintSize="334,148" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
-                        <ui:WaitUiElementAppear.Target>
-                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cb8224ed-8ec7-4961-9cc3-04c1d1100d52" InformativeScreenshot="d771eed0111b35387db8b1149371dd72" Selector="&lt;webctrl tag='CANVAS' /&gt;" TimeoutMS="1000">
-                            <ui:Target.WaitForReady>
-                              <InArgument x:TypeArguments="ui:WaitForReady" />
-                            </ui:Target.WaitForReady>
-                          </ui:Target>
-                        </ui:WaitUiElementAppear.Target>
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </ui:WaitUiElementAppear>
-                    </Sequence>
-                  </uix:NCheckState.IfNotExists>
-                  <uix:NCheckState.Target>
-                    <uix:TargetAnchorable BrowserURL="https://blokee.mattle.online/room/3kSvomsN7EGNjR7RR" ContentHash="eh_MwAsamU-OoPt5gVU_dQ" DesignTimeRectangle="747, 136, 57, 20" FriendlyName="'ActivePlayerTab'" FullSelectorArgument="[String.Format(&quot;&lt;html app='chrome.exe' title='Blokee - Inspired by Blokus - Online Board Game' /&gt;&lt;webctrl parentid='render-target' tag='DIV' class='ui segment' innertext='{0}(*' /&gt;&lt;webctrl tag='DIV' class='ticking*' /&gt;&quot;, PlayerName)]" FuzzySelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' type='' parentid='render-target' tag='DIV' aaname='' check:text='raduPTM(1500)1 minute leftWhen time is up, you will lose the game.01:03' /&gt;" ImageBase64="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" InformativeScreenshot="16aa557dd166576d6eac6bbc62d51022.png" Reference="JFWlP8zzUU2YM26ulT-vDw/YfS92aEeEk66zGD9VmCVNg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Blokee - Inspired by Blokus - Online Board Game' /&gt;" SearchSteps="Selector" WaitForReadyArgument="Interactive" />
-                  </uix:NCheckState.Target>
-                </uix:NCheckState>
-                <Assign DisplayName="Increase Index" sap:VirtualizedContainerService.HintSize="806,60" sap2010:WorkflowViewState.IdRef="Assign_6">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="x:Int32">[index]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="x:Int32">[index+1]</InArgument>
-                  </Assign.Value>
-                </Assign>
+                <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="507,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                  <ui:MultipleAssign.AssignOperations>
+                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:Int32">[index]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:Int32">[index+1]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[result]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">
+                            <Literal x:TypeArguments="x:String" Value="" />
+                          </InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                    </scg:List>
+                  </ui:MultipleAssign.AssignOperations>
+                </ui:MultipleAssign>
+                <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="uipath-automation-currentPlayer" DisplayName="Get Current Player Turn" sap:VirtualizedContainerService.HintSize="507,134" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
+                  <ui:GetAttribute.Result>
+                    <OutArgument x:TypeArguments="x:String">[currentPlayer]</OutArgument>
+                  </ui:GetAttribute.Result>
+                  <ui:GetAttribute.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="133a6e9c-e74c-4dde-b4b4-fa6fae97cbf9" InformativeScreenshot="2523cf1eca169f0bae9aaf35231f77ff" Selector="&lt;html app='chrome.exe' title='Blokee - Inspired by Blokus - Online Board Game' /&gt;&lt;webctrl css-selector='body' tag='BODY' /&gt;" TimeoutMS="200">
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:GetAttribute.Target>
+                </ui:GetAttribute>
+                <If Condition="[not String.IsNullOrEmpty(currentPlayer) AndAlso in_PlayerIndex = cint(currentPlayer)]" DisplayName="If this is  thecurrent player's " sap:VirtualizedContainerService.HintSize="507,217" sap2010:WorkflowViewState.IdRef="If_1">
+                  <If.Then>
+                    <Assign DisplayName="Mark Turn as started" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Boolean">[TurnStarted]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </If.Then>
+                  <If.Else>
+                    <Delay DisplayName="Wait for the alloted interval" Duration="[TimeSpan.FromMilliseconds(in_RetryInterval_Miliseconds)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
+                  </If.Else>
+                </If>
               </Sequence>
             </ui:InterruptibleDoWhile.Body>
             <ui:InterruptibleDoWhile.Condition>
-              <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="not TurnStarted and index&lt; in_MaxNumberrOfAttempts" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
+              <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="not TurnStarted and index&lt; in_MaxNumberOfAttempts" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
             </ui:InterruptibleDoWhile.Condition>
           </ui:InterruptibleDoWhile>
         </ActivityAction>

@@ -1,15 +1,19 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ExtractCurrentUserName" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="MakeMove" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_BrowserWindow" Type="InArgument(ui:UiElement)" />
-    <x:Property Name="out_UserName" Type="OutArgument(x:String)" />
+    <x:Property Name="in_playerIndex" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_pieceIndex" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_orientation" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_positionX" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_positionY" Type="InArgument(x:Int32)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>863,905</sap:VirtualizedContainerService.HintSize>
-  <sap2010:WorkflowViewState.IdRef>ExtractCurrentUserName_1</sap2010:WorkflowViewState.IdRef>
+  <sap:VirtualizedContainerService.HintSize>993,899</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>MakeMove_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="31">
+    <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -31,20 +35,21 @@
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Collections.Specialized</x:String>
       <x:String>UiPath.UIAutomationNext.Enums</x:String>
       <x:String>System.Collections.ObjectModel</x:String>
-      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
-      <x:String>System.Runtime.Serialization</x:String>
-      <x:String>System.Runtime.InteropServices</x:String>
       <x:String>UiPath.UIAutomationNext.Activities</x:String>
       <x:String>System.Activities.DynamicUpdate</x:String>
       <x:String>UiPath.Platform.ObjectLibrary</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
-      <x:String>System.ComponentModel</x:String>
-    </scg:List>
+    </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="26">
+    <sco:Collection x:TypeArguments="AssemblyReference">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -61,47 +66,61 @@
       <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
-      <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
-      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-    </scg:List>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ExtractCurrentUserName" sap:VirtualizedContainerService.HintSize="476,840" sap2010:WorkflowViewState.IdRef="Sequence_1">
-    <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="rawUserName" />
-    </Sequence.Variables>
+  <Sequence DisplayName="MakeMove" sap:VirtualizedContainerService.HintSize="476,577" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard sap2010:Annotation.AnnotationText="Extracting the username of the player currently logged in the Blokus Site" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Blokee - Inspired by Blokus - Online Board Game" sap:VirtualizedContainerService.HintSize="434,517" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_BrowserWindow]" InteractionMode="Simulate" OpenMode="Never" Version="V1" WindowResize="Maximize">
+    <uix:NApplicationCard sap2010:Annotation.AnnotationText="Extracting the username of the player currently logged in the Blokus Site" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Blokee - Inspired by Blokus - Online Board Game" sap:VirtualizedContainerService.HintSize="434,485" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_BrowserWindow]" InteractionMode="Simulate" OpenMode="Never" Version="V1" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,260" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,228" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="scriptResult" />
+            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NGetText DisplayName="Get Text 'UserName Label'" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NGetText_1">
-              <uix:NGetText.Target>
-                <uix:TargetAnchorable BrowserURL="https://blokee.mattle.online/lobby/rooms" ContentHash="ekJOZgBFlECD6rFRuL5tBQ" DesignTimeRectangle="1813, 111, 115, 40" ElementType="Text" FriendlyName="'UserName Label'" FullSelectorArgument="&lt;webctrl aaname='*profilelogout' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='raduPTM profilelogout' tag='A' type='' check:text='raduPTM profilelogout' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHcAAAAsCAYAAABfcCe+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAO2SURBVHhe7ZjrSxRRGMb9Z/padqHsS+pKRRe6CZVEUfQhRCqiD9JFgjDoHklFBpUSYRhUiBbd71aaKbVqmWl0BYOgv+Btn4OPHE9napvdBffwPvBD57wzZ2bf35zZS4FogkxBUbkUvB/8IEo4MEbupBXbBMxcv9v8VfIbRuUGCKNyA4RRuQHCqNwAYVRugDAqN0AYlRsgjMoNEEblBgijcgOEUbkBwqjcAGFUboAwGctdueO4NN1sl663w9I39EV6Uzx7PSAnmm9K0YYa7zFKbmEykltzulle9g1J29Nu2XK4QSZXVEuislb2nbtqBN/pSMqqnXXeY7PN5kMNMvxtRM61PPDWXV4kB2Xk569xYAw1zOHWbK4/7Rk7H4/xcaCxRb7++Gn299VzBRNbLl5ce0rg8aYb3jokX3v40ojH/759skkcubaY1bvqzFPHlRU1L8chDxLtGsFcvBl89VzBxJKLFdr6+JVcutUuVQfPS0fvoJFYvGmvVO4/O7a9bs8pedTdL0cutnnnySaZygU4FnNgLo79Te7Ap+/S/e6juSlwc9h1CEcdtbySu7H2jDzpeSdbjzSOk+nKxXb9lbv/fHFs1NX7nWYl4G5HM9lYPg5dGVwZAE2kBK5C+7xoNupcZdmSy2Psun1+nCOO3G1HL5i3tq7+oT9ovv3MewxhYsndU39Z7nX2Snn1MW/dJp192UB3BaAxbBobxm00zBaBcd4UceTyGlzh/5KL+VBzr4XbceXi6djY+kjeDH42H1QJ5uN5omAmlFy3gS5slCsa2HOkK5ernvgkRF0bxinXPp97bXHlAldwOmIBk/FjeefJS9Iz8HHc3QUedvXJku2H034sR8l1JWAu3/72WJyVG0XUtWGccrGNOvZ73PPWnBvXgPFM5AIKRr/xlufbx4XJ+AMV/vftA/A1KJ0PVL4G+gSxURNRLsB8uAHtfTOVGwcmllyAF/c8+d78WOGr/89XoShZdvO4DxuFptkrBON2Y115qNtfW9x6FL5r47grF2P4bm/vh3PknVyQrR8xohpIYQB1PPLYKK5O1u92Js025+CcrONYW0Yu5PrIW7lAf36ceDAZy1UmHozKDRBG5QYIo3IDhFG5AcKo3ABhVG6AMCo3QBiVGyCMyg0QRuUGCKNyA4RRuQHCqNwAYYzcyVMKRckjCqfKlBSFU6fJtOkzZFbRbJlTXCILFi2WijVrR9WOyi0uSYiSR5QmpCRFaaJMyubOk/kLFsrSZcuN2MqqLaNqIbdcfgMT+kcVgwSpZAAAAABJRU5ErkJggg==" InformativeScreenshot="c5674e61abc92e2e750f434c4cbf1151.png" Reference="JFWlP8zzUU2YM26ulT-vDw/aOjLO3dUv0SFnRd_lWBo3Q" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Blokee - Inspired by Blokus - Online Board Game' /&gt;" SearchSteps="Selector" />
-              </uix:NGetText.Target>
-              <uix:NGetText.Text>
-                <OutArgument x:TypeArguments="x:String">[rawUsername]</OutArgument>
-              </uix:NGetText.Text>
-            </uix:NGetText>
+            <ui:InjectJsScript ContinueOnError="True" DisplayName="Inject Js Script 'DIV'" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="InjectJsScript_1" InputParameter="[String.Format(&quot;{0};{1};{2};{3};{4}&quot;, in_playerIndex, in_pieceIndex, in_orientation, in_positionX, in_positionY)]" ScriptCode="JS Scripts\makeMove.js">
+              <ui:InjectJsScript.ScriptOutput>
+                <OutArgument x:TypeArguments="x:String">[scriptResult]</OutArgument>
+              </ui:InjectJsScript.ScriptOutput>
+              <ui:InjectJsScript.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="91889c34-909c-4745-896e-c7724a847925" InformativeScreenshot="3ac008f971cab03863cabeb17044d04e" Selector="&lt;webctrl css-selector='body' tag='BODY' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:InjectJsScript.Target>
+            </ui:InjectJsScript>
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>
@@ -114,14 +133,5 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </uix:NApplicationCard>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Extracted Raw Username: &quot; + rawUserName]" />
-    <Assign DisplayName="Trim Useless Words from UserName" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_1">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[out_UserName]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[if(rawUserName.EndsWith("profilelogout"),rawUserName.Substring(0, rawUserName.LastIndexOf("profilelogout")).Trim ,rawUserName.Trim)]</InArgument>
-      </Assign.Value>
-    </Assign>
   </Sequence>
 </Activity>
