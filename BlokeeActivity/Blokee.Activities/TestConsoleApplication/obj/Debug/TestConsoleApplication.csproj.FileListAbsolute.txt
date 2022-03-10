@@ -1,0 +1,13 @@
+C:\UiPath\Projects\Hackaton\Code\BlokeeActivity\Blokee.Activities\TestConsoleApplication\bin\Debug\test resources\latestValues.txt
+C:\UiPath\Projects\Hackaton\Code\BlokeeActivity\Blokee.Activities\TestConsoleApplication\bin\Debug\TestConsoleApplication.exe.config
+C:\UiPath\Projects\Hackaton\Code\BlokeeActivity\Blokee.Activities\TestConsoleApplication\bin\Debug\TestConsoleApplication.exe
+C:\UiPath\Projects\Hackaton\Code\BlokeeActivity\Blokee.Activities\TestConsoleApplication\bin\Debug\TestConsoleApplication.pdb
+C:\UiPath\Projects\Hackaton\Code\BlokeeActivity\Blokee.Activities\TestConsoleApplication\bin\Debug\Blokee.Activities.dll
+C:\UiPath\Projects\Hackaton\Code\BlokeeActivity\Blokee.Activities\TestConsoleApplication\bin\Debug\Newtonsoft.Json.dll
+C:\UiPath\Projects\Hackaton\Code\BlokeeActivity\Blokee.Activities\TestConsoleApplication\bin\Debug\Blokee.Activities.pdb
+C:\UiPath\Projects\Hackaton\Code\BlokeeActivity\Blokee.Activities\TestConsoleApplication\bin\Debug\Newtonsoft.Json.xml
+C:\UiPath\Projects\Hackaton\Code\BlokeeActivity\Blokee.Activities\TestConsoleApplication\obj\Debug\TestConsoleApplication.csprojAssemblyReference.cache
+C:\UiPath\Projects\Hackaton\Code\BlokeeActivity\Blokee.Activities\TestConsoleApplication\obj\Debug\TestConsoleApplication.csproj.CoreCompileInputs.cache
+C:\UiPath\Projects\Hackaton\Code\BlokeeActivity\Blokee.Activities\TestConsoleApplication\obj\Debug\TestConsoleApplication.csproj.CopyComplete
+C:\UiPath\Projects\Hackaton\Code\BlokeeActivity\Blokee.Activities\TestConsoleApplication\obj\Debug\TestConsoleApplication.exe
+C:\UiPath\Projects\Hackaton\Code\BlokeeActivity\Blokee.Activities\TestConsoleApplication\obj\Debug\TestConsoleApplication.pdb
