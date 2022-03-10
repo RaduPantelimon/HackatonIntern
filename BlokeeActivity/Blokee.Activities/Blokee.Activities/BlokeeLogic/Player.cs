@@ -40,58 +40,72 @@ namespace Blokee
             };
         }
 
-        private int[] PlayBarasona()
+        private Move PlayBarasona()
         {
-            int pieceIndex, orientation, row, col;
+            int pieceIndex, orientation, row, col, piecePointRow = 0, piecePointColumn = 0;
             if (currentMoveCount == 1)
             {
-                pieceIndex = 13;
+                pieceIndex = 12;
                 switch (Id)
                 {
                     case 0:
-                        orientation = 1;
+                        orientation = 0;
                         row = col = 0;
+                        piecePointRow = 0;
+                        piecePointColumn = 0;
                         break;
                     case 1:
-                        orientation = 2;
+                        orientation = 3;
                         row = 19;
                         col = 0;
+                        piecePointRow = 2;
+                        piecePointColumn = 0;
                         break;
                     case 2:
-                        orientation = 3;
+                        orientation = 2;
                         row = 0;
                         col = 19;
+                        piecePointRow = 2;
+                        piecePointColumn = 2;
                         break;
                     default:
-                        orientation = 4;
+                        orientation = 1;
                         row = 19;
                         col = 19;
+                        piecePointRow = 0;
+                        piecePointColumn = 2;
                         break;
                 }
             }
             else if (currentMoveCount == 2)
             {
-                pieceIndex = 8;
+                pieceIndex = 7;
+                orientation = 1;
                 switch (Id)
                 {
                     case 0:
-                        orientation = 1;
-                        row = col = 3;
+                        row = 3;
+                        col = 2;
+                        piecePointRow = 1;
+                        piecePointColumn = 0;
                         break;
                     case 1:
-                        orientation = 2;
-                        row = 1;
-                        col = 18;
+                        row = 17;
+                        col = 3;
+                        piecePointRow = 1;
+                        piecePointColumn = 2;
                         break;
                     case 2:
-                        orientation = 3;
-                        row = 16;
-                        col = 3;
+                        row = 17;
+                        col = 16;
+                        piecePointRow = 1;
+                        piecePointColumn = 2;
                         break;
                     default:
-                        orientation = 4;
-                        row = 16;
-                        col = 16;
+                        row = 3;
+                        col = 17;
+                        piecePointRow = 1;
+                        piecePointColumn = 2;
                         break;
                 }
             }
@@ -152,29 +166,34 @@ namespace Blokee
                 }
             }
             this.Pieces[pieceIndex].IsAvailable = false;
-            return new int[] { this.Pieces[pieceIndex].Id, orientation, row, col };
+            return new Move(this, this.Pieces[pieceIndex], orientation, row, col, piecePointRow, piecePointColumn); //{ this.Pieces[pieceIndex].Id, orientation, row, col };
         }
 
-        private List<int[]> GetValidMoves(Piece piece, int[][] corners)
+        private List<Move> GetValidMoves(Piece piece, int[][] corners)
         {
-            List<int[]> validMoves = new List<int[]>();
+            List<Move> validMoves = new List<Move>();
 
             foreach (var orientation in piece.Orientations)
             {
                 foreach (var corner in corners)
                 {
-                    if (Board.I.IsLegalMove(corner[0], corner[1], piece, orientation, this.Id)) { validMoves.Add(new int[] { piece.Id, orientation, corner[0], corner[1] }); }
+                    foreach (var point in piece.AllVariations[orientation])
+                    {
+                        Move currentMove = new Move(this, piece, orientation, corner[0], corner[1], point[0], point[1]);
+                        if (Board.I.IsLegalMove(currentMove/*corner[0], corner[1], piece, orientation, this.Id*/)) { validMoves.Add(currentMove); }
+
+                    }
                 }
             }
 
             return validMoves;
         }
 
-        private int[] PlayGreedy()
+        private Move PlayGreedy()
         {
             var availablePieces = this.Pieces.Where(piece => piece.IsAvailable).OrderByDescending(piece => piece.Weight);
             var availableCorners = Board.I.GetAllAvailableCorners(this.Id);
-            List<int[]> moves = new List<int[]>();
+            List<Move> moves = new List<Move>();
 
             foreach (var piece in availablePieces)
             {
@@ -198,7 +217,7 @@ namespace Blokee
         //    }
         //}
 
-        public int[] Play()
+        public Move Play()
         {
             currentMoveCount++;
             if (currentMoveCount <= 4)

@@ -38,15 +38,15 @@ namespace Blokee
                 });
         }
 
-        public int[] PlayNextMove()
+        public Move PlayNextMove()
         {
             if (this.IsOver) throw new Exception("Game is over, no further moves possible");
-            int[] move = Players[NextPlayer].Play();
+            Move move = Players[NextPlayer].Play();
 
             //if move is valid update board and player
-            if(move != null && move.Length == 4)
+            if(move != null)
             {
-                Board.I.PlayPiece(move[2], move[3], Players[NextPlayer].Pieces[move[0]], move[1], Players[NextPlayer].Id);
+                Board.I.MakeMove(move);// move[2], move[3], Players[NextPlayer].Pieces[move[0]], move[1], Players[NextPlayer].Id);
                 _consecutiveNoValidMoves = 0;
             }
             else

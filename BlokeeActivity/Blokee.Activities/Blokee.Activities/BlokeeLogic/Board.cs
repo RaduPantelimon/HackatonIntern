@@ -51,10 +51,11 @@ namespace Blokee
             return builder.ToString();
         }
 
-        public void PlayPiece(int targetRow, int targetColumn, Piece piece, int translation, int playerId)
+        public void MakeMove(Move move)
         {
-            var piecePosition = piece.AllVariations[translation];
-            foreach (var point in piecePosition) { _board[targetRow + point[0], targetColumn + point[1]] = playerId; };
+            var piecePosition = move.Piece.AllVariations[move.Orientation];
+            foreach (var point in piecePosition)
+                _board[move.CornerRow - move.PiecePointRow + point[0], move.CornerColumn - move.PiecePointColumn + point[1]] = move.Player.Id;
         }
 
         private bool PointIsOutOfBounds(int row, int col)
@@ -99,11 +100,12 @@ namespace Blokee
             return piece.AllVariations[orientation].Any(point => PointIsAdjacent(point[0], point[1], playerId));
         }
 
-        public bool IsLegalMove(int targetRow, int targetColumn, Piece piece, int orientation, int playerId)
+        public bool IsLegalMove(Move move)
+            /*int targetRow, int targetColumn, Piece piece, int orientation, int playerId*/
         {
-            return PieceIsOutOfBounds(targetRow, targetColumn, piece, orientation) &&
-                PieceOverlap(targetRow, targetColumn, piece, orientation) &&
-                PieceIsAdjacent(targetRow, targetColumn, piece, orientation, playerId);
+            return PieceIsOutOfBounds(move.CornerRow - move.PiecePointRow, move.CornerColumn - move.PiecePointColumn, move.Piece, move.Orientation) &&
+                PieceOverlap(move.CornerRow - move.PiecePointRow, move.CornerColumn - move.PiecePointColumn, move.Piece, move.Orientation) &&
+                PieceIsAdjacent(move.CornerRow - move.PiecePointRow, move.CornerColumn - move.PiecePointColumn, move.Piece, move.Orientation, move.Player.Id);
         }
 
         public int[][] GetAllAvailableCorners(int playerId)
