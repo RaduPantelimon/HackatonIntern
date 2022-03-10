@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System;
 
 namespace Blokee
 {
@@ -33,6 +35,20 @@ namespace Blokee
         public void RefreshBoard(string inputJson)
         {
             _board = Newtonsoft.Json.JsonConvert.DeserializeObject<int?[,]>(inputJson);
+        }
+
+        //this will help us better output/visualize the board at runtime
+        public override string ToString()
+        {
+            StringBuilder builder = new StringBuilder();
+            //build visual representation
+            for (int i = 0; i < _board.GetLength(0); i++)
+            {
+                for (int j = 0; j < _board.GetLength(1); j++)
+                    builder.AppendFormat("{0} ", _board[i, j] == null ? "_" : _board[i, j].ToString());
+                builder.Append(Environment.NewLine);
+            }   
+            return builder.ToString();
         }
 
         public void PlayPiece(int targetRow, int targetColumn, Piece piece, int translation, int playerId)

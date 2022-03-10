@@ -20,7 +20,12 @@ namespace TestConsoleApplication
 
             //init a new game
             Game game = new Game(gameProperties,0);
-
+            //play moves until game is over
+            while(!game.IsOver)
+            {
+                game.PlayNextMove();
+                Console.WriteLine(Environment.NewLine + Board.I.ToString());
+            }
         }
     }
 }

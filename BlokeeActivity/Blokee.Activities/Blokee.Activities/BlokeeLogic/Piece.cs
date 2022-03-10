@@ -29,8 +29,9 @@ namespace Blokee
         public override int Weight => 40;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 0, 2 }, new int[] { 0, 3 } };
         public override int[] Orientations => new int[] { 0, 1 };
-        public override int[][][] AllVariations => throw new NotImplementedException();
-
+        public override int[][][] AllVariations => new int[][][] {
+            new int[][] { new int[] {0,0}, new int[] {0,1}, new int[] {0,2}, new int[] {0,3} },
+            new int[][] { new int[] {0,0}, new int[] {1,0}, new int[] {2,0}, new int[] {3,0} }};
         private Piece0() : this(false) { }
         public Piece0(bool available) : base(available) { }
     }
@@ -42,7 +43,15 @@ namespace Blokee
         public override int Weight => 50;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 0, 2 }, new int[] { 0, 3 }, new int[] { 1, 3 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
-        public override int[][][] AllVariations => throw new NotImplementedException();
+        public override int[][][] AllVariations => new int[][][] {
+            new int[][] { new int[] {0,0},new int[] {0,1},new int[] {0,2},new int[] {0,3},new int[] {1,3}},
+            new int[][] { new int[] {0,1},new int[] {1,1},new int[] {2,1},new int[] {3,1},new int[] {3,0}},
+            new int[][] { new int[] {1,3},new int[] {1,2},new int[] {1,1},new int[] {1,0},new int[] {0,0}},
+            new int[][] { new int[] {3,0},new int[] {2,0},new int[] {1,0},new int[] {0,0},new int[] {0,1}},
+            new int[][] { new int[] {0,3},new int[] {0,2},new int[] {0,1},new int[] {0,0},new int[] {1,0}},
+            new int[][] { new int[] {0,0},new int[] {1,0},new int[] {2,0},new int[] {3,0},new int[] {3,1}},
+            new int[][] { new int[] {1,0},new int[] {1,1},new int[] {1,2},new int[] {1,3},new int[] {0,3}},
+            new int[][] { new int[] {3,1},new int[] {2,1},new int[] {1,1},new int[] {0,1},new int[] {0,0}} };
         private Piece1() : this(false) { }
         public Piece1(bool available) : base(available) { }
     }
@@ -54,7 +63,15 @@ namespace Blokee
         public override int Weight => 50;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 0, 2 }, new int[] { 0, 3 }, new int[] { 1, 2 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
-        public override int[][][] AllVariations => throw new NotImplementedException();
+        public override int[][][] AllVariations => new int[][][] {
+            new int[][] { new int[] {0,0},new int[] {0,1},new int[] {0,2},new int[] {0,3},new int[] {1,2}},
+            new int[][] { new int[] {0,1},new int[] {1,1},new int[] {2,1},new int[] {3,1},new int[] {2,0}},
+            new int[][] { new int[] {1,3},new int[] {1,2},new int[] {1,1},new int[] {1,0},new int[] {0,1}},
+            new int[][] { new int[] {3,0},new int[] {2,0},new int[] {1,0},new int[] {0,0},new int[] {1,1}},
+            new int[][] { new int[] {0,3},new int[] {0,2},new int[] {0,1},new int[] {0,0},new int[] {1,1}},
+            new int[][] { new int[] {0,0},new int[] {1,0},new int[] {2,0},new int[] {3,0},new int[] {2,1}},
+            new int[][] { new int[] {1,0},new int[] {1,1},new int[] {1,2},new int[] {1,3},new int[] {0,2}},
+            new int[][] { new int[] {3,1},new int[] {2,1},new int[] {1,1},new int[] {0,1},new int[] {1,0}} };
         private Piece2() : this(false) { }
         public Piece2(bool available) : base(available) { }
     }
@@ -66,7 +83,15 @@ namespace Blokee
         public override int Weight => 40;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 1, 0 }, new int[] { 2, 0 }, new int[] { 2, 1 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
-        public override int[][][] AllVariations => throw new NotImplementedException();
+        public override int[][][] AllVariations => new int[][][] {
+            new int[][] { new int[] {0,0},new int[] {1,0},new int[] {2,0},new int[] {2,1}},
+            new int[][] { new int[] {0,2},new int[] {0,1},new int[] {0,0},new int[] {1,0}},
+            new int[][] { new int[] {2,1},new int[] {1,1},new int[] {0,1},new int[] {0,0}},
+            new int[][] { new int[] {1,0},new int[] {1,1},new int[] {1,2},new int[] {0,2}},
+            new int[][] { new int[] {0,1},new int[] {1,1},new int[] {2,1},new int[] {2,0}},
+            new int[][] { new int[] {0,0},new int[] {0,1},new int[] {0,2},new int[] {1,2}},
+            new int[][] { new int[] {2,0},new int[] {1,0},new int[] {0,0},new int[] {0,1}},
+            new int[][] { new int[] {1,2},new int[] {1,1},new int[] {1,0},new int[] {0,0}}};
         private Piece3() : this(false) { }
         public Piece3(bool available) : base(available) { }
     }
@@ -78,7 +103,15 @@ namespace Blokee
         public override int Weight => 50;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 1, 0 }, new int[] { 1, 1 }, new int[] { 2, 0 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
-        public override int[][][] AllVariations => throw new NotImplementedException();
+        public override int[][][] AllVariations => new int[][][] {
+            new int[][] { new int[] {0,0},new int[] {0,1},new int[] {1,0},new int[] {1,1},new int[] {2,0}},
+            new int[][] { new int[] {0,2},new int[] {1,2},new int[] {0,1},new int[] {1,1},new int[] {0,0}},
+            new int[][] { new int[] {2,1},new int[] {2,0},new int[] {1,1},new int[] {1,0},new int[] {0,1}},
+            new int[][] { new int[] {1,0},new int[] {0,0},new int[] {1,1},new int[] {0,1},new int[] {1,2}},
+            new int[][] { new int[] {0,1},new int[] {0,0},new int[] {1,1},new int[] {1,0},new int[] {2,1}},
+            new int[][] { new int[] {0,0},new int[] {1,0},new int[] {0,1},new int[] {1,1},new int[] {0,2}},
+            new int[][] { new int[] {2,0},new int[] {2,1},new int[] {1,0},new int[] {1,1},new int[] {0,0}},
+            new int[][] { new int[] {1,2},new int[] {0,2},new int[] {1,1},new int[] {0,1},new int[] {1,0}}};
         private Piece4() : this(false) { }
         public Piece4(bool available) : base(available) { }
     }
@@ -90,7 +123,11 @@ namespace Blokee
         public override int Weight => 50;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 1, 0 }, new int[] { 2, 0 }, new int[] { 2, 1 }, new int[] { 2, 2 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3 };
-        public override int[][][] AllVariations => throw new NotImplementedException();
+        public override int[][][] AllVariations => new int[][][] {
+            new int[][] { new int[] {0,0},new int[] {1,0},new int[] {2,0},new int[] {2,1},new int[] {2,2}},
+            new int[][] { new int[] {0,2},new int[] {0,1},new int[] {0,0},new int[] {1,0},new int[] {2,0}},
+            new int[][] { new int[] {2,2},new int[] {1,2},new int[] {0,2},new int[] {0,1},new int[] {0,0}},
+            new int[][] { new int[] {2,0},new int[] {2,1},new int[] {2,2},new int[] {1,2},new int[] {0,2}}};
         private Piece5() : this(false) { }
         public Piece5(bool available) : base(available) { }
     }
@@ -102,7 +139,13 @@ namespace Blokee
         public override int Weight => 50;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 1, 1 }, new int[] { 2, 1 }, new int[] { 2, 2 } };
         public override int[] Orientations => new int[] { 0, 1, 4, 5 };
-        public override int[][][] AllVariations => throw new NotImplementedException();
+        public override int[][][] AllVariations => new int[][][] {
+            new int[][] { new int[] {0,0},new int[] {0,1},new int[] {1,1},new int[] {2,1},new int[] {2,2}},
+            new int[][] { new int[] {0,2},new int[] {1,2},new int[] {1,1},new int[] {1,0},new int[] {2,0}},
+            new int[][]{ },
+            new int[][]{ },
+            new int[][] { new int[] {0,2},new int[] {0,1},new int[] {1,1},new int[] {2,1},new int[] {2,0}},
+            new int[][] { new int[] {0,0},new int[] {1,0},new int[] {1,1},new int[] {1,2},new int[] {2,2}}};
         private Piece6() : this(false) { }
         public Piece6(bool available) : base(available) { }
     }
@@ -114,7 +157,9 @@ namespace Blokee
         public override int Weight => 50;
         public override int[][] Points => new int[][] { new int[] { 0, 1 }, new int[] { 1, 0 }, new int[] { 1, 1 }, new int[] { 1, 2 }, new int[] { 2, 1 } };
         public override int[] Orientations => new int[] { 0 };
-        public override int[][][] AllVariations => throw new NotImplementedException();
+        public override int[][][] AllVariations => new int[][][] {
+            new int[][] { new int[] {0,1},new int[] {1,0},new int[] {1,1},new int[] {1,2},new int[] {2,1}}
+        };
         private Piece7() : this(false) { }
         public Piece7(bool available) : base(available) { }
     }
@@ -126,7 +171,11 @@ namespace Blokee
         public override int Weight => 40;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 1, 0 }, new int[] { 1, 1 }, new int[] { 2, 0 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3 };
-        public override int[][][] AllVariations => throw new NotImplementedException();
+        public override int[][][] AllVariations => new int[][][] {
+            new int[][] { new int[] {0,0},new int[] {1,0},new int[] {1,1},new int[] {2,0}},
+            new int[][] { new int[] {0,2},new int[] {0,1},new int[] {1,1},new int[] {0,0}},
+            new int[][] { new int[] {2,1},new int[] {1,1},new int[] {1,0},new int[] {0,1}},
+            new int[][] { new int[] {1,0},new int[] {1,1},new int[] {0,1},new int[] {1,2}}};
         private Piece8() : this(false) { }
         public Piece8(bool available) : base(available) { }
     }
@@ -138,7 +187,11 @@ namespace Blokee
         public override int Weight => 50;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 1, 0 }, new int[] { 2, 0 }, new int[] { 2, 1 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3 };
-        public override int[][][] AllVariations => throw new NotImplementedException();
+        public override int[][][] AllVariations => new int[][][] {
+            new int[][] { new int[] {0,0},new int[] {0,1},new int[] {1,0},new int[] {2,0},new int[] {2,1}},
+            new int[][] { new int[] {0,2},new int[] {1,2},new int[] {0,1},new int[] {0,0},new int[] {1,0}},
+            new int[][] { new int[] {2,1},new int[] {2,0},new int[] {1,1},new int[] {0,1},new int[] {0,0}},
+            new int[][] { new int[] {1,0},new int[] {0,0},new int[] {1,1},new int[] {1,2},new int[] {0,2}}};
         private Piece9() : this(false) { }
         public Piece9(bool available) : base(available) { }
     }
@@ -150,7 +203,11 @@ namespace Blokee
         public override int Weight => 50;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 1, 0 }, new int[] { 1, 1 }, new int[] { 2, 1 }, new int[] { 2, 2 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3 };
-        public override int[][][] AllVariations => throw new NotImplementedException();
+        public override int[][][] AllVariations => new int[][][] {
+            new int[][] { new int[] {0,0},new int[] {1,0},new int[] {1,1},new int[] {2,1},new int[] {2,2}},
+            new int[][] { new int[] {0,2},new int[] {0,1},new int[] {1,1},new int[] {1,0},new int[] {2,0}},
+            new int[][] { new int[] {2,2},new int[] {1,2},new int[] {1,1},new int[] {0,1},new int[] {0,0}},
+            new int[][] { new int[] {2,0},new int[] {2,1},new int[] {1,1},new int[] {1,2},new int[] {0,2}}};
         private Piece10() : this(false) { }
         public Piece10(bool available) : base(available) { }
     }
@@ -162,7 +219,11 @@ namespace Blokee
         public override int Weight => 50;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 1, 1 }, new int[] { 2, 1 }, new int[] { 0, 2 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3 };
-        public override int[][][] AllVariations => throw new NotImplementedException();
+        public override int[][][] AllVariations => new int[][][] {
+            new int[][] { new int[] {0,0},new int[] {0,1},new int[] {1,1},new int[] {2,1},new int[] {0,2}},
+            new int[][] { new int[] {0,2},new int[] {1,2},new int[] {1,1},new int[] {1,0},new int[] {2,2}},
+            new int[][] { new int[] {2,2},new int[] {2,1},new int[] {1,1},new int[] {0,1},new int[] {2,0}},
+            new int[][] { new int[] {2,0},new int[] {1,0},new int[] {1,1},new int[] {1,2},new int[] {0,0}}};
         private Piece11() : this(false) { }
         public Piece11(bool available) : base(available) { }
     }
@@ -174,7 +235,15 @@ namespace Blokee
         public override int Weight => 50;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 1, 1 }, new int[] { 1, 2 }, new int[] { 2, 1 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
-        public override int[][][] AllVariations => throw new NotImplementedException();
+        public override int[][][] AllVariations => new int[][][] {
+            new int[][] { new int[] {0,0},new int[] {0,1},new int[] {1,1},new int[] {1,2},new int[] {2,1}},
+            new int[][] { new int[] {0,2},new int[] {1,2},new int[] {1,1},new int[] {2,1},new int[] {1,0}},
+            new int[][] { new int[] {2,2},new int[] {2,1},new int[] {1,1},new int[] {1,0},new int[] {0,1}},
+            new int[][] { new int[] {2,0},new int[] {1,0},new int[] {1,1},new int[] {0,1},new int[] {1,2}},
+            new int[][] { new int[] {0,2},new int[] {0,1},new int[] {1,1},new int[] {1,0},new int[] {2,1}},
+            new int[][] { new int[] {0,0},new int[] {1,0},new int[] {1,1},new int[] {2,1},new int[] {1,2}},
+            new int[][] { new int[] {2,0},new int[] {2,1},new int[] {1,1},new int[] {1,2},new int[] {0,1}},
+            new int[][] { new int[] {2,2},new int[] {1,2},new int[] {1,1},new int[] {0,1},new int[] {1,0}}};
         private Piece12() : this(false) { }
         public Piece12(bool available) : base(available) { }
     }
@@ -186,7 +255,15 @@ namespace Blokee
         public override int Weight => 50;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 0, 2 }, new int[] { 1, 2 }, new int[] { 1, 3 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
-        public override int[][][] AllVariations => throw new NotImplementedException();
+        public override int[][][] AllVariations => new int[][][] {
+            new int[][] { new int[] {0,0},new int[] {0,1},new int[] {0,2},new int[] {1,2},new int[] {1,3}},
+            new int[][] { new int[] {0,1},new int[] {1,1},new int[] {2,1},new int[] {2,0},new int[] {3,0}},
+            new int[][] { new int[] {1,3},new int[] {1,2},new int[] {1,1},new int[] {0,1},new int[] {0,0}},
+            new int[][] { new int[] {3,0},new int[] {2,0},new int[] {1,0},new int[] {1,1},new int[] {0,1}},
+            new int[][] { new int[] {0,3},new int[] {0,2},new int[] {0,1},new int[] {1,1},new int[] {1,0}},
+            new int[][] { new int[] {0,0},new int[] {1,0},new int[] {2,0},new int[] {2,1},new int[] {3,1}},
+            new int[][] { new int[] {1,0},new int[] {1,1},new int[] {1,2},new int[] {0,2},new int[] {0,3}},
+            new int[][] { new int[] {3,1},new int[] {2,1},new int[] {1,1},new int[] {1,0},new int[] {0,0}}};
         private Piece13() : this(false) { }
         public Piece13(bool available) : base(available) { }
     }
@@ -198,7 +275,13 @@ namespace Blokee
         public override int Weight => 40;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 1, 1 }, new int[] { 1, 2 } };
         public override int[] Orientations => new int[] { 0, 1, 4, 5 };
-        public override int[][][] AllVariations => throw new NotImplementedException();
+        public override int[][][] AllVariations => new int[][][] {
+            new int[][] { new int[] {0,0},new int[] {0,1},new int[] {1,1},new int[] {1,2}},
+            new int[][] { new int[] {0,1},new int[] {1,1},new int[] {1,0},new int[] {2,0}},
+            new int[][]{ },
+            new int[][]{ },
+            new int[][] { new int[] {0,2},new int[] {0,1},new int[] {1,1},new int[] {1,0}},
+            new int[][] { new int[] {0,0},new int[] {1,0},new int[] {1,1},new int[] {2,1}}};
         private Piece14() : this(false) { }
         public Piece14(bool available) : base(available) { }
     }
@@ -210,7 +293,11 @@ namespace Blokee
         public override int Weight => 30;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 1, 0 }, new int[] { 1, 1 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3 };
-        public override int[][][] AllVariations => throw new NotImplementedException();
+        public override int[][][] AllVariations => new int[][][] {
+            new int[][] { new int[] { 0, 0 }, new int[] { 1, 0 }, new int[] { 1, 1 } },
+            new int[][] { new int[] {0,1},new int[] {0,0},new int[] {1,0}},
+            new int[][] { new int[] {1,1},new int[] {0,1},new int[] {0,0}},
+            new int[][] { new int[] {1,0},new int[] {1,1},new int[] {0,1}}};
         private Piece15() : this(false) { }
         public Piece15(bool available) : base(available) { }
     }
@@ -222,7 +309,8 @@ namespace Blokee
         public override int Weight => 40;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 1, 0 }, new int[] { 1, 1 } };
         public override int[] Orientations => new int[] { 0 };
-        public override int[][][] AllVariations => throw new NotImplementedException();
+        public override int[][][] AllVariations => new int[][][] {
+            new int[][] { new int[] {0,0},new int[] {0,1},new int[] {1,0},new int[] {1,1}}};
         private Piece16() : this(false) { }
         public Piece16(bool available) : base(available) { }
     }
@@ -234,7 +322,8 @@ namespace Blokee
         public override int Weight => 10;
         public override int[][] Points => new int[][] { new int[] { 0, 0 } };
         public override int[] Orientations => new int[] { 0 };
-        public override int[][][] AllVariations => throw new NotImplementedException();
+        public override int[][][] AllVariations =>  new int[][][] {
+            new int[][] { new int[] {0,0}}};
         private Piece17() : this(false) { }
         public Piece17(bool available) : base(available) { }
     }
@@ -246,7 +335,9 @@ namespace Blokee
         public override int Weight => 50;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 0, 2 }, new int[] { 0, 3 }, new int[] { 0, 4 } };
         public override int[] Orientations => new int[] { 0, 1 };
-        public override int[][][] AllVariations => throw new NotImplementedException();
+        public override int[][][] AllVariations => new int[][][] {
+            new int[][] { new int[] {0,0},new int[] {0,1},new int[] {0,2},new int[] {0,3},new int[] {0,4}},
+            new int[][] { new int[] {0,0},new int[] {1,0},new int[] {2,0},new int[] {3,0},new int[] {4,0}}};
         private Piece18() : this(false) { }
         public Piece18(bool available) : base(available) { }
     }
@@ -258,7 +349,9 @@ namespace Blokee
         public override int Weight => 30;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 0, 2 } };
         public override int[] Orientations => new int[] { 0, 1 };
-        public override int[][][] AllVariations => throw new NotImplementedException();
+        public override int[][][] AllVariations => new int[][][] {
+            new int[][] { new int[] {0,0},new int[] {0,1},new int[] {0,2}},
+            new int[][] { new int[] {0,0},new int[] {1,0},new int[] {2,0}}};
         private Piece19() : this(false) { }
         public Piece19(bool available) : base(available) { }
     }
@@ -270,7 +363,9 @@ namespace Blokee
         public override int Weight => 20;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 } };
         public override int[] Orientations => new int[] { 0, 1 };
-        public override int[][][] AllVariations => throw new NotImplementedException();
+        public override int[][][] AllVariations => new int[][][] {
+            new int[][] { new int[] {0,0},new int[] {0,1}},
+            new int[][] { new int[] {0,0},new int[] {1,0}}};
         private Piece20() : this(false) { }
         public Piece20(bool available) : base(available) { }
     }
