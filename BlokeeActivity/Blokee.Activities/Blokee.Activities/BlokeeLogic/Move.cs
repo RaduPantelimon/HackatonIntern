@@ -27,7 +27,7 @@ namespace Blokee
         {
             get
             {
-                return PiecePointColumn - PiecePointColumn;
+                return CornerColumn - PiecePointColumn;
             }
         }
 

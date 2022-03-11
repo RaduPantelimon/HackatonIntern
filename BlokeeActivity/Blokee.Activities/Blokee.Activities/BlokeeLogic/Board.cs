@@ -56,7 +56,7 @@ namespace Blokee
             Console.WriteLine("Playing Move: " + move.ToString());
             var piecePosition = move.Piece.AllVariations[move.Orientation];
             foreach (var point in piecePosition)
-                _board[move.PiecePointRow + point[0], move.PlacingColumn + point[1]] = move.Player.Id;
+                _board[move.PlacingRow + point[0], move.PlacingColumn + point[1]] = move.Player.Id;
         }
 
         private bool PointIsOutOfBounds(int row, int col)
@@ -102,7 +102,7 @@ namespace Blokee
         public bool PieceIsAdjacent(int targetRow, int targetColumn, Piece piece, int orientation, int playerId)
         {
             //Console.WriteLine("Piece is adjacent check. target row: {0}; target col: {1}; piece: {2}; orientation: {3}", targetRow, targetColumn, piece.Id, orientation);
-            return piece.AllVariations[orientation].Any(point => PointIsAdjacent(targetRow + point[0], targetRow + point[1], playerId));
+            return piece.AllVariations[orientation].Any(point => PointIsAdjacent(targetRow + point[0], targetColumn + point[1], playerId));
         }
 
         public bool IsLegalMove(Move move)
