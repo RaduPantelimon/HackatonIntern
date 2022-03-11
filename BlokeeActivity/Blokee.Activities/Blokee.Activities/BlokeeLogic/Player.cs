@@ -116,22 +116,29 @@ namespace Blokee
                 {
                     case 0:
                         orientation = 1;
-                        row = col = 5;
+                        row = 4; col = 5;
+                        piecePointRow = 0;
+                        piecePointColumn = 1;
                         break;
                     case 1:
-                        orientation = 2;
-                        row = 5;
-                        col = 14;
+                        orientation = 0;
+                        row = 15; col = 5;
+                        piecePointRow = 2;
+                        piecePointColumn = 1;
                         break;
                     case 2:
                         orientation = 3;
-                        row = 14;
-                        col = 5;
+                        row = 15;
+                        col = 14;
+                        piecePointRow = 2;
+                        piecePointColumn = 1;
                         break;
                     default:
-                        orientation = 4;
-                        row = 14;
+                        orientation = 2;
+                        row = 4;
                         col = 14;
+                        piecePointRow = 0;
+                        piecePointColumn = 1;
                         break;
                 }
             }
@@ -140,29 +147,38 @@ namespace Blokee
                 switch (Id)
                 {
                     case 0:
-                        pieceIndex = 3;
-                        orientation = 1;
-                        row = 6;
+                        pieceIndex = 2;
+                        orientation = 7;
+                        row = 5;
                         col = 7;
+                        piecePointRow = 0;
+                        piecePointColumn = 1;
                         break;
                     case 1:
-                        pieceIndex = 14;
-                        orientation = 2;
-                        row = 5;
-                        col = 12;
+                        pieceIndex = 13;
+                        orientation = 5;
+                        row = 13;
+                        col = 6;
+                        piecePointRow = 3;
+                        piecePointColumn = 1;
                         break;
                     case 2:
-                        pieceIndex = 14;
-                        orientation = 3;
-                        row = 12;
-                        col = 5;
+                        pieceIndex = 2;
+                        orientation = 0;
+                        row = 13;
+                        col = 13;
+                        piecePointRow = 1;
+                        piecePointColumn = 2;
                         break;
                     default:
-                        pieceIndex = 3;
-                        orientation = 4;
-                        row = 12;
-                        col = 13;
+                        pieceIndex = 13;
+                        orientation = 0;
+                        row = 5;
+                        col = 12;
+                        piecePointRow = 0;
+                        piecePointColumn = 2;
                         break;
+
                 }
             }
             this.Pieces[pieceIndex].IsAvailable = false;
