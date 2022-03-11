@@ -40,7 +40,7 @@ namespace Blokee
             };
         }
 
-        private Move PlayBarasona()
+        private Move PlayBarosana()
         {
             int pieceIndex, orientation, row, col, piecePointRow = 0, piecePointColumn = 0;
             if (currentMoveCount == 1)
@@ -111,7 +111,7 @@ namespace Blokee
             }
             else if (currentMoveCount == 3)
             {
-                pieceIndex = 11;
+                pieceIndex = 10;
                 switch (Id)
                 {
                     case 0:
@@ -222,7 +222,7 @@ namespace Blokee
             currentMoveCount++;
             if (currentMoveCount <= 4)
             {
-                return PlayBarasona();
+                return PlayBarosana();
             }
 
             return PlayGreedy();
