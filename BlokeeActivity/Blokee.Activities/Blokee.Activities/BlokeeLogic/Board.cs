@@ -53,9 +53,10 @@ namespace Blokee
 
         public void MakeMove(Move move)
         {
+            Console.WriteLine("Playing Move: " + move.ToString());
             var piecePosition = move.Piece.AllVariations[move.Orientation];
             foreach (var point in piecePosition)
-                _board[move.CornerRow - move.PiecePointRow + point[0], move.CornerColumn - move.PiecePointColumn + point[1]] = move.Player.Id;
+                _board[move.PiecePointRow + point[0], move.PlacingColumn + point[1]] = move.Player.Id;
         }
 
         private bool PointIsOutOfBounds(int row, int col)
@@ -65,15 +66,16 @@ namespace Blokee
 
         private bool PointIsAdjacent(int row, int col, int playerId)
         {
-            return (_board[row + 1, col] == playerId) ||
-                   (_board[row - 1, col] == playerId) ||
-                   (_board[row, col + 1] == playerId) ||
-                   (_board[row, col - 1] == playerId);
+            return (row + 1 < rowCount && _board[row + 1, col] == playerId) ||
+                   (row - 1 >= 0 && _board[row - 1, col] == playerId) ||
+                   (col + 1 < colCount && _board[row, col + 1] == playerId) ||
+                   (col - 1 >= 0 && _board[row, col - 1] == playerId);
         }
 
         private bool PointOverlap(int row, int col)
         {
-            return _board[row, col] != null && _board[row, col] != -1;
+            return //!(0<= row && row<rowCount && 0< col && col<= colCount) ||
+                (_board[row, col] != null && _board[row, col] != -1);
         }
 
         private bool IsValidCorner(int row, int col, int playerId)
@@ -85,27 +87,41 @@ namespace Blokee
 
         public bool PieceIsOutOfBounds(int targetRow, int targetColumn, Piece piece, int orientation)
         {
-            if (!PointIsOutOfBounds(targetRow, targetColumn)) { return false; }
+            //Console.WriteLine("Piece out of bounds check. target row: {0}; target col: {1}; piece: {2}; orientation: {3}", targetRow, targetColumn, piece.Id, orientation);
+            if (PointIsOutOfBounds(targetRow, targetColumn)) { return true; }
 
             return piece.AllVariations[orientation].Any(point => PointIsOutOfBounds(targetRow + point[0], targetColumn + point[1]));
         }
 
         public bool PieceOverlap(int targetRow, int targetColumn, Piece piece, int orientation)
         {
+            //Console.WriteLine("Piece overlap check. target row: {0}; target col: {1}; piece: {2}; orientation: {3}", targetRow, targetColumn, piece.Id, orientation);
             return piece.AllVariations[orientation].Any(point => PointOverlap(targetRow + point[0], targetColumn + point[1]));
         }
 
         public bool PieceIsAdjacent(int targetRow, int targetColumn, Piece piece, int orientation, int playerId)
         {
+            //Console.WriteLine("Piece is adjacent check. target row: {0}; target col: {1}; piece: {2}; orientation: {3}", targetRow, targetColumn, piece.Id, orientation);
             return piece.AllVariations[orientation].Any(point => PointIsAdjacent(targetRow + point[0], targetRow + point[1], playerId));
         }
 
         public bool IsLegalMove(Move move)
             /*int targetRow, int targetColumn, Piece piece, int orientation, int playerId*/
         {
-            return PieceIsOutOfBounds(move.CornerRow - move.PiecePointRow, move.CornerColumn - move.PiecePointColumn, move.Piece, move.Orientation) &&
-                PieceOverlap(move.CornerRow - move.PiecePointRow, move.CornerColumn - move.PiecePointColumn, move.Piece, move.Orientation) &&
-                PieceIsAdjacent(move.CornerRow - move.PiecePointRow, move.CornerColumn - move.PiecePointColumn, move.Piece, move.Orientation, move.Player.Id);
+            //Console.WriteLine("Checking Move: " + move.ToString());
+            /*bool oob = PieceIsOutOfBounds(move.PlacingRow, move.PlacingColumn, move.Piece, move.Orientation);
+            Console.WriteLine("PieceIsOutOfBounds: {0}", oob);
+            if (oob == false) return false; 
+            bool overlap = PieceOverlap(move.PlacingRow, move.PlacingColumn, move.Piece, move.Orientation);
+            Console.WriteLine("PieceOverlap: {0}", overlap);
+            if (overlap == false) return false;
+            bool adjacent = PieceIsAdjacent(move.PlacingRow, move.PlacingColumn, move.Piece, move.Orientation, move.Player.Id);
+            Console.WriteLine("PieceIsAdjacent: {0}", adjacent);
+            if (adjacent == false) return false;
+            return true;*/
+            return !PieceIsOutOfBounds(move.PlacingRow, move.PlacingColumn, move.Piece, move.Orientation) &&
+                !PieceOverlap(move.PlacingRow, move.PlacingColumn, move.Piece, move.Orientation) &&
+                !PieceIsAdjacent(move.PlacingRow, move.PlacingColumn, move.Piece, move.Orientation, move.Player.Id);
         }
 
         public int[][] GetAllAvailableCorners(int playerId)

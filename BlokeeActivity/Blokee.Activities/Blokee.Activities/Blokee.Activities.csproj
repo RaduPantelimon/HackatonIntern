@@ -50,9 +50,10 @@
   <ItemGroup>
     <Compile Include="BlokeeLogic\Board.cs" />
     <Compile Include="BlokeeLogic\Game.cs" />
+    <Compile Include="BlokeeLogic\Move.cs" />
     <Compile Include="BlokeeLogic\Piece.cs" />
-    <Compile Include="BlokeeLogic\PlayBlokeeMove.cs" />
     <Compile Include="BlokeeLogic\Player.cs" />
+    <Compile Include="PlayBlokeeMove.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

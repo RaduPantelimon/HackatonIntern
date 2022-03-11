@@ -47,5 +47,16 @@ namespace Blokee
             Orientation = _orientation;
         }
 
+        //this will help us with the debugging 
+        public override string ToString()
+        {
+            return String.Format("CornerRow:{0}; CornerColumn:{1}; Piece:{2}; Orientation:{3}; PiecePointRow: {4}; PiecePointColumn: {5}",
+                CornerRow,
+                CornerColumn,
+                Piece.Id,
+                Orientation,
+                PiecePointRow,
+                PiecePointColumn);
+        }
     }
 }

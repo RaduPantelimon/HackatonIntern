@@ -63,14 +63,14 @@ namespace Blokee
                         break;
                     case 2:
                         orientation = 2;
-                        row = 0;
+                        row = 19;
                         col = 19;
                         piecePointRow = 2;
                         piecePointColumn = 2;
                         break;
                     default:
                         orientation = 1;
-                        row = 19;
+                        row = 0;
                         col = 19;
                         piecePointRow = 0;
                         piecePointColumn = 2;
@@ -80,7 +80,7 @@ namespace Blokee
             else if (currentMoveCount == 2)
             {
                 pieceIndex = 7;
-                orientation = 1;
+                orientation = 0;
                 switch (Id)
                 {
                     case 0:
@@ -92,14 +92,14 @@ namespace Blokee
                     case 1:
                         row = 17;
                         col = 3;
-                        piecePointRow = 1;
-                        piecePointColumn = 2;
+                        piecePointRow = 2;
+                        piecePointColumn = 1;
                         break;
                     case 2:
                         row = 17;
                         col = 16;
-                        piecePointRow = 1;
-                        piecePointColumn = 2;
+                        piecePointRow = 2;
+                        piecePointColumn = 1;
                         break;
                     default:
                         row = 3;
