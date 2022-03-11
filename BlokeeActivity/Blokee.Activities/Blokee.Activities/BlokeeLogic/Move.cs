@@ -15,6 +15,22 @@ namespace Blokee
         public int PiecePointRow { get; set; }
         public int PiecePointColumn { get; set; }
 
+        public int PlacingRow
+        {
+            get
+            {
+                return CornerRow - PiecePointRow;
+            }
+        }
+
+        public int PlacingColumn
+        {
+            get
+            {
+                return PiecePointColumn - PiecePointColumn;
+            }
+        }
+
         public Piece Piece { get; set; }
         public int Orientation { get; set; }
 
