@@ -97,7 +97,7 @@ namespace Blokee
 
         public bool PieceIsAdjacent(int targetRow, int targetColumn, Piece piece, int orientation, int playerId)
         {
-            return piece.AllVariations[orientation].Any(point => PointIsAdjacent(point[0], point[1], playerId));
+            return piece.AllVariations[orientation].Any(point => PointIsAdjacent(targetRow + point[0], targetRow + point[1], playerId));
         }
 
         public bool IsLegalMove(Move move)
