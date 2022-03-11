@@ -35,13 +35,13 @@ namespace Blokee.Activities
             else
             {
                 MoveExists.Set(context, true);
+                Console.WriteLine("Playing Move: " + nextMove.ToString());
             }
 
             PieceId.Set(context, nextMove?.Piece.Id ?? -1);
             Orientation.Set(context, nextMove?.Orientation ?? -1);
             Row.Set(context, nextMove?.PlacingRow);
             Column.Set(context, nextMove?.PlacingColumn);
-
             AvailablePieces.Set(context, player.GetPieceAvailability());
         }
     }

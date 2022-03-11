@@ -50,13 +50,14 @@ namespace Blokee
         //this will help us with the debugging 
         public override string ToString()
         {
-            return String.Format("CornerRow:{0}; CornerColumn:{1}; Piece:{2}; Orientation:{3}; PiecePointRow: {4}; PiecePointColumn: {5}",
+            return String.Format("CornerRow:{0}; CornerColumn:{1}; Piece:{2}; Orientation:{3}; PiecePointRow: {4}; PiecePointColumn: {5}; PlayerID: {6}",
                 CornerRow,
                 CornerColumn,
                 Piece.Id,
                 Orientation,
                 PiecePointRow,
-                PiecePointColumn);
+                PiecePointColumn,
+                Player.Id);
         }
     }
 }

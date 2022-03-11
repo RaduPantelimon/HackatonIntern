@@ -14,6 +14,18 @@
           "lib/net45/ICSharpCode.AvalonEdit.dll": {}
         }
       },
+      "Blokee.Activities/1.0.8105.42806": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "compile": {
+          "lib/net452/_._": {}
+        },
+        "runtime": {
+          "lib/net452/Blokee.Activities.dll": {}
+        }
+      },
       "ClosedXML/0.87.1": {
         "type": "package",
         "dependencies": {
@@ -1695,6 +1707,18 @@
         },
         "runtime": {
           "lib/net45/ICSharpCode.AvalonEdit.dll": {}
+        }
+      },
+      "Blokee.Activities/1.0.8105.42806": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "compile": {
+          "lib/net452/_._": {}
+        },
+        "runtime": {
+          "lib/net452/Blokee.Activities.dll": {}
         }
       },
       "ClosedXML/0.87.1": {
@@ -3384,6 +3408,17 @@
         "lib/net45/ICSharpCode.AvalonEdit.xml",
         "lib/netcoreapp3.0/ICSharpCode.AvalonEdit.dll",
         "lib/netcoreapp3.0/ICSharpCode.AvalonEdit.xml"
+      ]
+    },
+    "Blokee.Activities/1.0.8105.42806": {
+      "sha512": "SQfKG4tABf3AZ25n1Cld/0m+WvHpte75KzhvDSpfYJKFXz0cF4bAYKtaOaL7n4la65CIz7NwE+4qWvnYaAsWzg==",
+      "type": "package",
+      "path": "blokee.activities/1.0.8105.42806",
+      "files": [
+        ".nupkg.metadata",
+        "blokee.activities.1.0.8105.42806.nupkg.sha512",
+        "blokee.activities.nuspec",
+        "lib/net452/Blokee.Activities.dll"
       ]
     },
     "ClosedXML/0.87.1": {
@@ -5332,6 +5367,7 @@
   "projectFileDependencyGroups": {
     "": [],
     ".NETFramework,Version=v4.6.1": [
+      "Blokee.Activities >= 1.0.8105.42806 <= 1.0.8105.42806",
       "UiPath.Excel.Activities >= 2.10.4 <= 2.10.4",
       "UiPath.Mail.Activities >= 1.10.5 <= 1.10.5",
       "UiPath.System.Activities >= 21.4.1 <= 21.4.1",
@@ -5353,6 +5389,11 @@
     "frameworks": {
       "net461": {
         "dependencies": {
+          "Blokee.Activities": {
+            "include": "Runtime",
+            "target": "Package",
+            "version": "[1.0.8105.42806, 1.0.8105.42806]"
+          },
           "UiPath.Excel.Activities": {
             "include": "Runtime",
             "target": "Package",
