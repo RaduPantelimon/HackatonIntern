@@ -13,7 +13,7 @@ namespace Blokee
         public Player(int Id, bool[] availability)
         {
             this.Id = Id;
-            availability = availability ?? Enumerable.Repeat(true,20).ToArray();
+            availability = availability ?? Enumerable.Repeat(true,21).ToArray();
             this.Pieces = new Piece[]
             {
                 new Piece0(availability[0]),
