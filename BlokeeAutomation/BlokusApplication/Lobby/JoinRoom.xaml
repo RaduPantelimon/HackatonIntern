@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1563,3457</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1555.2,3784</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>JoinRoom_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -79,12 +79,11 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="JoinRoom" sap:VirtualizedContainerService.HintSize="1573,3392" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="JoinRoom" sap:VirtualizedContainerService.HintSize="1565.6,3679.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="RoomNo" />
     </Sequence.Variables>
@@ -93,49 +92,49 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[Not String.IsNullOrEmpty(in_RoomNo) And Not String.IsNullOrEmpty(in_RoomURL)]" DisplayName="If both options exist, throw exception" sap:VirtualizedContainerService.HintSize="1531,587" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[Not String.IsNullOrEmpty(in_RoomNo) And Not String.IsNullOrEmpty(in_RoomURL)]" DisplayName="If both options exist, throw exception" sap:VirtualizedContainerService.HintSize="1524,586.4" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="376,247" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence sap:VirtualizedContainerService.HintSize="375.2,248" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;The RoomNo and RoomURL parameters cannot simultaneously be not null&quot;]" />
-          <Throw Exception="[new Exception(&quot;The RoomNo and RoomURL parameters cannot simultaneously be not null&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;The RoomNo and RoomURL parameters cannot simultaneously be not null&quot;]" />
+          <Throw Exception="[new Exception(&quot;The RoomNo and RoomURL parameters cannot simultaneously be not null&quot;)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
         </Sequence>
       </If.Then>
       <If.Else>
-        <If Condition="[String.IsNullOrEmpty(in_RoomNo) And  String.IsNullOrEmpty(in_RoomURL)]" DisplayName="If neither options exists, throw exception" sap:VirtualizedContainerService.HintSize="484,427" sap2010:WorkflowViewState.IdRef="If_3">
+        <If Condition="[String.IsNullOrEmpty(in_RoomNo) And  String.IsNullOrEmpty(in_RoomURL)]" DisplayName="If neither options exists, throw exception" sap:VirtualizedContainerService.HintSize="483.2,427.2" sap2010:WorkflowViewState.IdRef="If_3">
           <If.Then>
-            <Sequence sap:VirtualizedContainerService.HintSize="376,247" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence sap:VirtualizedContainerService.HintSize="375.2,248" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Warn" Message="[&quot;The RoomNo and RoomURL parameters cannot simultaneously be null&quot;]" />
-              <Throw Exception="[new Exception(&quot;Exactly one of the RoomNo and RoomURL parameters needs to have a non empty value&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Warn" Message="[&quot;The RoomNo and RoomURL parameters cannot simultaneously be null&quot;]" />
+              <Throw Exception="[new Exception(&quot;Exactly one of the RoomNo and RoomURL parameters needs to have a non empty value&quot;)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_2" />
             </Sequence>
           </If.Then>
         </If>
       </If.Else>
     </If>
-    <uix:NApplicationCard sap2010:Annotation.AnnotationText="Open the room, either by navigating to the URL or clicking the Start/Enter Buttons" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Blokee - Inspired by Blokus - Online Board Game" sap:VirtualizedContainerService.HintSize="1531,2673" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_BrowserWindow]" InteractionMode="Simulate" OpenMode="Never" Version="V1" WindowResize="Maximize">
+    <uix:NApplicationCard sap2010:Annotation.AnnotationText="Open the room, either by navigating to the URL or clicking the Start/Enter Buttons" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Blokee - Inspired by Blokus - Online Board Game" sap:VirtualizedContainerService.HintSize="1524,2960" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_BrowserWindow]" InteractionMode="Simulate" OpenMode="Never" Version="V1" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1497,2413" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1490.4,2700.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[not String.IsNullOrEmpty(in_RoomNo)]" DisplayName="If Room No was given" sap:VirtualizedContainerService.HintSize="1455,1803" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[not String.IsNullOrEmpty(in_RoomNo)]" DisplayName="If Room No was given" sap:VirtualizedContainerService.HintSize="1448.8,1813.6" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
-                <Sequence DisplayName="Click Join Game Button" sap:VirtualizedContainerService.HintSize="1076,1642" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <Sequence DisplayName="Click Join Game Button" sap:VirtualizedContainerService.HintSize="1071.2,1652.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="ui:UiElement" Name="RoomElement" />
                     <Variable x:TypeArguments="s:String[]" Name="AcceptedButtonNames" />
@@ -145,7 +144,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="GetButtonNames" sap:VirtualizedContainerService.HintSize="1034,61" sap2010:WorkflowViewState.IdRef="Assign_2">
+                  <Assign DisplayName="GetButtonNames" sap:VirtualizedContainerService.HintSize="1029.6,61.6" sap2010:WorkflowViewState.IdRef="Assign_2">
                     <Assign.To>
                       <OutArgument x:TypeArguments="s:String[]">[AcceptedButtonNames]</OutArgument>
                     </Assign.To>
@@ -153,7 +152,7 @@
                       <InArgument x:TypeArguments="s:String[]">[in_Config("Blokus_StartGame_ButtonNames").ToString.Split({";"}, StringSplitOptions.RemoveEmptyEntries)]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <Assign sap:VirtualizedContainerService.HintSize="1034,61" sap2010:WorkflowViewState.IdRef="Assign_1">
+                  <Assign sap:VirtualizedContainerService.HintSize="1029.6,61.6" sap2010:WorkflowViewState.IdRef="Assign_1">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[RoomNo]</OutArgument>
                     </Assign.To>
@@ -161,9 +160,9 @@
                       <InArgument x:TypeArguments="x:String">[in_RoomNo.ToString]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <uix:NCheckState Exists="{x:Null}" DisplayName="If 'RoomPanel is found'" sap:VirtualizedContainerService.HintSize="1034,1348" sap2010:WorkflowViewState.IdRef="NCheckState_1" OutUiElement="[RoomElement]" Timeout="1">
+                  <uix:NCheckState Exists="{x:Null}" DisplayName="If 'RoomPanel is found'" sap:VirtualizedContainerService.HintSize="1029.6,1355.2" sap2010:WorkflowViewState.IdRef="NCheckState_1" OutUiElement="[RoomElement]" Timeout="1">
                     <uix:NCheckState.IfExists>
-                      <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="604,1120" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                      <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="601.6,1127.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
                         <Sequence.Variables>
                           <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="childButtons" />
                         </Sequence.Variables>
@@ -172,7 +171,7 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:FindChildren Children="[childButtons]" DisplayName="Find All Buttons Inside Room Panel" Filter="&lt;webctrl tag='BUTTON' class='button button-meep-*' /&gt;" sap:VirtualizedContainerService.HintSize="562,68" sap2010:WorkflowViewState.IdRef="FindChildren_1" Scope="FIND_DESCENDANTS">
+                        <ui:FindChildren Children="[childButtons]" DisplayName="Find All Buttons Inside Room Panel" Filter="&lt;webctrl tag='BUTTON' class='button button-meep-*' /&gt;" sap:VirtualizedContainerService.HintSize="560,68.8" sap2010:WorkflowViewState.IdRef="FindChildren_1" Scope="FIND_DESCENDANTS">
                           <ui:FindChildren.Target>
                             <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[RoomElement]" Id="cadec9b2-1acc-411c-8887-b834e6011171">
                               <ui:Target.TimeoutMS>
@@ -184,13 +183,13 @@
                             </ui:Target>
                           </ui:FindChildren.Target>
                         </ui:FindChildren>
-                        <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="For Each Child Button" sap:VirtualizedContainerService.HintSize="562,920" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[childButtons]">
+                        <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="For Each Child Button" sap:VirtualizedContainerService.HintSize="560,924" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[childButtons]">
                           <ui:ForEach.Body>
                             <ActivityAction x:TypeArguments="ui:UiElement">
                               <ActivityAction.Argument>
                                 <DelegateInArgument x:TypeArguments="ui:UiElement" Name="button" />
                               </ActivityAction.Argument>
-                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,784" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="524.8,788" sap2010:WorkflowViewState.IdRef="Sequence_8">
                                 <Sequence.Variables>
                                   <Variable x:TypeArguments="x:String" Name="buttonName" />
                                 </Sequence.Variables>
@@ -199,7 +198,7 @@
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="aaname" DisplayName="Get Aaname Attribute" sap:VirtualizedContainerService.HintSize="484,96" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
+                                <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="aaname" DisplayName="Get Aaname Attribute" sap:VirtualizedContainerService.HintSize="483.2,96.8" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
                                   <ui:GetAttribute.Result>
                                     <OutArgument x:TypeArguments="x:String">[buttonName]</OutArgument>
                                   </ui:GetAttribute.Result>
@@ -214,17 +213,17 @@
                                     </ui:Target>
                                   </ui:GetAttribute.Target>
                                 </ui:GetAttribute>
-                                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="484,62" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Found button with name: &quot; + buttonName]" />
-                                <If Condition="[AcceptedButtonNames.Any(function(x) x.Equals(buttonName.Trim.ToLower))]" DisplayName="If button name is accepted" sap:VirtualizedContainerService.HintSize="484,454" sap2010:WorkflowViewState.IdRef="If_4">
+                                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="483.2,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Found button with name: &quot; + buttonName]" />
+                                <If Condition="[AcceptedButtonNames.Any(function(x) x.Equals(buttonName.Trim.ToLower))]" DisplayName="If button name is accepted" sap:VirtualizedContainerService.HintSize="483.2,454.4" sap2010:WorkflowViewState.IdRef="If_4">
                                   <If.Then>
-                                    <Sequence DisplayName="Perform Click Action" sap:VirtualizedContainerService.HintSize="376,273" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                    <Sequence DisplayName="Perform Click Action" sap:VirtualizedContainerService.HintSize="375.2,273.6" sap2010:WorkflowViewState.IdRef="Sequence_9">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <uix:NClick ClickType="Single" DisplayName="Click Button" sap:VirtualizedContainerService.HintSize="334,117" sap2010:WorkflowViewState.IdRef="NClick_1" InUiElement="[button]" KeyModifiers="None" MouseButton="Left" />
-                                      <ui:Break sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Break_1" />
+                                      <uix:NClick ClickType="Single" DisplayName="Click Button" sap:VirtualizedContainerService.HintSize="333.6,116.8" sap2010:WorkflowViewState.IdRef="NClick_1" InUiElement="[button]" KeyModifiers="None" MouseButton="Left" />
+                                      <ui:Break sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Break_1" />
                                     </Sequence>
                                   </If.Then>
                                 </If>
@@ -235,14 +234,14 @@
                       </Sequence>
                     </uix:NCheckState.IfExists>
                     <uix:NCheckState.IfNotExists>
-                      <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="376,249" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                      <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="375.2,249.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;Cannot find room with given number&quot;]" />
-                        <Throw Exception="[new Exception(&quot;Cannot find room with given number&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_3" />
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;Cannot find room with given number&quot;]" />
+                        <Throw Exception="[new Exception(&quot;Cannot find room with given number&quot;)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_3" />
                       </Sequence>
                     </uix:NCheckState.IfNotExists>
                     <uix:NCheckState.Target>
@@ -252,29 +251,47 @@
                 </Sequence>
               </If.Then>
               <If.Else>
-                <uix:NGoToUrl DisplayName="Go To Room URL" sap:VirtualizedContainerService.HintSize="334,82" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[in_RoomURL]" />
+                <uix:NGoToUrl DisplayName="Go To Room URL" sap:VirtualizedContainerService.HintSize="333.6,82.4" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[in_RoomURL]" />
               </If.Else>
             </If>
-            <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'PlayersStatus'" sap:VirtualizedContainerService.HintSize="1455,477" sap2010:WorkflowViewState.IdRef="NCheckState_2" Timeout="[cint(in_Config(&quot;Blokus_Loading_Timeout&quot;))]">
+            <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'PlayersStatus'" sap:VirtualizedContainerService.HintSize="1448.8,752.8" sap2010:WorkflowViewState.IdRef="NCheckState_2" Timeout="[cint(in_Config(&quot;Blokus_Loading_Timeout&quot;))]">
               <uix:NCheckState.IfExists>
-                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="376,187" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="476.8,524.8" sap2010:WorkflowViewState.IdRef="Sequence_10">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Game Room loaded Successfully&quot;]" />
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="435.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Game Room loaded Successfully&quot;]" />
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="435.2,297.6" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,219.2" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NGoToUrl sap2010:Annotation.AnnotationText="TO be set in settings&#xD;&#xA;" DisplayName="Go To URL " sap:VirtualizedContainerService.HintSize="333.6,126.4" sap2010:WorkflowViewState.IdRef="NGoToUrl_2" Url="file:///C:/Users/rares.ont/source/repos/HackatonIntern/BlokeeAutomation/blokus.html">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </uix:NGoToUrl>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                  </ui:CommentOut>
                 </Sequence>
               </uix:NCheckState.IfExists>
               <uix:NCheckState.IfNotExists>
-                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="376,249" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="375.2,249.6" sap2010:WorkflowViewState.IdRef="Sequence_11">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[&quot;Could not load game room&quot;]" />
-                  <Throw Exception="[new Exception(&quot;Could not load game room&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_4" />
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[&quot;Could not load game room&quot;]" />
+                  <Throw Exception="[new Exception(&quot;Could not load game room&quot;)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_4" />
                 </Sequence>
               </uix:NCheckState.IfNotExists>
               <uix:NCheckState.Target>

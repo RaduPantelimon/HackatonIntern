@@ -1,0 +1,98 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="map.json"></script>
+
+<body>
+<canvas id="canvas" width="800" height="800" style="border:1px solid #000000;">
+</canvas>
+
+
+
+<script>
+ //var mapData = JSON.parse(map).gameBoard;
+ var mapData = JSON.parse(map);
+ var bw = 800;
+ var bh = 800;
+ var p = 0;
+ var cw = 40
+ var canvas = document.getElementById("canvas");
+ var context = canvas.getContext("2d");
+
+function updateMap() {
+  const p = 37; 
+  for (let xCell = 0; xCell < 20; xCell++) {
+	for (let yCell = 0; yCell < 20; yCell++) {
+	  const x = xCell * 40;
+	  const y = yCell * 40;
+	  
+	  current = mapData[xCell][yCell];
+	  let color = 'white';
+	  switch (current) {
+	  	case 0:
+			color = 'blue'
+			break;
+		case 1:
+			color = 'green'
+			break;
+		case 2:
+			color = 'yellow'
+			break;
+		case 3:
+			color = 'red'
+			break;
+		default:
+			break;
+		}
+	  console.log(current);
+	  var context2 = canvas.getContext("2d");
+      context2.beginPath();
+      context2.fillStyle = color;
+	  context2.fillRect(x+3, y+3, p, p);  
+	}
+  }
+   
+}
+
+function reloadMap(){
+	console.log("reloading");
+	var script = document.createElement('script');
+	script.onload =  () => {
+		mapData = JSON.parse(map).gameBoard
+	};
+	script.src = "map.json";
+
+	document.head.appendChild(script);
+	mapData = JSON.parse(map);
+} 
+ 
+function drawBoard(){
+	
+	reloadMap();
+	context.clearRect(0, 0, canvas.width, canvas.height);
+	
+	for (var x = 0; x <= bw; x += cw) {
+		context.moveTo(0.5 + x + p, p);
+		context.lineTo(0.5 + x + p, bh + p);
+	}
+
+	for (var x = 0; x <= bh; x += cw) {
+		context.moveTo(p, 0.5 + x + p);
+		context.lineTo(bw + p, 0.5 + x + p);
+	}
+
+	context.strokeStyle = "black";
+	context.stroke();
+	updateMap();
+}
+
+setInterval(drawBoard,1000);
+
+
+
+
+canvas.addEventListener('mousedown', function(e) {
+    getCursorPosition(canvas, e, cw)
+})
+</script>
+</body>
+</html>
