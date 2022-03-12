@@ -35,6 +35,7 @@ namespace Blokee
         public int Orientation { get; set; }
 
         public Player Player { get; set; }
+        public int Score { get; set; }
 
         public Move(Player _player, Piece _piece, int _orientation, int _cornerRow, int _cornerColumn, int _piecePointRow, int _piecePointColumn)
         {
@@ -45,6 +46,7 @@ namespace Blokee
             PiecePointColumn = _piecePointColumn;
             Piece = _piece;
             Orientation = _orientation;
+            Score = 0;
         }
 
         //this will help us with the debugging 

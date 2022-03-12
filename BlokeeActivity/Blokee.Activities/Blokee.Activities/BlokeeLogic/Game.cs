@@ -11,10 +11,14 @@ namespace Blokee
     {
         public const int playerCount = 4;
         public bool IsOver;
-        public Player[] Players;
+        public Player[] Players { get; }
         public int NextPlayer;
+        public Board board { get; }
 
         private int _consecutiveNoValidMoves;
+
+        
+        private Minimax minimaxStrategy;
 
         public Game(JObject gameProperties, int nextPlayer) {
             //determine who's turn is next
@@ -23,7 +27,7 @@ namespace Blokee
             NextPlayer = nextPlayer;
 
             //init board based on the game Properties received
-            Board board = Board.I;
+            this.board = Board.I;
             board.RefreshBoard(gameProperties["gameBoard"].ToString());
 
             //init players
@@ -36,6 +40,8 @@ namespace Blokee
                     gameProperties["enemyMoves"][index].ToList().ForEach(id => pieceAvailability[(int)id] = false);
                     Players[index] = new Player(index, pieceAvailability);
                 });
+
+            //minimaxStrategy = new Minimax(Players(0), this);
         }
 
         public Move PlayNextMove()

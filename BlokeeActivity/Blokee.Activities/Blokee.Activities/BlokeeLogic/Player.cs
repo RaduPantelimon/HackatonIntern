@@ -10,6 +10,8 @@ namespace Blokee
         public Piece[] Pieces { get; set; }
         public int score = 0;
         public int currentMoveCount = 0;
+        public int[][] availableCorners { get; set; }
+
         public Player(int Id, bool[] availability)
         {
             this.Id = Id;
@@ -185,7 +187,7 @@ namespace Blokee
             return new Move(this, this.Pieces[pieceIndex], orientation, row, col, piecePointRow, piecePointColumn); //{ this.Pieces[pieceIndex].Id, orientation, row, col };
         }
 
-        private List<Move> GetValidMoves(Piece piece, int[][] corners)
+        public List<Move> GetValidMoves(Piece piece, int[][] corners)
         {
             List<Move> validMoves = new List<Move>();
 
