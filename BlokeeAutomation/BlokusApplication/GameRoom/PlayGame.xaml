@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>913,3181</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>955,3236</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>PlayGame_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="33">
@@ -81,7 +81,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="PlayGame" sap:VirtualizedContainerService.HintSize="923,3116" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="PlayGame" sap:VirtualizedContainerService.HintSize="965,3171" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="gameOver" />
       <Variable x:TypeArguments="x:Int32" Name="playerIndex" />
@@ -93,7 +93,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="881,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="923,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -115,7 +115,7 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetPlayerIndex workflow" sap:VirtualizedContainerService.HintSize="881,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="BlokusApplication\GameRoom\GameOperations\GetPlayerIndex.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetPlayerIndex workflow" sap:VirtualizedContainerService.HintSize="923,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="BlokusApplication\GameRoom\GameOperations\GetPlayerIndex.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="ui:UiElement" x:Key="in_BrowserWindow">[in_BrowserWindow]</InArgument>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
@@ -123,10 +123,10 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_PlayerName">[in_PlayerName]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="881,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Player Index in current game: &quot; + PlayerIndex.ToString]" />
-    <ui:InterruptibleWhile Condition="[not gameOver]" DisplayName="While the game is not finished" sap:VirtualizedContainerService.HintSize="881,2572" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="923,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Player Index in current game: &quot; + PlayerIndex.ToString]" />
+    <ui:InterruptibleWhile Condition="[not gameOver]" DisplayName="While the game is not finished" sap:VirtualizedContainerService.HintSize="923,2627" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
       <ui:InterruptibleWhile.Body>
-        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="845,2407" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="887,2462" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="result" />
             <Variable x:TypeArguments="njl:JObject" Name="BlokusStatus" />
@@ -142,14 +142,14 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Delay sap2010:Annotation.AnnotationText="Even if the other players are CPUs and do their moves instantly, the site needs a few seconds for the CPU to complete their moves in the UI, so we don't want our algorithm to intervene too early. &#xA;&#xA;This is why, for all turns except the first one,  we will use this delay before we check if it's our turn" Duration="[TimeSpan.FromMilliseconds(if(MoveIndex = 0, 0, cint(in_Config(&quot;Blokus_TurnCheck_MinimumUiMovesDuration&quot;))))]" sap:VirtualizedContainerService.HintSize="803,229" sap2010:WorkflowViewState.IdRef="Delay_3">
+          <Delay sap2010:Annotation.AnnotationText="Even if the other players are CPUs and do their moves instantly, the site needs a few seconds for the CPU to complete their moves in the UI, so we don't want our algorithm to intervene too early. &#xA;&#xA;This is why, for all turns except the first one,  we will use this delay before we check if it's our turn" Duration="[TimeSpan.FromMilliseconds(if(MoveIndex = 0, 0, cint(in_Config(&quot;Blokus_TurnCheck_MinimumUiMovesDuration&quot;))))]" sap:VirtualizedContainerService.HintSize="845,229" sap2010:WorkflowViewState.IdRef="Delay_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Delay>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke WaitUntilCurrentPlayerTurn workflow" sap:VirtualizedContainerService.HintSize="803,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="BlokusApplication\GameRoom\GameOperations\WaitUntilCurrentPlayerTurn.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke WaitUntilCurrentPlayerTurn workflow" sap:VirtualizedContainerService.HintSize="845,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="BlokusApplication\GameRoom\GameOperations\WaitUntilCurrentPlayerTurn.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="ui:UiElement" x:Key="in_BrowserWindow">[in_BrowserWindow]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_PlayerName">[in_PlayerName]</InArgument>
@@ -176,7 +176,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:CommentOut>
-          <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="uipath-automation-data" DisplayName="Get Blokus Latest Status" sap:VirtualizedContainerService.HintSize="803,134" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
+          <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="uipath-automation-data" DisplayName="Get Blokus Latest Status" sap:VirtualizedContainerService.HintSize="845,134" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
             <ui:GetAttribute.Result>
               <OutArgument x:TypeArguments="x:String">[result]</OutArgument>
             </ui:GetAttribute.Result>
@@ -188,8 +188,8 @@
               </ui:Target>
             </ui:GetAttribute.Target>
           </ui:GetAttribute>
-          <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="803,59" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[BlokusStatus]" JsonString="[result.replace(&quot;null&quot;,&quot;-1&quot;)]" />
-          <Assign sap:VirtualizedContainerService.HintSize="803,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="845,59" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[BlokusStatus]" JsonString="[result.replace(&quot;null&quot;,&quot;-1&quot;)]" />
+          <Assign sap:VirtualizedContainerService.HintSize="845,60" sap2010:WorkflowViewState.IdRef="Assign_3">
             <Assign.To>
               <OutArgument x:TypeArguments="s:Boolean[]">[pieceAvailability]</OutArgument>
             </Assign.To>
@@ -197,7 +197,7 @@
               <InArgument x:TypeArguments="s:Boolean[]">[Enumerable.Repeat(true, 21).ToArray()]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:ForEach x:TypeArguments="njl:JValue" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="803,285" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[BlokusStatus(&quot;enemyMoves&quot;)(PlayerIndex)]">
+          <ui:ForEach x:TypeArguments="njl:JValue" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="845,285" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[BlokusStatus(&quot;enemyMoves&quot;)(PlayerIndex)]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="njl:JValue">
                 <ActivityAction.Argument>
@@ -221,9 +221,8 @@
               </ActivityAction>
             </ui:ForEach.Body>
           </ui:ForEach>
-          <ba:PlayBlokeeMove AvailablePieces="[pieceAvailability]" BoardJson="[BlokusStatus(&quot;gameBoard&quot;).ToString.Replace(vbCrLf ,&quot;&quot;)]" Column="[positionY]" DisplayName="Play blokee move" sap:VirtualizedContainerService.HintSize="803,22" sap2010:WorkflowViewState.IdRef="PlayBlokeeMove_1" MoveExists="[moveExists]" Orientation="[orientation]" PieceId="[pieceIndex]" PlayerId="[playerIndex]" Row="[positionX]" />
-          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="803,59" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[&quot;Board: &quot; + BlokusStatus(&quot;gameBoard&quot;).ToString.Replace(vbCrLf ,&quot;&quot;)]" />
-          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="803,51" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+          <ba:PlayBlokeeMove AvailablePieces="[pieceAvailability]" BoardJson="[BlokusStatus(&quot;gameBoard&quot;).ToString.Replace(vbCrLf ,&quot;&quot;)]" Column="[positionY]" DisplayName="Play blokee move" sap:VirtualizedContainerService.HintSize="845,22" sap2010:WorkflowViewState.IdRef="PlayBlokeeMove_1" MoveExists="[moveExists]" Orientation="[orientation]" PieceId="[pieceIndex]" PlayerId="[playerIndex]" Row="[positionX]" />
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="845,51" sap2010:WorkflowViewState.IdRef="CommentOut_3">
             <ui:CommentOut.Body>
               <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,250" sap2010:WorkflowViewState.IdRef="Sequence_6">
                 <sap:WorkflowViewStateService.ViewState>
@@ -242,10 +241,10 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:CommentOut>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="803,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;Move Index: &quot; + MoveIndex.ToString]" />
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="803,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[&quot;Board: &quot; + BlokusStatus(&quot;gameBoard&quot;).ToString.Replace(vbCrLf ,&quot;&quot;)]" />
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="803,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Message="[&quot;Player Moves: &quot; + BlokusStatus(&quot;enemyMoves&quot;).ToString.Replace(vbCrLf ,&quot;&quot;)]" />
-          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="803,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="845,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;Move Index: &quot; + MoveIndex.ToString]" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="845,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[&quot;Board: &quot; + BlokusStatus(&quot;gameBoard&quot;).ToString.Replace(vbCrLf ,&quot;&quot;)]" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="845,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Message="[&quot;Player Moves: &quot; + BlokusStatus(&quot;enemyMoves&quot;).ToString.Replace(vbCrLf ,&quot;&quot;)]" />
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="845,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
             <ui:CommentOut.Body>
               <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="539,282" sap2010:WorkflowViewState.IdRef="Sequence_3">
                 <sap:WorkflowViewStateService.ViewState>
@@ -594,7 +593,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:CommentOut>
-          <If Condition="[MoveIndex &lt; 21 AndAlso moveExists]" DisplayName="If Move Exists" sap:VirtualizedContainerService.HintSize="803,269" sap2010:WorkflowViewState.IdRef="If_1">
+          <If Condition="[MoveIndex &lt; 21 AndAlso moveExists]" DisplayName="If Move Exists" sap:VirtualizedContainerService.HintSize="845,423" sap2010:WorkflowViewState.IdRef="If_1">
             <If.Then>
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke MakeMove workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="BlokusApplication\GameRoom\GameOperations\MakeMove.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
@@ -608,19 +607,27 @@
               </ui:InvokeWorkflowFile>
             </If.Then>
             <If.Else>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke PassGame workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="BlokusApplication\GameRoom\GameOperations\PassGame.xaml">
-                <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="ui:UiElement" x:Key="in_BrowserWindow">
-                    <mva:VisualBasicValue x:TypeArguments="ui:UiElement" ExpressionText="in_BrowserWindow" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:Int32" x:Key="in_PlayerIndex">
-                    <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="playerIndex" />
-                  </InArgument>
-                </ui:InvokeWorkflowFile.Arguments>
-              </ui:InvokeWorkflowFile>
+              <Sequence sap:VirtualizedContainerService.HintSize="421,266" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke PassGame workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="BlokusApplication\GameRoom\GameOperations\PassGame.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="ui:UiElement" x:Key="in_BrowserWindow">
+                      <mva:VisualBasicValue x:TypeArguments="ui:UiElement" ExpressionText="in_BrowserWindow" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="in_PlayerIndex">
+                      <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="playerIndex" />
+                    </InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+                <ui:Break sap:VirtualizedContainerService.HintSize="379,22" sap2010:WorkflowViewState.IdRef="Break_1" />
+              </Sequence>
             </If.Else>
           </If>
-          <Assign sap:VirtualizedContainerService.HintSize="803,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign sap:VirtualizedContainerService.HintSize="845,60" sap2010:WorkflowViewState.IdRef="Assign_2">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[MoveIndex]</OutArgument>
             </Assign.To>
