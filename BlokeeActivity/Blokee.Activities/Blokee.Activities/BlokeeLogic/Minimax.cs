@@ -45,6 +45,7 @@ namespace Blokee
                 foreach (var piece in top_by_score)
                 {
                     var boardCopy = JsonConvert.DeserializeObject<Board>(JsonConvert.SerializeObject(this.game.board));
+                    var gameCopy = JsonConvert.DeserializeObject<Game>(JsonConvert.SerializeObject(this.game));
                     var playersCopy = this.game.Players;
                     var opponents = playersCopy.Where(p => p.Id != currentPlayer.Id);
                     var currentTestPlayer = JsonConvert.DeserializeObject<Player>(JsonConvert.SerializeObject(this.currentPlayer));
@@ -78,7 +79,7 @@ namespace Blokee
                         //calculate the scores
                         foreach (var move in allPossibleOponnentMoves)
                         {
-                            move.Score = this.evalMove(move.Piece, currentPlayer, this.game);
+                            move.Score = this.evalMove(move.Piece, currentPlayer, gameCopy);
                         }
 
                         allPossibleOponnentMoves.OrderByDescending(localOpponentPiece => localOpponentPiece.Score);
@@ -88,8 +89,16 @@ namespace Blokee
 
                             var final_moves_op = new List<Move>();
                             // evaluate each move
+                            foreach(var move in final_moves_op)
+                            {
+                                move.Score = this.evalMove(move.Piece, currentPlayer, gameCopy);
+                            }
+
                             //sort moves by score
+                            final_moves_op.OrderByDescending(m => m.score);
+
                             //take the highest scoring move
+                            var topMove = final_moves_op.First;
                             //update the board with the highest scoring move
 
                             //create a list of the other opponents
@@ -148,13 +157,19 @@ namespace Blokee
             Array.Copy(game.Players, players,4);
 
             var opponents = players.Where(p => p.Id != currentPlayer.Id);
-
-           // var test_board = deepcopy(board)
-           // test_board = copy.deepcopy(board)
+            var test_board = JsonConvert.DeserializeObject<Board>(JsonConvert.SerializeObject(board));
+            
+            test_board.MakeMove(piece);
+            
             //update the map with the piece
-            //test_player = create a copy of the current player
-            //update the corners of the current player
-            //update the corner of all opponents
+
+            var test_player = JsonConvert.DeserializeObject<Player>(JsonConvert.SerializeObject(currentPlayer));
+            test_player.availableCorners = test_board.board.GetAllAvailableCorners(test_player.Id);
+
+            foreach(opponent in opponents)
+            {
+                opponents.availableCorners = test_board.board.GetAllAvailableCorners(opponents.Id);
+            }
 
             // # calculate the mean of the corners of the opponents
             // opponent_corners = [len(opponent.corners) for opponent in opponents]

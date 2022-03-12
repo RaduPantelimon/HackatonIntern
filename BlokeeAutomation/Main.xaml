@@ -1,11 +1,11 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_RoomNo" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1185.6,1860</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>801.6,3692.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="48">
@@ -37,6 +37,9 @@
       <x:String>UiPath.UIAutomationNext.Activities</x:String>
       <x:String>UiPath.Platform.ObjectLibrary</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -74,9 +77,10 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="461.6,1755.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap:VirtualizedContainerService.HintSize="558.4,3588" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="Config" />
       <Variable x:TypeArguments="ui:UiElement" Name="BlokusBrowser" />
@@ -89,7 +93,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="420,22.4" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="516.8,22.4" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,393.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
@@ -150,7 +154,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <Sequence DisplayName="Init The Game" sap:VirtualizedContainerService.HintSize="420,1220.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Init The Game" sap:VirtualizedContainerService.HintSize="516.8,3053.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Int32" Name="PlayerIndex" />
         <Variable x:TypeArguments="x:Boolean" Name="GameInProgress" />
@@ -161,33 +165,161 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitAllSettings workflow" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Framework\InitAllSettings.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitAllSettings workflow" sap:VirtualizedContainerService.HintSize="475.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Framework\InitAllSettings.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFile">Data\Config.xlsx</InArgument>
           <InArgument x:TypeArguments="s:String[]" x:Key="in_ConfigSheets">[{"Settings","Constants"}]</InArgument>
           <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Config">[Config]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke OpenBlokusSite workflow" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="BlokusApplication\OpenBlokusSite.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke OpenBlokusSite workflow" sap:VirtualizedContainerService.HintSize="475.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="BlokusApplication\OpenBlokusSite.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="x:String" x:Key="in_URL">[Path.Combine(Config("Blokus_URL_General").ToString,"welcome")]</InArgument>
           <OutArgument x:TypeArguments="ui:UiElement" x:Key="out_BrowserWindow">[BlokusBrowser]</OutArgument>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ExtractCurrentUserName workflow" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="BlokusApplication\GameRoom\ExtractCurrentUserName.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ExtractCurrentUserName workflow" sap:VirtualizedContainerService.HintSize="475.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="BlokusApplication\GameRoom\ExtractCurrentUserName.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="ui:UiElement" x:Key="in_BrowserWindow">[BlokusBrowser]</InArgument>
           <OutArgument x:TypeArguments="x:String" x:Key="out_UserName">[CurrentUser]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="378.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Current User: &quot; + CurrentUser]" />
-      <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="378.4,241.6" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Give me the room number" Title="Let's play Blokus: https://blokee.mattle.online/">
-        <ui:InputDialog.Result>
-          <OutArgument x:TypeArguments="x:String">[RoomNo]</OutArgument>
-        </ui:InputDialog.Result>
-      </ui:InputDialog>
-      <ui:MultipleAssign DisplayName="TestSettings" sap:VirtualizedContainerService.HintSize="378.4,99.2" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="475.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Current User: &quot; + CurrentUser]" />
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="475.2,193.6" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+        <ui:CommentOut.Body>
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="241.6,115.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Give me the room number" Title="Let's play Blokus: https://blokee.mattle.online/">
+              <ui:InputDialog.Result>
+                <OutArgument x:TypeArguments="x:String">[RoomNo]</OutArgument>
+              </ui:InputDialog.Result>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:InputDialog>
+          </Sequence>
+        </ui:CommentOut.Body>
+      </ui:CommentOut>
+      <Sequence DisplayName="AutomaticallyPrepare a game" sap:VirtualizedContainerService.HintSize="475.2,1840.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_5" Message="[&quot;Creating a room&quot;]" />
+        <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Blokee - Inspired by Blokus - Online Board Game" sap:VirtualizedContainerService.HintSize="433.6,1615.2" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" Version="V1">
+          <uix:NApplicationCard.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,1398.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <uix:NClick ClickType="Single" DisplayName="Click '+ Create'" sap:VirtualizedContainerService.HintSize="333.6,167.2" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable BrowserURL="https://blokee.mattle.online/lobby/rooms" DesignTimeRectangle="17, 264, 188, 36" ElementType="Button" FriendlyName="'+ Create'" FullSelectorArgument="&lt;webctrl tag='BUTTON' aaname='*Create' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' type='' aaname='+ Create' check:text='+ Create' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAMAAAAAoCAYAAACoy/XoAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAANtSURBVHhe7d3BahNBHAZwn8pDL+ozxJuXXj3k1BfwFFDIxYChXlrQtof2IE0RKqU2IKmxkRCW1tY2JjVxCWWbGrYm2aThc2Z3EjfpNl1LBHW+gR90Z3aXHP5fZmcKm1t1u43fcXfqNn60u0T/BQaAtMYAkNZuFICp2Huiv969Jx/w8MUunm6UkTmqMwCkr/vP8ljKmgwA6evO4yxebn9jAEhfciYofG0wAKQvuSZgAEhbD54XGADSl9wdYgBIawwAaY0BIK0xAKQ1BoC0xgCQ1hiAiTMQN85htfCrdS9QMkoB505KFYbTRCpwjMZhACZqHymrJwq+jdxOEdGk6EvuIZaxsLKZDzh/QlbPYIEBuAkGIKQVs4eDj8FjfZGdc/F138bWcvD4VOwYudYFcukKMt9FUESzv6iZYdlETvXJZp9YiMsAqWsTu03YXTUomm3WMCPH3jVgOV6f4/SENjJvvGtmthsw1Rh63iwUUfcjDwMQUsoCSoXgsb7UiSi0Wm1MkckAiEJtdXCQL2I6lkfELfIiMiI7drki+sRx8hDrdXFepTK4NrpZRWJBzSJzJg5EYZcK6nijAXt0BlgTs4Io+lzacI8jryyYvR6MtO8cYgDCuj4AXnEPvtEDqQCY5nBIZAE7Nub9fVmRiNE+H/l57PKxdxwQgET5Ak61OjiWFmviliN9umMAxpBFFNzEN+vG6PnhA3ApSIWmuu9o6xd1Ho+yZyg15SOOIp6WxgVABiSwWSeDc4gBCC38I5AZOOYZE4BWAwl/n09EzAaODJ16nJGumwGGxulKDEBIYQIQ3W2LxWYb62MXwQH3SduiwMV1SyP9ijsTDX1zH6o1w9UBmK2IKaJuIerro8sYgJDC7ALJApeFiVYT62/3vQVtzMDMagXxNW88MABqEezUTxGf8/oiC0XMp4vu39FPIljOORbdMQMxozn8CORug4oZwr/VKhfB6ME8KKnPkUf0dRWz7uegPgZg0pKHWCy3h7Ys5T/Ccu7uy1UBEOYq2LJ8aw5xjXWkdoGSIlj+LVKzhsTnju8RZw/z5Y4a7Qy2QafTp2LdoLpFk7tPGe4CDWEASGsMAGmNASCtMQCkNQaAtMYAkNYYANIWX4tCWuOLsUhrfDUiaYsvxyVt8fXopC3+QAZp54/9RFLQjYj+PV38BPG2dRp3j35mAAAAAElFTkSuQmCC" InformativeScreenshot="63bab67114afb54d55b5563814fa3c1d.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Blokee - Inspired by Blokus - Online Board Game' /&gt;" SearchSteps="Selector, FuzzySelector, Image" />
+                  </uix:NClick.Target>
+                </uix:NClick>
+                <uix:NSelectItem DelayBefore="1" DisplayName="Select Item '# of players'" sap:VirtualizedContainerService.HintSize="333.6,167.2" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="4">
+                  <uix:NSelectItem.Items>
+                    <scg:List x:TypeArguments="x:String" Capacity="2">
+                      <x:String>2</x:String>
+                      <x:String>4</x:String>
+                    </scg:List>
+                  </uix:NSelectItem.Items>
+                  <uix:NSelectItem.Target>
+                    <uix:TargetAnchorable BrowserURL="https://blokee.mattle.online/lobby/rooms" DesignTimeRectangle="717, 330, 55, 48" ElementType="DropDown" FriendlyName="'2'" FullSelectorArgument="&lt;webctrl tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SELECT' type='' aaname='' /&gt;" InformativeScreenshot="8363bd8f7cecbf3bfbe442e18f5c4c95.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Blokee - Inspired by Blokus - Online Board Game' /&gt;" SearchSteps="FuzzySelector">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <uix:Target DesignTimeRectangle="619, 340, 85, 25" ElementType="Text" FriendlyName="'# of players'" FullSelectorArgument="&lt;webctrl tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' aaname='# of players' check:text='# of players' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFkAAAAdCAYAAADBwsDVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAARvSURBVGhD7ZhNa9tKFIb7T/QftDRZBAL1Jt4JDDVdCAwVd2FxIagbEyjuopiCUaF4c3Gg4ELQhYALRVkEVCgOFLwILmQhCAi6EBT8F96e0XxIkeTETon6ES1eMhqNzsw8cz7GebRarVDrflVDrkA15ApUQ65ANeQKVEOuQDXkClRDrkA15ApUHeRvc4x7LTQ0DZrWQOvfKZZl425R+N6k78nGq6D0/e+ocsgXExi0kcEZtb9OYVK7/zEujttYMfwXOoez04LRNmAeLUvG3a6/BnJ4bNFGLHjhCvHHPrVNTC+L4zbXHO5j5sE/e1h/POQIwZELd+TCecKAdOBQu/+UeSBvuyd3877VKsCQgSENP5W931x/OOQQ0y4HsVbrNhb6cHsGdnU2TsfuUwfjs4i/iykXdxs5W2WRIed3MPtK3zzbhU5j9T0LrrRFKkJmztGHbfDxcv7JZ/HNuYtm0k92IznXCsujDrfzZMJrw/cQ/shGa4eN1dDYtzH8kHGqT8Ok3zoOEZ+PYe0x5xsioHfRmVuY3818W0wXsY8+DTbfsUEBBtQ2/rvBgy89WAlcBsSAoSZrkddSaogCTEYOOkmfhs4Bi5YJgsyGudJD1nWdNkm29uXhtOCe83FFyJTvD/VkbvuQIk8cDou+yQV7v8Skze06J/Kw0rns/1lfCO8fXjN0w8Zg1IeZwNbTbwRkrWup/WrdKUKqX3xvDZg0/+Cgkzgbt8vXXIS8ZdGbv2nyCXseQtG3fCdASC/ZKF2kG2++DBAnfRwg69Nfz5Nxpekizq5vianJ7UhAymsPZojYmEu+L02z4V3Rs/R2vQ//m7CzGCcctLbYg4RM4DuvfSyjGDGb9/OQH6puYfJFgP1O79hfoRSyMrJON4U4ef77MO0Xh5OG6HaQU4/LQGVek33Op4u2vB6mUmu68mAnfXw9ysahn8BQz48t8mJel1wVfTwlKD66eFaiQxVRwMTSDEsV5ZAvZoWil23fFuK/CvJ8JCJpn/LwBx/+qYeBSA/pmtIrpHOygNdj73UMTnkEKJulykEW65Drk/bD0zHxSmtP6w2PPKZcumDhKQ2JtnnzjwaVLp7P1OmpdCFDbUvIuvAwtp7Zc9FXmi7KDnmBcQEyiSAlYX3gwGF/sx4p00V7jIXsE4pj0V4HOZcaomO7MC4HWRSJZAOiTfnx+picrmZwSgtfpmhsCZlps8KXeqi2Y6I/GlCVpyJIhZP1XYOcuaszNUepp7G5VeHbo8h9SZF7aMNgNwiZltZBZv36Loxen6Kdz5/YeSEdJQ85e7O4dsvIjCnTVYCxqKryCqOucIm2gzw4DuBueoWL0use+zVpv50jEp55HXKmAGpNdWipKLe/dWCqgxVXsVNhYx3kCw9ON1MP2BpeeVjIAkrKefKvVAp5/UH8pM4GHIS69VSjBwQ5vQV07vh/k7vqAUCmdNKm/J78QiP7+1TwMqFchR4E5GFSKxpo9VwE7MdH6bj7028E+e9VDbkC1ZArUA353rXCD2n45wkbX70GAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NSelectItem.Target>
+                </uix:NSelectItem>
+                <uix:NSelectItem DisplayName="Select Item '(with'" sap:VirtualizedContainerService.HintSize="333.6,167.2" sap2010:WorkflowViewState.IdRef="NSelectItem_2" Item="3">
+                  <uix:NSelectItem.Items>
+                    <scg:List x:TypeArguments="x:String" Capacity="2">
+                      <x:String>0</x:String>
+                      <x:String>1</x:String>
+                    </scg:List>
+                  </uix:NSelectItem.Items>
+                  <uix:NSelectItem.Target>
+                    <uix:TargetAnchorable BrowserURL="https://blokee.mattle.online/lobby/rooms" DesignTimeRectangle="816, 330, 55, 48" ElementType="DropDown" FriendlyName="'0'" FullSelectorArgument="&lt;webctrl name='numAIPlayers' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl name='numAIPlayers' tag='SELECT' type='' aaname='' /&gt;" InformativeScreenshot="987522ac30d73b9b33f4dcdad435c295.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Blokee - Inspired by Blokus - Online Board Game' /&gt;" SearchSteps="FuzzySelector">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <uix:Target DesignTimeRectangle="776, 341, 40, 22" ElementType="Text" FriendlyName="'(with'" FullSelectorArgument="&lt;webctrl aaname='(with ' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='(with ' tag='LABEL' type='' check:text='(with' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACwAAAAaCAYAAADMp76xAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAJxSURBVFhH7ZZRaxpBEMf7qXw4fBDhaEGQCCFFKBztiwVpaAk0+JC+KBQLKggRTF8UGgSJD0kgEEkLB0mPYqFBqEJBWyKEk4P7Cv/O7p66Xk+I9S60oPAHd2Z377ezM3P3wLZt/A8aDn+C/dbAQWkNHLTWwEErMOB+u4Tc0bWnb6YBDrdDSDUHHj5vLQa+vUJ+S8NB12W/o4xKFOqbU4w8fDP5CGxUNxErXGHssv+1RqfY2W6gP2f3C5htrmiofZdsK2rcziISFPDoZBcRrY4uH3tteoPjTEiaI8ShEvsw6L9eID/dEJt7UdKgKjSWlL+U9m50oL9/hY1Hwqc+y+LwmzndV5Yn8MU7WlRmDxNjoxpHJHc+Sw9+A3HEEsm5HNcLYagcUgYWvn4zvTDCajSKVL2D/i3ZzAGMeppsWZyZ8lwhD+Aeas/p1EdSRC/ztEEeuiXGPJKZFpp0sFnkr3GghbDXFpFZBjjyuoWhbLc+IaeEkf8s2Rx5AFN3mF6ZI/Mce8okmibO3obx5ENPpE7G6QQ/GkgpuzgeiTXLAD9t9CQbkweDo7sBOznLo26RP+rA/2rhhSKujkddyullgP8supWBbXTrSZHHX/cpd0VhTR7I0kAvhxGrdqbz7xFY5OLOyc3cRJuBRkuoEbgMxg6iluu0hnJOesA9AlOO5kJzUFw8FTaxsRVH8YtkZwfRknjspMbE7gYef8xS4aZR61JRWibGvIB9AXb34Ymc3it1Cy6rg2KC7C/nK90NzNbrlTTdEtvjIYq8A/gELIrJ3zedX/IGJhkVejFQhHz7lvBJC4FX/VoLSouB/1GtgYOWAAZ+A6ou+6p5HK5zAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NSelectItem.Target>
+                </uix:NSelectItem>
+                <uix:NSelectItem DisplayName="Select Item 'game speed'" sap:VirtualizedContainerService.HintSize="333.6,167.2" sap2010:WorkflowViewState.IdRef="NSelectItem_3" Item="20mins / person, +20secs / action">
+                  <uix:NSelectItem.Items>
+                    <scg:List x:TypeArguments="x:String" Capacity="3">
+                      <x:String>5mins / person, +5secs / action</x:String>
+                      <x:String>10mins / person, +10secs / action</x:String>
+                      <x:String>20mins / person, +20secs / action</x:String>
+                    </scg:List>
+                  </uix:NSelectItem.Items>
+                  <uix:NSelectItem.Target>
+                    <uix:TargetAnchorable BrowserURL="https://blokee.mattle.online/lobby/rooms" DesignTimeRectangle="676, 394, 290, 48" ElementType="DropDown" FriendlyName="'10mins /'" FullSelectorArgument="&lt;webctrl name='speed' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl name='speed' tag='SELECT' type='' aaname='' /&gt;" InformativeScreenshot="e7d16baabfb3a4ff0d03e44e5f0ae2aa.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Blokee - Inspired by Blokus - Online Board Game' /&gt;" SearchSteps="FuzzySelector">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <uix:Target DesignTimeRectangle="576, 404, 87, 25" ElementType="Text" FriendlyName="'game speed'" FullSelectorArgument="&lt;webctrl aaname='game speed' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='game speed' tag='LABEL' type='' check:text='game speed' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFsAAAAdCAYAAADFNxDoAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAARQSURBVGhD7VdNa9taEO0/0X/Q0nhhKDQbayco1GQhCNRkEVMw7uIJQ1AXRhSMCsEUirtSoDhQUKC4i4ALQYWCF8EPsjAUBFkIAv4L5839kq4du3WbRs8FLQ4kV3Nnzj1z78z40WKxQIliUIpdIEqxC0QpdoEoxS4QpdgFohS7QJRiF4hS7AJRiv0gmMA3DBiGg/A6Xy/FfhCUYheIUuwCsY3YtzNEvRasKjM0YD62YT+VOInJJsHkvYuWXYPJnZmo7XcwvEwyH/NTh6/7F3NM+k3UTGZXQaMbYnqTIj5R/mnv8wHiRIs/HyM4slDhviuwjnxE/2rfV5BcBHe4BOcz/k3wMND5OKOYkodZQ7M/QaL72SJm8i2Euy/jkI9Ge7jM+/sEwXPx3XzcxOAygsf9bRQ7xaS3xwlaxyHGn0N4dbbBgP1PiGjKBE0x7po8Ca1uAFcGMIwGhlfCjzqkaZowqhYlSh2E1qoVWq8trx2PkbL41yM0eWJM2C88BF1H2JgdRN8VRw1XQzS4jwoc4uK1G1zQ1plIvOJhEA9zhYf1hl0c8rFFzPTSh6XHeWGLM9cDxJxLjEDqxBKhx/mB2DF8HpgMZGYz4V5Lcgxpmv+9mCF0hOPOx9VDuhjfCLvpW1usab6Ts5ZYeyJIx29Eos2uFF/bZ78Tt3UJJIK4aU0Mv8mXdZtmezMeTzxMJI/0kyv3+FvGTBC1GW8DjYxDiuilWHM/kRaKh9HCaC585BfhN8Q2ehNpI8vIUvYEnNP58p6DEHPl+8ITa06ImVr74su9PiaLOcID4WfvkG5YPxCg28ptsvg6KNGH9Hq4DwOVeouXkDtit6O8bFyHcLg9E2GbmKr2ktht+Z3gHYoksTOvPe/PazbV09cW32i9HCLKyogF/1Lc5rgvghh1qtPnYyo1I3hPBZk7YusCKWF1QhvEXou1YjOkmH8eoPOsktmqEvErYq/FitjrcA+xCbdTDPZzZ/y2XKjml5NTwi4WZP9HxM6ftP12mu/joNJwq/8voZUMhuSDLEsyRsZDK2fpeUeuLZeRzTHzMtI518snQcWnc4jSlMfZooxQvTphNztvdsug5ngsn23Vgdv3aBKg5sMaIa3dV2y9WbGpwqPn6h7ZvOn5X+QeHWw/a0hHLj1twYX5Uw0348GwRYPcFFNvkJaM1TlgvpSQcd4geRzaXyVd+J4fiD3/0JRGGtio041ErU1iDNQEQo5bNA4mXwPs0f/3FpuBRqhB28lGTzFmBRhrhDNcjeShpS3j0xvReCm+ZzxejfIRlPzdGf22iJlOR/BlErJYNMrGae5jafT7mtDUxmw3iX0zRdhl4xNlUM3W2m1Q08bfgrVJ/5+RiT17J0ae1do0ey+6c16n/w7stNiKnLnvYnAaYXw2RPCqBZs/vyZG657yDmOnxeYz9EkHTj0foyp1+qXYo9q07hfcjmPHxS7x0CjFLhCl2AWiFLswLPAfJBB7pKkZSVMAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NSelectItem.Target>
+                </uix:NSelectItem>
+                <uix:NClick ClickType="Single" DisplayName="Click 'Create'" sap:VirtualizedContainerService.HintSize="333.6,167.2" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable BrowserURL="https://blokee.mattle.online/lobby/rooms" DesignTimeRectangle="661, 520, 100, 42" ElementType="Button" FriendlyName="'Create'" FullSelectorArgument="&lt;webctrl tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' type='submit' aaname='Create' check:text='Create' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGgAAAAuCAYAAADEHVzQAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAOsSURBVHhe7ZjPTuJAHMf3uXwNXsAX4OQLcOLGiQPx5J70sByMeliMUTYxqAmbxjTr8kctG5uGNAXFNgUE8t2ZTgsUKmI2tJPsb5LPgflNhzKfmfnN8KXb7YKQFxIkOSRIcqaCtrLXhESQIMkhQZJDgiSHBEkOCZIcEiQ5JEhySJDkkCDJIUGSQ4IkhwRJDgmSHBIkOYkJ2j61oL6MMZxgVkZjWEYH+YPoZ/5HEhCkIP/4JoQM31C/t1BSBRXjDXbfwX4h6rnNst8G7NafyFiSxC4orbgYMjd2u42diHgiFAzU2UuRoOwTVG6n30P+w1ViQmNNtdtr7Fz1YPDnWJkfxNR3C/XXsQjw0h+gelWb6yN6K7Vfetj/5rf50YM9v836hX+v6ENBTnVg9f0AK6HnN0y8gs7YYLAfaDWa0fEQQpCh22xwx9BaHW8bLJ7fibjf17DbQ/GiicypjrLJZU1Qv1Gm/aRVF7bVQ6miIXPUxK5iwxqxZl0Lad5mr8bqOzBYla0bXhvOzp54Pv8o+jQe29hl9blKBxqXNYpnK45X0K3r/Vj1MiK2hBAEjFE9nw244A6lLgs5z8iG6h9QcUR9JlQfJt/ig+7ieFonvmtpizuwPHFW4yFcf/IMy6tfZ6L9GwkIYgN+FhFbwhdkmUgtxgrBgOrTGR9Q1Pl+NT/4EXjv8bGgVPC+l+HvyBy1xVZtmqH2myABQZ9bQZGJ29/e3i+zwU8dsq3vaQCbJaHQkX4NQWKlrShs8sy33wTxCjr/fA5aJchQF7e+BYI85Tgoezmohm1ev+YKEoIGKCVw7A+IV1CWHWf5LF7KHVGsEFQQuWGo68uxOfjdBhMHxYUBznmJf40tTh3wDtZc8ZshZkHXyDbEJdVuPYnZ/C4rBAWHhAmb3SuOu8c8k/MjfajeP0isISg4JPATX1J3ttgFbWVrODb9ZNB3Uf09+yeh3HKgtTvIee1WCWKcsZMU72Y0gKrqyLHknauYrA8XWkPz2qR/iRVgtdpePHNhsjsR++wsrqAmyq+irzI/sh89IXciYvl7MaGGL7Z/VNfwVemgarmonAbPb44EBHFU5JQeNDeUtcV/cbrpH5E/EMRIHRqoWOFL6NBll9Ub/67EJsN+azCLs/uU0TKwc8pz07wgcenVeGry2rG71M8gpiBz8xx+Vxb3Lqsx/GeYkCBiXUiQ5JAgySFBkkOCJIcESQ4JkhwSJDkkSHJIkOSQIMkhQZJDgiSHBEkOCZIc4aWLv9Vx9AWkw2zNAAAAAElFTkSuQmCC" InformativeScreenshot="5d5f56e6f89b5d5fefb5f41f3f1ffea2.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Blokee - Inspired by Blokus - Online Board Game' /&gt;" SearchSteps="FuzzySelector, Image" />
+                  </uix:NClick.Target>
+                </uix:NClick>
+                <uix:NGetText DelayBefore="1" DisplayName="Get Text 'Games'" sap:VirtualizedContainerService.HintSize="333.6,167.2" sap2010:WorkflowViewState.IdRef="NGetText_1">
+                  <uix:NGetText.Target>
+                    <uix:TargetAnchorable BrowserURL="https://blokee.mattle.online/lobby/rooms" DesignTimeRectangle="97, 290, 423, 40" FriendlyName="'Room 935'" FullSelectorArgument="&lt;webctrl tag='H2' /&gt;" FuzzyAccuracy="0.64" FuzzySelectorArgument="&lt;webctrl tag='H2' type='' idx='1' /&gt;" ImageBase64="" InformativeScreenshot="42634f37828d37677119bc26acd5d6f8.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='!!! Ready to Start' /&gt;" SearchSteps="FuzzySelector">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <uix:Target DesignTimeRectangle="27, 190, 453, 51" ElementType="Text" FriendlyName="'Games'" FullSelectorArgument="&lt;webctrl aaname='Games' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Games' tag='A' type='' check:text='Games' /&gt;" ImageBase64="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" SearchSteps="FuzzySelector, Image" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NGetText.Target>
+                  <uix:NGetText.Text>
+                    <OutArgument x:TypeArguments="x:String">[RoomNo]</OutArgument>
+                  </uix:NGetText.Text>
+                </uix:NGetText>
+                <Assign sap:VirtualizedContainerService.HintSize="333.6,61.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[RoomNo]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[RoomNo.Replace("Room","").trim]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </ActivityAction>
+          </uix:NApplicationCard.Body>
+          <uix:NApplicationCard.TargetApp>
+            <uix:TargetApp Area="0, 0, 0, 0" BrowserType="Chrome" ContentHash="qDPUvLJXZUCV3gthDsbw-A" IconBase64="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" InformativeScreenshot="913ea0e1521b47c4157f094f26af3fb4.png" Reference="JFWlP8zzUU2YM26ulT-vDw/4tPdsAhZ80mC63sBjyRSdg" Selector="&lt;html app='chrome.exe' title='Blokee - Inspired by Blokus - Online Board Game'/&gt;" Url="https://blokee.mattle.online/room/QBBmmZivKgsJP2BQo" />
+          </uix:NApplicationCard.TargetApp>
+        </uix:NApplicationCard>
+      </Sequence>
+      <ui:MultipleAssign DisplayName="TestSettings" sap:VirtualizedContainerService.HintSize="475.2,99.2" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
         <ui:MultipleAssign.AssignOperations>
           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
@@ -201,7 +333,7 @@
           </scg:List>
         </ui:MultipleAssign.AssignOperations>
       </ui:MultipleAssign>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke JoinRoom workflow" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="BlokusApplication\Lobby\JoinRoom.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke JoinRoom workflow" sap:VirtualizedContainerService.HintSize="475.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="BlokusApplication\Lobby\JoinRoom.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="ui:UiElement" x:Key="in_BrowserWindow">[BlokusBrowser]</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="in_RoomNo">[RoomNo]</InArgument>
@@ -210,7 +342,7 @@
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
-    <Sequence DisplayName="Play Game" sap:VirtualizedContainerService.HintSize="420,339.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <Sequence DisplayName="Play Game" sap:VirtualizedContainerService.HintSize="516.8,339.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Int32" Name="PlayerIndex" />
         <Variable x:TypeArguments="x:Boolean" Name="GameInProgress" />

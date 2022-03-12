@@ -11,3 +11,7 @@ C:\UiPath\Projects\Hackaton\Code\BlokeeActivity\Blokee.Activities\TestConsoleApp
 C:\UiPath\Projects\Hackaton\Code\BlokeeActivity\Blokee.Activities\TestConsoleApplication\obj\Debug\TestConsoleApplication.csproj.CopyComplete
 C:\UiPath\Projects\Hackaton\Code\BlokeeActivity\Blokee.Activities\TestConsoleApplication\obj\Debug\TestConsoleApplication.exe
 C:\UiPath\Projects\Hackaton\Code\BlokeeActivity\Blokee.Activities\TestConsoleApplication\obj\Debug\TestConsoleApplication.pdb
+C:\Users\rares.ont\Source\Repos\HackatonIntern\BlokeeActivity\Blokee.Activities\TestConsoleApplication\obj\Debug\TestConsoleApplication.csproj.AssemblyReference.cache
+C:\Users\rares.ont\Source\Repos\HackatonIntern\BlokeeActivity\Blokee.Activities\TestConsoleApplication\obj\Debug\TestConsoleApplication.csproj.CoreCompileInputs.cache
+C:\Users\rares.ont\Source\Repos\HackatonIntern\BlokeeActivity\Blokee.Activities\TestConsoleApplication\obj\Debug\TestConsoleApplication.exe
+C:\Users\rares.ont\Source\Repos\HackatonIntern\BlokeeActivity\Blokee.Activities\TestConsoleApplication\obj\Debug\TestConsoleApplication.pdb
