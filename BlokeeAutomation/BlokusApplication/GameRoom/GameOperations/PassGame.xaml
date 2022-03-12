@@ -1,11 +1,7 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="MakeMove" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_BrowserWindow" Type="InArgument(ui:UiElement)" />
-    <x:Property Name="in_playerIndex" Type="InArgument(x:Int32)" />
-    <x:Property Name="in_pieceIndex" Type="InArgument(x:Int32)" />
-    <x:Property Name="in_orientation" Type="InArgument(x:Int32)" />
-    <x:Property Name="in_positionX" Type="InArgument(x:Int32)" />
-    <x:Property Name="in_positionY" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_PlayerIndex" Type="InArgument(x:Int32)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -92,7 +88,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Making move. Move data: &quot; + String.Format(&quot;{0};{1};{2};{3};{4}&quot;, in_playerIndex, in_pieceIndex, in_orientation, in_positionX, in_positionY)]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;No more moves. Pass!&quot;]" />
     <uix:NApplicationCard sap2010:Annotation.AnnotationText="Extracting the username of the player currently logged in the Blokus Site" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Blokee - Inspired by Blokus - Online Board Game" sap:VirtualizedContainerService.HintSize="434,485" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_BrowserWindow]" InteractionMode="Simulate" OpenMode="Never" Version="V1" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
@@ -108,7 +104,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InjectJsScript ContinueOnError="True" DisplayName="Inject Js Script 'DIV'" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="InjectJsScript_1" InputParameter="[String.Format(&quot;{0};{1};{2};{3};{4}&quot;, in_playerIndex, in_pieceIndex, in_orientation, in_positionX, in_positionY)]" ScriptCode="JS Scripts\makeMove.js">
+            <ui:InjectJsScript ContinueOnError="True" DisplayName="Inject Js Script 'DIV'" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="InjectJsScript_1" InputParameter="[&quot;passgame;&quot; + in_PlayerIndex.ToString]" ScriptCode="JS Scripts\makeMove.js">
               <ui:InjectJsScript.ScriptOutput>
                 <OutArgument x:TypeArguments="x:String">[scriptResult]</OutArgument>
               </ui:InjectJsScript.ScriptOutput>

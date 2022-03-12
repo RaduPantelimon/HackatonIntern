@@ -14,7 +14,7 @@
           "lib/net45/ICSharpCode.AvalonEdit.dll": {}
         }
       },
-      "Blokee.Activities/1.0.8105.42806": {
+      "Blokee.Activities/1.0.8106.19614": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "11.0.2"
@@ -1709,7 +1709,7 @@
           "lib/net45/ICSharpCode.AvalonEdit.dll": {}
         }
       },
-      "Blokee.Activities/1.0.8105.42806": {
+      "Blokee.Activities/1.0.8106.19614": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "11.0.2"
@@ -3410,13 +3410,13 @@
         "lib/netcoreapp3.0/ICSharpCode.AvalonEdit.xml"
       ]
     },
-    "Blokee.Activities/1.0.8105.42806": {
-      "sha512": "SQfKG4tABf3AZ25n1Cld/0m+WvHpte75KzhvDSpfYJKFXz0cF4bAYKtaOaL7n4la65CIz7NwE+4qWvnYaAsWzg==",
+    "Blokee.Activities/1.0.8106.19614": {
+      "sha512": "j0OK1yxz6bC2MaSXCaxesbret64AFwXB4uijXdUC7Xbwcpap22wG8UmNAa7JGz3WmLalHGpkYSWsYXfJ8fCuvg==",
       "type": "package",
-      "path": "blokee.activities/1.0.8105.42806",
+      "path": "blokee.activities/1.0.8106.19614",
       "files": [
         ".nupkg.metadata",
-        "blokee.activities.1.0.8105.42806.nupkg.sha512",
+        "blokee.activities.1.0.8106.19614.nupkg.sha512",
         "blokee.activities.nuspec",
         "lib/net452/Blokee.Activities.dll"
       ]
@@ -5367,7 +5367,7 @@
   "projectFileDependencyGroups": {
     "": [],
     ".NETFramework,Version=v4.6.1": [
-      "Blokee.Activities >= 1.0.8105.42806 <= 1.0.8105.42806",
+      "Blokee.Activities >= 1.0.8106.19614 <= 1.0.8106.19614",
       "UiPath.Excel.Activities >= 2.10.4 <= 2.10.4",
       "UiPath.Mail.Activities >= 1.10.5 <= 1.10.5",
       "UiPath.System.Activities >= 21.4.1 <= 21.4.1",
@@ -5392,7 +5392,7 @@
           "Blokee.Activities": {
             "include": "Runtime",
             "target": "Package",
-            "version": "[1.0.8105.42806, 1.0.8105.42806]"
+            "version": "[1.0.8106.19614, 1.0.8106.19614]"
           },
           "UiPath.Excel.Activities": {
             "include": "Runtime",

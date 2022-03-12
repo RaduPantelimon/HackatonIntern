@@ -43,7 +43,7 @@ namespace Blokee
         private Move PlayBarosana()
         {
             int pieceIndex, orientation, row, col, piecePointRow = 0, piecePointColumn = 0;
-            if (currentMoveCount == 1)
+            if (currentMoveCount == 0)
             {
                 pieceIndex = 12;
                 switch (Id)
@@ -77,7 +77,7 @@ namespace Blokee
                         break;
                 }
             }
-            else if (currentMoveCount == 2)
+            else if (currentMoveCount == 1)
             {
                 pieceIndex = 7;
                 orientation = 0;
@@ -109,7 +109,7 @@ namespace Blokee
                         break;
                 }
             }
-            else if (currentMoveCount == 3)
+            else if (currentMoveCount == 2)
             {
                 pieceIndex = 10;
                 switch (Id)
@@ -235,8 +235,8 @@ namespace Blokee
 
         public Move Play()
         {
-            currentMoveCount++;
-            if (currentMoveCount <= 4)
+            currentMoveCount = Pieces.Where(piece => piece.IsAvailable ==false).Count();
+            if (currentMoveCount < 4)
             {
                 return PlayBarosana();
             }

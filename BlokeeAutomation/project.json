@@ -3,7 +3,7 @@
   "description": "Blank Process",
   "main": "Main.xaml",
   "dependencies": {
-    "Blokee.Activities": "[1.0.8105.42806]",
+    "Blokee.Activities": "[1.0.8106.19614]",
     "UiPath.Excel.Activities": "[2.10.4]",
     "UiPath.Mail.Activities": "[1.10.5]",
     "UiPath.System.Activities": "[21.4.1]",

@@ -103,16 +103,26 @@ function(element, input){
 			{
 				var payload = JSON.parse(rawPayload);
 				//send a payload to the server, causing the next move to happen
-				var request = "[\"{\\\"msg\\\":\\\"method\\\",\\\"method\\\":\\\"gamePlayerAction\\\",\\\"params\\\":[{\\\"gameId\\\":\\\"{0}\\\",\\\"action\\\":{\\\"type\\\":\\\"place\\\",\\\"playerIndex\\\":{1},\\\"pieceIndex\\\":{2},\\\"orientation\\\":{3},\\\"position\\\":[{4},{5}]}}],\\\"id\\\":\\\"{6}\\\",\\\"randomSeed\\\":\\\"{7}\\\"}\"]".format( 
-				window.gameId, 
-				payload.playerIndex, 
-				payload.pieceIndex,
-				payload.orientation,
-				payload.positionX,
-				payload.positionY,
-				parseInt(window.payloadId)+1,
-				window.generateRandomSeed());
 				
+				if(payload.pass)
+				{
+					var request = "[\"{\\\"msg\\\":\\\"method\\\",\\\"method\\\":\\\"gamePlayerAction\\\",\\\"params\\\":[{\\\"gameId\\\":\\\"{0}\\\",\\\"action\\\":{\\\"type\\\":\\\"pass\\\",\\\"playerIndex\\\":{1}}}],\\\"id\\\":\\\"{2}\\\",\\\"randomSeed\\\":\\\"{3}\\\"}\"]".format( 
+					window.gameId,
+					payload.playerIndex,					
+					parseInt(window.payloadId)+1,
+					window.generateRandomSeed());
+				}
+				else{
+					var request = "[\"{\\\"msg\\\":\\\"method\\\",\\\"method\\\":\\\"gamePlayerAction\\\",\\\"params\\\":[{\\\"gameId\\\":\\\"{0}\\\",\\\"action\\\":{\\\"type\\\":\\\"place\\\",\\\"playerIndex\\\":{1},\\\"pieceIndex\\\":{2},\\\"orientation\\\":{3},\\\"position\\\":[{4},{5}]}}],\\\"id\\\":\\\"{6}\\\",\\\"randomSeed\\\":\\\"{7}\\\"}\"]".format( 
+					window.gameId, 
+					payload.playerIndex, 
+					payload.pieceIndex,
+					payload.orientation,
+					payload.positionX,
+					payload.positionY,
+					parseInt(window.payloadId)+1,
+					window.generateRandomSeed());
+				}
 				console.log("Sending message:");
 				console.log(request);
 				
@@ -120,6 +130,7 @@ function(element, input){
 				window.sockets[window.sockets.length -1].send(request);
 				
 			}
+			
 		}, 100);
 	}
 	
