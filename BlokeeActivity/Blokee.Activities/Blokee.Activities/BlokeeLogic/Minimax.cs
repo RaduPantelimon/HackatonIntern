@@ -49,7 +49,7 @@ namespace Blokee
             if (allPossibleMoves.Any())
             {
                 //top 5 highest scores
-                var top_by_score = allPossibleMoves.OrderByDescending(p=> p.Score).Take(5);
+                var top_by_score = allPossibleMoves.OrderByDescending(p => p.Score).Take(5);
 
                 foreach (var move in top_by_score)
                 {
@@ -153,7 +153,7 @@ namespace Blokee
                         //best_score = weights[3] * by_score_2[0][1] + weights[4] * score
                         //# append initial piece plus potential score to final_choices
                         //final_choices.append((piece, best_score))
-                        finalMoves.Add(possibleMoves.First());
+                        finalMoves.Add(possibleMoves.First());//+score for this
                     }
                     else
                     {
@@ -163,8 +163,9 @@ namespace Blokee
 
 
                 }
+
                 //sort by the highest score
-                return allPossibleMoves.First();
+                return finalMoves.First();
 
             }
 
