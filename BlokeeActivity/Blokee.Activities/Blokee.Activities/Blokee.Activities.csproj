@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="BlokeeLogic\Board.cs" />
     <Compile Include="BlokeeLogic\Game.cs" />
+    <Compile Include="BlokeeLogic\Minimax.cs" />
     <Compile Include="BlokeeLogic\Move.cs" />
     <Compile Include="BlokeeLogic\Piece.cs" />
     <Compile Include="BlokeeLogic\Player.cs" />

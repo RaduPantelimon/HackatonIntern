@@ -9,16 +9,25 @@ namespace Blokee
     {
         private Player currentPlayer;
         private Game game;
+        private Board board;
 
         public Minimax(Player p, Game g)
         {
             this.currentPlayer = p;
             this.game = g;
+            this.board = g.Board;
         }
 
-        private Move PlayMinimax()
+        public Move GetMinimax(Board b)
         {
-            var availableCorners = Board.I.GetAllAvailableCorners(this.currentPlayer.Id);
+            this.board = b;
+            return GetMinimax();
+        }
+
+        private Move GetMinimax()
+        {
+            var availableCorners = board.GetAllAvailableCorners(this.currentPlayer.Id);
+            //get a copy of the current pieces
             var availablePieces = this.currentPlayer.Pieces.Where(piece => piece.IsAvailable).OrderByDescending(piece => piece.Weight);
 
             List<Move> allPossibleMoves = new List<Move>();
@@ -26,159 +35,184 @@ namespace Blokee
             //calculate the moves
             foreach (var piece in availablePieces)
             {
-                allPossibleMoves.AddRange(this.currentPlayer.GetValidMoves(piece, availableCorners));
+                allPossibleMoves.AddRange(this.currentPlayer.GetValidMoves(this.board, piece, availableCorners));
             }
 
             //calculate the scores
             foreach(var move in allPossibleMoves)
             {
-                move.Score = this.evalMove(move.Piece, currentPlayer, this.game);
+                move.Score = this.evalMove(move, currentPlayer, this.board);
             }
 
             List<Move> finalMoves = new List<Move>();
 
             if (allPossibleMoves.Any())
             {
-                //top 3 highest scores
-                var top_by_score = allPossibleMoves.OrderBy(p => p.Score).Take(3);
+                //top 5 highest scores
+                var top_by_score = allPossibleMoves.OrderByDescending(p=> p.Score).Take(5);
 
-                foreach (var piece in top_by_score)
+                foreach (var move in top_by_score)
                 {
-                    var boardCopy = JsonConvert.DeserializeObject<Board>(JsonConvert.SerializeObject(this.game.board));
+                    var boardCopy = new Board(this.board);
                     var gameCopy = JsonConvert.DeserializeObject<Game>(JsonConvert.SerializeObject(this.game));
-                    var playersCopy = this.game.Players;
+                    var playersCopy = gameCopy.Players;
                     var opponents = playersCopy.Where(p => p.Id != currentPlayer.Id);
-                    var currentTestPlayer = JsonConvert.DeserializeObject<Player>(JsonConvert.SerializeObject(this.currentPlayer));
+                    var currentTestPlayer = new Player(this.currentPlayer);
 
+                    boardCopy.MakeMove(move);
+                    //remove the used piece from the options
+                    currentTestPlayer.Pieces[move.PieceId].IsAvailable = false;
 
-                    boardCopy.MakeMove(piece);
-                    currentTestPlayer.availableCorners = boardCopy.GetAllAvailableCorners(this.currentPlayer.Id);
+                    //update corners
+                    var currentTestPlayeravailableCorners = boardCopy.GetAllAvailableCorners(currentTestPlayer.Id);
 
                     //update corners for opponents
+                    var opponentCorners = new List<int[][]>();
                     foreach (var opponent in opponents)
                     {
-                        opponent.availableCorners = boardCopy.GetAllAvailableCorners(opponent.Id);
+                        opponentCorners.Add(boardCopy.GetAllAvailableCorners(opponent.Id));
                     }
 
                     //create a copy of the pieces that the current player has
-                    var availableLocalPieces = currentTestPlayer.Pieces.Where(localPiece => localPiece.IsAvailable).OrderByDescending(localPiece => localPiece.Weight);
+                    var availableLocalPieces = currentTestPlayer.Pieces.Where(localPiece => localPiece.IsAvailable ).OrderByDescending(localPiece => localPiece.Weight);
 
-                    //remove the used piece from the board
-
-                    //#ponenent's turn to place piece
+                    //ponenent's turn to place piece
                     foreach (var opponent in opponents)
                     {
-                        //create list of opponents pieaces and sort them by size/weight
+                        //create list of opponents pieces and sort them by size
+                        //! I used weight
                         var availableLocalOpponentPieces = opponent.Pieces.Where(localPiece => localPiece.IsAvailable).OrderByDescending(localPiece => localPiece.Weight);
 
-                        var allPossibleOponnentMoves = new List<Move>();//create list of all possible moves
+                        //create list of all possible moves
+                        var allPossibleOpponentMoves = new List<Move>();
                         foreach (var opponentPiece in availableLocalOpponentPieces)
                         {
-                            allPossibleOponnentMoves.AddRange(this.currentPlayer.GetValidMoves(opponentPiece, opponent.availableCorners));
+                            allPossibleOpponentMoves.AddRange(currentTestPlayer.GetValidMoves(boardCopy, opponentPiece, boardCopy.GetAllAvailableCorners(opponent.Id)));
                         }
+                        /*
                         //calculate the scores
-                        foreach (var move in allPossibleOponnentMoves)
+                        foreach (var opponentMove in allPossibleOpponentMoves)
                         {
-                            move.Score = this.evalMove(move.Piece, currentPlayer, gameCopy);
+                            opponentMove.Score = this.evalMove(opponentMove, currentPlayer, boardCopy);
                         }
+                        */
+                        allPossibleOpponentMoves.OrderByDescending(localOpponentPiece => localOpponentPiece.Score);
 
-                        allPossibleOponnentMoves.OrderByDescending(localOpponentPiece => localOpponentPiece.Score);
-
-                        if (allPossibleOponnentMoves.Any())
+                        if (allPossibleOpponentMoves.Any())
                         {
 
                             var final_moves_op = new List<Move>();
                             // evaluate each move
-                            foreach(var move in final_moves_op)
+                            foreach(var opponentMove in final_moves_op)
                             {
-                                move.Score = this.evalMove(move.Piece, currentPlayer, gameCopy);
+                                move.Score = this.evalMove(opponentMove, currentPlayer, boardCopy);
                             }
 
                             //sort moves by score
-                            final_moves_op.OrderByDescending(m => m.score);
+                            final_moves_op.OrderByDescending(m => m.Score);
 
                             //take the highest scoring move
-                            var topMove = final_moves_op.First;
-                            //update the board with the highest scoring move
-
+                            var topMove = final_moves_op.First();
+                            if(topMove != null)
+                                //update the board with the highest scoring move
+                                boardCopy.MakeMove(topMove);
                             //create a list of the other opponents
+                            var other_opponents = opponents.Where(op => op.Id != opponent.Id);
                             //update the corners of the other opponents
-
+                            foreach(var op in other_opponents)
+                            {
+                                opponentCorners[op.Id] = boardCopy.GetAllAvailableCorners(op.Id);
+                            }
+                            currentTestPlayeravailableCorners = boardCopy.GetAllAvailableCorners(currentTestPlayer.Id);
                         }
                         else
                         {
                             //return pieace of no possible moves
-                            return piece; //?
+                            return move; //?
                         }
                     }
-                    //#finished opponents turns
+                    //finished opponents turns
 
-                    var possibleMoves2 = new List<Move>();
+                    var possibleMoves = new List<Move>();
                     //calculate the moves
                     foreach (var localPiece in availableLocalPieces)
                     {
-                        allPossibleMoves.AddRange(this.currentPlayer.GetValidMoves(localPiece, currentTestPlayer.availableCorners));
+                        possibleMoves.AddRange(this.currentPlayer.GetValidMoves(boardCopy, localPiece, currentTestPlayeravailableCorners));
                     }
 
-                    if (possibleMoves2.Any())
+                    if (possibleMoves.Any())
                     {
-                        var final_moves_2 = new List<Move>();
                         //calculate all final moves 2 and sort them by score
+                        foreach (var localMove in possibleMoves)
+                        {
+                            localMove.Score = this.evalMove(localMove, currentPlayer, boardCopy);
+                        }
+                        possibleMoves.OrderByDescending(m => m.Score);
 
                         //# calculate the best score for each initial piece (can be weighted differently)
                         //best_score = weights[3] * by_score_2[0][1] + weights[4] * score
                         //# append initial piece plus potential score to final_choices
                         //final_choices.append((piece, best_score))
+                        finalMoves.Add(possibleMoves.First());
                     }
                     else
                     {
                         //add the first played piece to the final choices list
+                        return null;
                     }
 
 
                 }
                 //sort by the highest score
-                //return that move
+                return allPossibleMoves.First();
 
             }
 
-            return finalMoves.First();
+            return null;
         }
 
         //evaluate score of a move
         //can be used by both Greedy and Minimax
-        private int evalMove(Piece piece, Player currentPlayer, Game game)
+        private int evalMove(Move move, Player currentPlayer, Board board)
         {
-            var availableCorners = game.board.GetAllAvailableCorners(currentPlayer.Id);
-            var board = game.board;
+            var availableCorners = board.GetAllAvailableCorners(currentPlayer.Id);
 
             //backup the players
             var players = new Player[4];
             Array.Copy(game.Players, players,4);
 
-            var opponents = players.Where(p => p.Id != currentPlayer.Id);
-            var test_board = JsonConvert.DeserializeObject<Board>(JsonConvert.SerializeObject(board));
-            
-            test_board.MakeMove(piece);
-            
-            //update the map with the piece
+            var opponents = new List<Player>();
+            opponents = players.Where(p => p.Id != currentPlayer.Id).ToList();
 
-            var test_player = JsonConvert.DeserializeObject<Player>(JsonConvert.SerializeObject(currentPlayer));
-            test_player.availableCorners = test_board.board.GetAllAvailableCorners(test_player.Id);
+            var test_board = new Board(board);
+            
+            //update the board with the move
+            test_board.MakeMove(move);
+            //copy the current player
+            var test_player = new Player(currentPlayer);
 
-            foreach(opponent in opponents)
+            var availableCornersForCurrentTestPlayer = test_board.GetAllAvailableCorners(test_player.Id);
+
+            var oponnentsCorners = new List<int[][]>();
+
+            foreach(var opponent in opponents)
             {
-                opponents.availableCorners = test_board.board.GetAllAvailableCorners(opponents.Id);
+                oponnentsCorners.Add(test_board.GetAllAvailableCorners(opponent.Id));
             }
 
-            // # calculate the mean of the corners of the opponents
-            // opponent_corners = [len(opponent.corners) for opponent in opponents]
-            //// # find the difference between the number of corners the current player has and and the 
-            // # mean number of corners the opponents have
-            // corner_difference = np.mean([my_corners - opponent_corner for opponent_corner in opponent_corners])
+            //  calculate the corners of the opponents
+            // find the difference between the number of corners the current player has and and the 
+            // mean number of corners the opponents have
+            var corner_difference = 0;
+            foreach (var oponnentCorners in oponnentsCorners)
+            {
+                    corner_difference += (availableCornersForCurrentTestPlayer.Length - oponnentCorners.Length);
+            }
+            corner_difference /= 3;
+
             // # return the score = size + difference in the number of corners
             // return (piece, weights[0] * piece.size + weights[1] * corner_difference)
-            return 0;
+            return currentPlayer.Pieces.Where(piece => piece.Id == move.PieceId).First().Weight * corner_difference;
         }
     }
 }
