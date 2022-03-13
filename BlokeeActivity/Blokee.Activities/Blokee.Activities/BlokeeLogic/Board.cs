@@ -13,7 +13,7 @@ namespace Blokee
         private int?[,] _board;
 
         // not using threads, not giving a crap about thread safety :)
-        private static Board _instance;
+        /*private static Board _instance;
         public static Board I
         {
             get
@@ -24,9 +24,9 @@ namespace Blokee
                 }
                 return _instance;
             }
-        }
+        }*/
 
-        private Board()
+        public Board()
         {
             _board = new int?[rowCount, colCount];
         }
@@ -54,7 +54,7 @@ namespace Blokee
         public void MakeMove(Move move)
         {
             Console.WriteLine("Playing Move: " + move.ToString());
-            var piecePosition = move.Piece.AllVariations[move.Orientation];
+            var piecePosition = move.Player.Pieces[move.PieceId].AllVariations[move.Orientation];
             foreach (var point in piecePosition)
                 _board[move.PlacingRow + point[0], move.PlacingColumn + point[1]] = move.Player.Id;
         }
@@ -119,9 +119,9 @@ namespace Blokee
             Console.WriteLine("PieceIsAdjacent: {0}", adjacent);
             if (adjacent == false) return false;
             return true;*/
-            return !PieceIsOutOfBounds(move.PlacingRow, move.PlacingColumn, move.Piece, move.Orientation) &&
-                !PieceOverlap(move.PlacingRow, move.PlacingColumn, move.Piece, move.Orientation) &&
-                !PieceIsAdjacent(move.PlacingRow, move.PlacingColumn, move.Piece, move.Orientation, move.Player.Id);
+            return !PieceIsOutOfBounds(move.PlacingRow, move.PlacingColumn, move.Player.Pieces[move.PieceId], move.Orientation) &&
+                !PieceOverlap(move.PlacingRow, move.PlacingColumn, move.Player.Pieces[move.PieceId], move.Orientation) &&
+                !PieceIsAdjacent(move.PlacingRow, move.PlacingColumn, move.Player.Pieces[move.PieceId], move.Orientation, move.Player.Id);
         }
 
         public int[][] GetAllAvailableCorners(int playerId)

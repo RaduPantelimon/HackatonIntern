@@ -2,6 +2,14 @@
   "Packages": [
     {
       "Package": {
+        "Id": "Blokee.Activities",
+        "Version": "[1.0.8106.21830]"
+      },
+      "Assemblies": [],
+      "Path": null
+    },
+    {
+      "Package": {
         "Id": "UiPath.Excel.Activities",
         "Version": "2.10.4"
       },
@@ -156,17 +164,6 @@
         "C:\\Users\\radu.bucur\\.nuget\\packages\\uipath.webapi.activities/1.9.2\\lib/net461/UiPath.Web.dll"
       ],
       "Path": "C:\\Users\\radu.bucur\\.nuget\\packages\\uipath.webapi.activities\\1.9.2"
-    },
-    {
-      "Package": {
-        "Id": "Blokee.Activities",
-        "Version": "1.0.8106.19614"
-      },
-      "Assemblies": [
-        "C:\\Users\\radu.bucur\\.nuget\\packages\\blokee.activities/1.0.8106.19614\\lib/net452/Blokee.Activities.dll",
-        "C:\\Users\\radu.bucur\\.nuget\\packages\\newtonsoft.json/11.0.2\\lib/net45/Newtonsoft.Json.dll"
-      ],
-      "Path": "C:\\Users\\radu.bucur\\.nuget\\packages\\blokee.activities\\1.0.8106.19614"
     }
   ],
   "Conflicts": [],
@@ -175,16 +172,6 @@
       "Id": "AvalonEdit",
       "Version": "6.0.1",
       "Dependencies": []
-    },
-    "Blokee.Activities": {
-      "Id": "Blokee.Activities",
-      "Version": "1.0.8106.19614",
-      "Dependencies": [
-        {
-          "Item1": "Newtonsoft.Json",
-          "Item2": "[11.0.2, )"
-        }
-      ]
     },
     "ClosedXML": {
       "Id": "ClosedXML",
@@ -1048,16 +1035,6 @@
         "C:\\Users\\radu.bucur\\.nuget\\packages\\avalonedit\\6.0.1\\lib\\net45\\ICSharpCode.AvalonEdit.dll"
       ],
       "Path": "C:\\Users\\radu.bucur\\.nuget\\packages\\avalonedit\\6.0.1"
-    },
-    {
-      "Package": {
-        "Id": "Blokee.Activities",
-        "Version": "1.0.8106.19614"
-      },
-      "Assemblies": [
-        "C:\\Users\\radu.bucur\\.nuget\\packages\\blokee.activities\\1.0.8106.19614\\lib\\net452\\Blokee.Activities.dll"
-      ],
-      "Path": "C:\\Users\\radu.bucur\\.nuget\\packages\\blokee.activities\\1.0.8106.19614"
     },
     {
       "Package": {

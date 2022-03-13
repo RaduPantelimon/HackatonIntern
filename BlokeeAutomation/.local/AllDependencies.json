@@ -14,18 +14,6 @@
           "lib/net45/ICSharpCode.AvalonEdit.dll": {}
         }
       },
-      "Blokee.Activities/1.0.8106.19614": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "11.0.2"
-        },
-        "compile": {
-          "lib/net452/_._": {}
-        },
-        "runtime": {
-          "lib/net452/Blokee.Activities.dll": {}
-        }
-      },
       "ClosedXML/0.87.1": {
         "type": "package",
         "dependencies": {
@@ -1707,18 +1695,6 @@
         },
         "runtime": {
           "lib/net45/ICSharpCode.AvalonEdit.dll": {}
-        }
-      },
-      "Blokee.Activities/1.0.8106.19614": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "11.0.2"
-        },
-        "compile": {
-          "lib/net452/_._": {}
-        },
-        "runtime": {
-          "lib/net452/Blokee.Activities.dll": {}
         }
       },
       "ClosedXML/0.87.1": {
@@ -3408,17 +3384,6 @@
         "lib/net45/ICSharpCode.AvalonEdit.xml",
         "lib/netcoreapp3.0/ICSharpCode.AvalonEdit.dll",
         "lib/netcoreapp3.0/ICSharpCode.AvalonEdit.xml"
-      ]
-    },
-    "Blokee.Activities/1.0.8106.19614": {
-      "sha512": "j0OK1yxz6bC2MaSXCaxesbret64AFwXB4uijXdUC7Xbwcpap22wG8UmNAa7JGz3WmLalHGpkYSWsYXfJ8fCuvg==",
-      "type": "package",
-      "path": "blokee.activities/1.0.8106.19614",
-      "files": [
-        ".nupkg.metadata",
-        "blokee.activities.1.0.8106.19614.nupkg.sha512",
-        "blokee.activities.nuspec",
-        "lib/net452/Blokee.Activities.dll"
       ]
     },
     "ClosedXML/0.87.1": {
@@ -5367,7 +5332,7 @@
   "projectFileDependencyGroups": {
     "": [],
     ".NETFramework,Version=v4.6.1": [
-      "Blokee.Activities >= 1.0.8106.19614 <= 1.0.8106.19614",
+      "Blokee.Activities >= 1.0.8106.21830 <= 1.0.8106.21830",
       "UiPath.Excel.Activities >= 2.10.4 <= 2.10.4",
       "UiPath.Mail.Activities >= 1.10.5 <= 1.10.5",
       "UiPath.System.Activities >= 21.4.1 <= 21.4.1",
@@ -5392,7 +5357,7 @@
           "Blokee.Activities": {
             "include": "Runtime",
             "target": "Package",
-            "version": "[1.0.8106.19614, 1.0.8106.19614]"
+            "version": "[1.0.8106.21830, 1.0.8106.21830]"
           },
           "UiPath.Excel.Activities": {
             "include": "Runtime",
@@ -5423,5 +5388,17 @@
         "runtimeIdentifierGraphPath": "C:\\Users\\radu.bucur\\AppData\\Local\\UiPath\\app-21.4.4\\runtime.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1102",
+      "level": "Error",
+      "message": "Unable to find package Blokee.Activities with version (= 1.0.8106.21830)\r\n  - Found 7 version(s) in C:\\UiPath\\Projects\\Hackaton\\Code\\BlokeeActivity\\Output\\bin\\Debug [ Nearest version: 1.0.8106.19614 ]\r\n  - Found 7 version(s) in Blokee Activity [ Nearest version: 1.0.8106.19614 ]\r\n  - Found 0 version(s) in C:\\PackageSource\r\n  - Found 0 version(s) in LocalPackageSource\r\n  - Found 0 version(s) in C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\\r\n  - Found 0 version(s) in Microsoft Visual Studio Offline Packages\r\n  - Found 0 version(s) in C:\\UiPath\\COE\\Centre-of-Excellence-Attended-Automation\\Output\\bin\\Debug\r\n  - Found 0 version(s) in Local Attended Bullshit\r\n  - Found 0 version(s) in C:\\UiPath\\COE\\Centre-of-Excellence-Microsoft\\Output\\bin\\Debug\r\n  - Found 0 version(s) in CommunityPackages Dev\r\n  - Found 0 version(s) in C:\\UiPath\\COE\\COE-CodeAnalysisTools\\UiPathTeam.WorkflowAnalysis.Activities\\Output\\bin\\Debug\r\n  - Found 0 version(s) in WorkflowAnalyzerLocal\r\n  - Found 0 version(s) in C:\\UiPath\\CustomAct\\Centre-of-Excellence-Microsoft-master\\Output\\bin\\Debug\r\n  - Found 0 version(s) in SP Dev 2\r\n  - Found 0 version(s) in C:\\UiPath\\Packages\r\n  - Found 0 version(s) in Local Packages\r\n  - Found 0 version(s) in C:\\UiPath\\Projects\\HCA\\WordExtensions\\Output\\bin\\Debug\\Packages\r\n  - Found 0 version(s) in Word Extensions\r\n  - Found 0 version(s) in C:\\UiPath\\Projects\\Sharepoint Projects\\SharePointActivitiesCode\\Output\\bin\\Debug\r\n  - Found 0 version(s) in SharePoint Local Package Dev\r\n  - Found 0 version(s) in C:\\UiPath\\Projects\\Sharepoint Projects\\SharePointActivitiesCode\\Output\\bin\\Release\r\n  - Found 0 version(s) in SharePoint Local Package\r\n  - Found 0 version(s) in C:\\Users\\radu.bucur\\AppData\\Local\\UiPath\\app-21.4.4\\Packages\r\n  - Found 0 version(s) in Local\r\n  - Found 0 version(s) in https://api.nuget.org/v3/index.json\r\n  - Found 0 version(s) in nuget.org\r\n  - Found 0 version(s) in https://cloud.uipath.com/fantastic/fantastic/orchestrator_/nuget/v3/9b7f7ac8-c0b6-4b41-ad14-c58346feb9e7/index.json\r\n  - Found 0 version(s) in https://gallery.uipath.com/api/v2\r\n  - Found 0 version(s) in Connect\r\n  - Found 0 version(s) in https://pkgs.dev.azure.com/radubucur/TriggerFramework/_packaging/TestFeed/nuget/v3/index.json\r\n  - Found 0 version(s) in DEVOPS TEST\r\n  - Found 0 version(s) in https://www.myget.org/F/workflow/\r\n  - Found 0 version(s) in https://www.myget.org/F/workflow/\r\n  - Found 0 version(s) in Official",
+      "libraryId": "Blokee.Activities",
+      "targetGraphs": [
+        ".NETFramework,Version=v4.6.1",
+        ".NETFramework,Version=v4.6.1/win7-x86"
+      ]
+    }
+  ]
 }

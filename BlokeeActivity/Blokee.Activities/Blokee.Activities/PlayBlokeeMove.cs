@@ -23,9 +23,10 @@ namespace Blokee.Activities
 
         protected override void Execute(CodeActivityContext context)
         {
-            Board.I.RefreshBoard(BoardJson.Get(context));
+            Board board = new Board();
+            board.RefreshBoard(BoardJson.Get(context));
             var player = new Player(PlayerId.Get(context), AvailablePieces.Get(context));
-            var nextMove = player.Play();
+            var nextMove = player.Play(board);
 
             if(nextMove == null)
             {
@@ -38,7 +39,7 @@ namespace Blokee.Activities
                 Console.WriteLine("Playing Move: " + nextMove.ToString());
             }
 
-            PieceId.Set(context, nextMove?.Piece.Id ?? -1);
+            PieceId.Set(context, nextMove?.PieceId ?? -1);
             Orientation.Set(context, nextMove?.Orientation ?? -1);
             Row.Set(context, nextMove?.PlacingRow);
             Column.Set(context, nextMove?.PlacingColumn);

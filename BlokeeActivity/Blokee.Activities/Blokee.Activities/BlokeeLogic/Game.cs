@@ -13,12 +13,12 @@ namespace Blokee
         public bool IsOver;
         public Player[] Players { get; }
         public int NextPlayer;
-        public Board board { get; }
+        public Board Board { get; }
 
         private int _consecutiveNoValidMoves;
 
         
-        private Minimax minimaxStrategy;
+        //private Minimax minimaxStrategy;
 
         public Game(JObject gameProperties, int nextPlayer) {
             //determine who's turn is next
@@ -27,8 +27,8 @@ namespace Blokee
             NextPlayer = nextPlayer;
 
             //init board based on the game Properties received
-            this.board = Board.I;
-            board.RefreshBoard(gameProperties["gameBoard"].ToString());
+            this.Board = new Board();
+            Board.RefreshBoard(gameProperties["gameBoard"].ToString());
 
             //init players
             Players = new Player[playerCount];
@@ -47,12 +47,12 @@ namespace Blokee
         public Move PlayNextMove()
         {
             if (this.IsOver) throw new Exception("Game is over, no further moves possible");
-            Move move = Players[NextPlayer].Play();
+            Move move = Players[NextPlayer].Play(this.Board);
 
             //if move is valid update board and player
             if(move != null)
             {
-                Board.I.MakeMove(move);// move[2], move[3], Players[NextPlayer].Pieces[move[0]], move[1], Players[NextPlayer].Id);
+                this.Board.MakeMove(move);// move[2], move[3], Players[NextPlayer].Pieces[move[0]], move[1], Players[NextPlayer].Id);
                 _consecutiveNoValidMoves = 0;
             }
             else

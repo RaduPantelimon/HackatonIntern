@@ -31,7 +31,7 @@ namespace Blokee
             }
         }
 
-        public Piece Piece { get; set; }
+        public int PieceId { get; set; }
         public int Orientation { get; set; }
 
         public Player Player { get; set; }
@@ -44,7 +44,19 @@ namespace Blokee
             CornerColumn = _cornerColumn;
             PiecePointRow = _piecePointRow;
             PiecePointColumn = _piecePointColumn;
-            Piece = _piece;
+            PieceId = _piece.Id;
+            Orientation = _orientation;
+            Score = 0;
+        }
+
+        public Move(Player _player, int _pieceId, int _orientation, int _cornerRow, int _cornerColumn, int _piecePointRow, int _piecePointColumn)
+        {
+            Player = _player;
+            CornerRow = _cornerRow;
+            CornerColumn = _cornerColumn;
+            PiecePointRow = _piecePointRow;
+            PiecePointColumn = _piecePointColumn;
+            PieceId = _pieceId;
             Orientation = _orientation;
             Score = 0;
         }
@@ -55,7 +67,7 @@ namespace Blokee
             return String.Format("CornerRow:{0}; CornerColumn:{1}; Piece:{2}; Orientation:{3}; PiecePointRow: {4}; PiecePointColumn: {5}; PlayerID: {6}",
                 CornerRow,
                 CornerColumn,
-                Piece.Id,
+                PieceId,
                 Orientation,
                 PiecePointRow,
                 PiecePointColumn,

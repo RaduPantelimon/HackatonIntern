@@ -33,7 +33,7 @@ namespace TestConsoleApplication
                 {
                     Console.WriteLine("Barasona Over!!!");
                 }
-                Console.WriteLine(Environment.NewLine + Board.I.ToString());
+                Console.WriteLine(Environment.NewLine + game.Board.ToString());
                 moveIdx++;
             }
         }
