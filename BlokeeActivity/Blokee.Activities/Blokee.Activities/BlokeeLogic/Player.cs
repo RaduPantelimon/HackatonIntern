@@ -18,7 +18,7 @@ namespace Blokee
         public int currentMoveCount = 0;
         private readonly DifficultyLevel Difficulty;
 
-        public Player(int Id, bool[] availability, DifficultyLevel difficulty = DifficultyLevel.Basic)
+        public Player(int Id, bool[] availability, DifficultyLevel difficulty = DifficultyLevel.Intermediate)
         {
             this.Id = Id;
             this.Difficulty = difficulty;
@@ -222,15 +222,15 @@ namespace Blokee
             return validMoves;
         }
 
-        private Move GetGreedyMove(Board board, bool getAndPLay = true)
+        private Move GetGreedyMove(Game game, bool getAndPLay = true)
         {
             var availablePieces = this.Pieces.Where(piece => piece.IsAvailable).OrderByDescending(piece => piece.Weight);
-            var availableCorners = board.GetAllAvailableCorners(this.Id);
+            var availableCorners = game.Board.GetAllAvailableCorners(this.Id);
             List<Move> moves = new List<Move>();
 
             foreach (var piece in availablePieces)
             {
-                moves = GetValidMoves(board, piece, availableCorners);
+                moves = GetValidMoves(game.Board, piece, availableCorners);
                 if (moves.Any()) { break; }
             }
 
@@ -243,20 +243,24 @@ namespace Blokee
             return null;
         }
 
-        //private int PlayGreedyAdvanced()
-        //{
-        //    var availablePieces = this.Pieces.Where(piece => piece.IsAvailable).OrderByDescending(piece => piece.Weight);
-        //    var availableCorners = Board.I.GetAllAvailableCorners(this.Id);
-        //    List<int[]> moves = new List<int[]>();
+        private Move GetGreedyAdvancedMove(Game game, bool getAndPLay = true)
+        {
+            var availablePieces = this.Pieces.Where(piece => piece.IsAvailable);
+            var availableCorners = game.Board.GetAllAvailableCorners(this.Id);
+            List<Move> moves = new List<Move>();
+            foreach (var piece in availablePieces)
+                moves.AddRange(GetValidMoves(game.Board, piece, availableCorners));
 
-        //    foreach (var piece in availablePieces)
-        //    {
-        //        moves = GetValidMoves(piece, availableCorners);
-        //        if (moves.Any()) { piece.IsAvailable = false; break; }
-        //    }
-        //}
+            if (moves.Any())
+            {
+                //return move with the best score (TO DO: make this sligthtly more efficient)
+                double[] scores = moves.Select(move => move.GetMoveScore(game)).ToArray();
+                return moves[Array.IndexOf(scores, scores.Max())];
+            }
+            return null;
+        }
 
-        public Move GetMove(Board board, bool getAndPLay = true)
+        public Move GetMove(Game game, bool getAndPLay = true)
         {
             currentMoveCount = Pieces.Where(piece => piece.IsAvailable ==false).Count();
             if (currentMoveCount < 4)
@@ -264,7 +268,8 @@ namespace Blokee
                 return GetBarosanaMove();
             }
 
-            if (Difficulty == DifficultyLevel.Basic) return GetGreedyMove(board, getAndPLay);
+            if (Difficulty == DifficultyLevel.Basic) return GetGreedyMove(game, getAndPLay);
+            if (Difficulty == DifficultyLevel.Intermediate) return GetGreedyAdvancedMove(game, getAndPLay);
             return null;
         }
 

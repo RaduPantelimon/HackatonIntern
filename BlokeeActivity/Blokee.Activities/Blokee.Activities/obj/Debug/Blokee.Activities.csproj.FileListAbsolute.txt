@@ -12,4 +12,3 @@ C:\UiPath\Projects\Hackaton\Code\BlokeeActivity\Blokee.Activities\Blokee.Activit
 C:\UiPath\Projects\Hackaton\Code\BlokeeActivity\Blokee.Activities\Blokee.Activities\obj\Debug\Blokee.Activities.pdb
 C:\Users\rares.ont\Source\Repos\HackatonIntern\BlokeeActivity\Blokee.Activities\Blokee.Activities\obj\Debug\Blokee.Activities.csproj.CoreCompileInputs.cache
 C:\Users\rares.ont\Source\Repos\HackatonIntern\BlokeeActivity\Blokee.Activities\Blokee.Activities\obj\Debug\Blokee.Activities.csproj.AssemblyReference.cache
-C:\UiPath\Projects\Hackaton\Code\BlokeeActivity\Blokee.Activities\Blokee.Activities\obj\Debug\Blokee.Activities.csprojAssemblyReference.cache

@@ -5,13 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Blokee;
+using Newtonsoft.Json.Linq;
 
 namespace Blokee.Activities
 {
     public class PlayBlokeeMove : CodeActivity
     {
-        public InOutArgument<bool[]> AvailablePieces { get; set; }
-        public InArgument<string> BoardJson { get; set; }
+        public OutArgument<bool[]> AvailablePieces { get; set; }
+        public InArgument<string> GameStatusJson { get; set; }
         public InArgument<int> PlayerId { get; set; }
 
         public OutArgument<bool> MoveExists { get; set; }
@@ -23,10 +24,10 @@ namespace Blokee.Activities
 
         protected override void Execute(CodeActivityContext context)
         {
-            Board board = new Board();
-            board.RefreshBoard(BoardJson.Get(context));
-            var player = new Player(PlayerId.Get(context), AvailablePieces.Get(context));
-            var nextMove = player.GetMove(board);
+            JObject gameProperties = JObject.Parse(GameStatusJson.Get(context));
+            int playerId = PlayerId.Get(context);
+            Game game = new Game(gameProperties, playerId);
+            var nextMove = game.PlayNextMove();
 
             if(nextMove == null)
             {
@@ -43,7 +44,7 @@ namespace Blokee.Activities
             Orientation.Set(context, nextMove?.Orientation ?? -1);
             Row.Set(context, nextMove?.PlacingRow);
             Column.Set(context, nextMove?.PlacingColumn);
-            AvailablePieces.Set(context, player.GetPieceAvailability());
+            AvailablePieces.Set(context, game.Players[playerId].GetPieceAvailability());
         }
     }
 }

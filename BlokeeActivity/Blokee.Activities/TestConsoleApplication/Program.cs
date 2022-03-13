@@ -27,23 +27,24 @@ namespace TestConsoleApplication
             while(!game.IsOver)
             {
                 Move move = game.PlayNextMove();
-
-                //start debuging when you're fairly late in the game
-                if(moveIdx>16)
+                //this is just to start debuging when you're fairly late in the game
+                if (moveIdx>16)
                 {
                     Console.WriteLine("Barasona Over!!!");
                 }
-
+                Console.WriteLine("Playing Move: " + move.ToString());
                 Console.WriteLine(Environment.NewLine + game.Board.ToString());
+                /*
                 if (move!= null)
                 {
                     ///TEST
-                    game.UndoMove(move);
-                    Console.WriteLine(Environment.NewLine + game.Board.ToString());
-                    game.PlayMove(move);
-                    Console.WriteLine(Environment.NewLine + game.Board.ToString());
+                    //game.UndoMove(move);
+                    //Console.WriteLine(Environment.NewLine + game.Board.ToString());
+                    //game.PlayMove(move);
+                    //Console.WriteLine(Environment.NewLine + game.Board.ToString());
                     ///TEST
                 }
+                */
 
                 moveIdx++;
             }

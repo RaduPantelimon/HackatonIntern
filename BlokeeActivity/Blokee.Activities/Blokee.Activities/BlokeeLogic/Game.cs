@@ -40,27 +40,26 @@ namespace Blokee
                     gameProperties["enemyMoves"][index].ToList().ForEach(id => pieceAvailability[(int)id] = false);
                     Players[index] = new Player(index, pieceAvailability);
                 });
-
-            //minimaxStrategy = new Minimax(Players(0), this);
         }
-
 
         public void PlayMove(Move move)
         {
             this.Board.MakeMove(move);
             move.Player.Pieces[move.PieceId].IsAvailable = false;
+            NextPlayer = (NextPlayer + 1) % playerCount;
         }
 
         public void UndoMove(Move move)
         {
             this.Board.UndoMove(move);
             move.Player.Pieces[move.PieceId].IsAvailable = true;
+            NextPlayer = (NextPlayer - 1 + playerCount) % playerCount;
         }
 
         public Move PlayNextMove()
         {
             if (this.IsOver) throw new Exception("Game is over, no further moves possible");
-            Move move = Players[NextPlayer].GetMove(this.Board, false);
+            Move move = Players[NextPlayer].GetMove(this, false);
 
             //if move is valid update board and player
             if(move != null)
@@ -73,11 +72,22 @@ namespace Blokee
                 _consecutiveNoValidMoves++;
                 if (_consecutiveNoValidMoves == playerCount) this.IsOver = true;
             }
-            
-
-            NextPlayer = (NextPlayer + 1) % playerCount;
             return move;
         }
 
+        public int[] GetCurrentScores(int?[,] _board = null)
+        {
+            _board = (_board == null) ? Board._board : _board;
+            int[] scores = new int[Game.playerCount];
+            for (int i = 0; i < Board.rowCount; i++)
+                for (int j = 0; j < Board.colCount; j++)
+                {
+                    if (_board[i, j] != null && _board[i, j] != -1)
+                    {
+                        scores[_board[i, j].Value]++;
+                    }
+                }
+            return scores;
+        }
     }
 }

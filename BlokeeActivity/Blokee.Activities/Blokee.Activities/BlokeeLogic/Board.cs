@@ -9,8 +9,17 @@ namespace Blokee
     {
         public const int rowCount = 20;
         public const int colCount = 20;
+        public static readonly int[][] directions = new int[][] {
+            new int[] {0, 1},
+            new int[] {0, -1},
+            new int[] {1, 0},
+            new int[] {-1, 0},
+            new int[] {-1, -1},
+            new int[] {-1, 1},
+            new int[] {1, -1},
+            new int[] {1, 1}};
 
-        private int?[,] _board;
+        public int?[,] _board;
 
         public Board()
         {
@@ -21,7 +30,10 @@ namespace Blokee
         {
             RefreshBoard(inputJson);
         }
-
+        public Board(int?[,] board)
+        {
+            _board = (int?[,])board.Clone();
+        }
 
         // Copy Constructor
         public Board(Board originalBoard)
@@ -51,26 +63,26 @@ namespace Blokee
 
         public void MakeMove(Move move)
         {
-            Console.WriteLine("Playing Move: " + move.ToString());
+            //Console.WriteLine("Playing Move: " + move.ToString());
             var piecePosition = move.Player.Pieces[move.PieceId].AllVariations[move.Orientation];
             foreach (var point in piecePosition)
                 _board[move.PlacingRow + point[0], move.PlacingColumn + point[1]] = move.Player.Id;
         }
         public void UndoMove(Move move)
         {
-            Console.WriteLine("Playing Move: " + move.ToString());
+            //Console.WriteLine("Undoing Move: " + move.ToString());
             var piecePosition = move.Player.Pieces[move.PieceId].AllVariations[move.Orientation];
             foreach (var point in piecePosition)
                 _board[move.PlacingRow + point[0], move.PlacingColumn + point[1]] = null;
         }
 
 
-        private bool PointIsOutOfBounds(int row, int col)
+        public bool PointIsOutOfBounds(int row, int col)
         {
             return !(0 <= row && row < rowCount && 0 <= col && col < colCount);
         }
 
-        private bool PointIsAdjacent(int row, int col, int playerId)
+        public bool PointIsAdjacent(int row, int col, int playerId)
         {
             return (row + 1 < rowCount && _board[row + 1, col] == playerId) ||
                    (row - 1 >= 0 && _board[row - 1, col] == playerId) ||
@@ -84,7 +96,7 @@ namespace Blokee
                 (_board[row, col] != null && _board[row, col] != -1);
         }
 
-        private bool IsValidCorner(int row, int col, int playerId)
+        public bool IsValidCorner(int row, int col, int playerId)
         {
             return !PointIsOutOfBounds(row, col) &&
                    !PointIsAdjacent(row, col, playerId) &&
@@ -148,18 +160,5 @@ namespace Blokee
             return corners.ToArray();
         }
 
-        public int[] GetCurrentScores()
-        {
-            int[] scores = new int[Game.playerCount];
-            for (int i = 0; i < rowCount; i++)
-                for (int j = 0; j < colCount; j++)
-                {
-                    if (_board[i, j] != null && _board[i, j] != -1)
-                    {
-                        scores[_board[i, j].Value]++;
-                    }
-                }
-            return scores;
-        }
     }
 }
