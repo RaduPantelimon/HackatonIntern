@@ -16,12 +16,12 @@ namespace Blokee
         public Piece[] Pieces { get; set; }
         public int score = 0;
         public int currentMoveCount = 0;
-        private readonly DifficultyLevel difficulty;
+        private readonly DifficultyLevel Difficulty;
 
         public Player(int Id, bool[] availability, DifficultyLevel difficulty = DifficultyLevel.Basic)
         {
             this.Id = Id;
-            this.difficulty = difficulty;
+            this.Difficulty = difficulty;
             availability = availability ?? Enumerable.Repeat(true,21).ToArray();
             this.Pieces = new Piece[]
             {
@@ -49,7 +49,14 @@ namespace Blokee
             };
         }
 
-        private Move PlayBarosana()
+        //copy constructor
+        public Player(Player originalPlayer)
+        {
+            this.Id = originalPlayer.Id;
+            this.Difficulty = originalPlayer.Difficulty;
+        }
+
+        private Move GetBarosanaMove(bool getAndPLay = true)
         {
             int pieceIndex, orientation, row, col, piecePointRow = 0, piecePointColumn = 0;
             if (currentMoveCount == 0)
@@ -190,7 +197,8 @@ namespace Blokee
 
                 }
             }
-            this.Pieces[pieceIndex].IsAvailable = false;
+            //if we also want to play the move asap
+            if(getAndPLay)this.Pieces[pieceIndex].IsAvailable = false;
             return new Move(this, this.Pieces[pieceIndex], orientation, row, col, piecePointRow, piecePointColumn); //{ this.Pieces[pieceIndex].Id, orientation, row, col };
         }
 
@@ -205,7 +213,7 @@ namespace Blokee
                     foreach (var point in piece.AllVariations[orientation])
                     {
                         Move currentMove = new Move(this, piece, orientation, corner[0], corner[1], point[0], point[1]);
-                        if (board.IsLegalMove(currentMove/*corner[0], corner[1], piece, orientation, this.Id*/)) { validMoves.Add(currentMove); }
+                        if (board.IsLegalMove(currentMove)) { validMoves.Add(currentMove); }
 
                     }
                 }
@@ -214,7 +222,7 @@ namespace Blokee
             return validMoves;
         }
 
-        private Move PlayGreedy(Board board)
+        private Move GetGreedyMove(Board board, bool getAndPLay = true)
         {
             var availablePieces = this.Pieces.Where(piece => piece.IsAvailable).OrderByDescending(piece => piece.Weight);
             var availableCorners = board.GetAllAvailableCorners(this.Id);
@@ -223,10 +231,16 @@ namespace Blokee
             foreach (var piece in availablePieces)
             {
                 moves = GetValidMoves(board, piece, availableCorners);
-                if (moves.Any()) { piece.IsAvailable = false; break; }
+                if (moves.Any()) { break; }
             }
 
-            return moves.Any() ? moves[new Random().Next(moves.Count)] : null;
+            if (moves.Any())
+            {
+                Move selectedMove = moves[new Random().Next(moves.Count)];
+                if(getAndPLay) selectedMove.Player.Pieces[selectedMove.PieceId].IsAvailable = false;
+                return selectedMove;
+            }
+            return null;
         }
 
         //private int PlayGreedyAdvanced()
@@ -242,15 +256,16 @@ namespace Blokee
         //    }
         //}
 
-        public Move Play(Board board)
+        public Move GetMove(Board board, bool getAndPLay = true)
         {
             currentMoveCount = Pieces.Where(piece => piece.IsAvailable ==false).Count();
             if (currentMoveCount < 4)
             {
-                return PlayBarosana();
+                return GetBarosanaMove();
             }
 
-            return PlayGreedy(board);
+            if (Difficulty == DifficultyLevel.Basic) return GetGreedyMove(board, getAndPLay);
+            return null;
         }
 
         public bool[] GetPieceAvailability()

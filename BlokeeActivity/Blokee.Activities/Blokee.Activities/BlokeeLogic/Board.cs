@@ -12,23 +12,21 @@ namespace Blokee
 
         private int?[,] _board;
 
-        // not using threads, not giving a crap about thread safety :)
-        /*private static Board _instance;
-        public static Board I
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new Board();
-                }
-                return _instance;
-            }
-        }*/
-
         public Board()
         {
             _board = new int?[rowCount, colCount];
+        }
+
+        public Board(string inputJson)
+        {
+            RefreshBoard(inputJson);
+        }
+
+
+        // Copy Constructor
+        public Board(Board originalBoard)
+        {
+            this._board = (int?[,])originalBoard._board.Clone();
         }
 
         // Hope this works :D 
@@ -58,6 +56,14 @@ namespace Blokee
             foreach (var point in piecePosition)
                 _board[move.PlacingRow + point[0], move.PlacingColumn + point[1]] = move.Player.Id;
         }
+        public void UndoMove(Move move)
+        {
+            Console.WriteLine("Playing Move: " + move.ToString());
+            var piecePosition = move.Player.Pieces[move.PieceId].AllVariations[move.Orientation];
+            foreach (var point in piecePosition)
+                _board[move.PlacingRow + point[0], move.PlacingColumn + point[1]] = null;
+        }
+
 
         private bool PointIsOutOfBounds(int row, int col)
         {

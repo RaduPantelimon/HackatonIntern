@@ -44,15 +44,28 @@ namespace Blokee
             //minimaxStrategy = new Minimax(Players(0), this);
         }
 
+
+        public void PlayMove(Move move)
+        {
+            this.Board.MakeMove(move);
+            move.Player.Pieces[move.PieceId].IsAvailable = false;
+        }
+
+        public void UndoMove(Move move)
+        {
+            this.Board.UndoMove(move);
+            move.Player.Pieces[move.PieceId].IsAvailable = true;
+        }
+
         public Move PlayNextMove()
         {
             if (this.IsOver) throw new Exception("Game is over, no further moves possible");
-            Move move = Players[NextPlayer].Play(this.Board);
+            Move move = Players[NextPlayer].GetMove(this.Board, false);
 
             //if move is valid update board and player
             if(move != null)
             {
-                this.Board.MakeMove(move);// move[2], move[3], Players[NextPlayer].Pieces[move[0]], move[1], Players[NextPlayer].Id);
+                PlayMove(move);
                 _consecutiveNoValidMoves = 0;
             }
             else

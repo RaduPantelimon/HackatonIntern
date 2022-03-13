@@ -26,7 +26,7 @@ namespace Blokee.Activities
             Board board = new Board();
             board.RefreshBoard(BoardJson.Get(context));
             var player = new Player(PlayerId.Get(context), AvailablePieces.Get(context));
-            var nextMove = player.Play(board);
+            var nextMove = player.GetMove(board);
 
             if(nextMove == null)
             {

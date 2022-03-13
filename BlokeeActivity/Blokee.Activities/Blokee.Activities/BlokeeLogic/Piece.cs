@@ -20,6 +20,9 @@ namespace Blokee
         {
             this.IsAvailable = available;
         }
+
+       
+
     }
 
     public class Piece0 : Piece
@@ -34,6 +37,7 @@ namespace Blokee
             new int[][] { new int[] {0,0}, new int[] {1,0}, new int[] {2,0}, new int[] {3,0} }};
         private Piece0() : this(false) { }
         public Piece0(bool available) : base(available) { }
+
     }
 
     public class Piece1 : Piece
@@ -74,7 +78,7 @@ namespace Blokee
             new int[][] { new int[] {3,1},new int[] {2,1},new int[] {1,1},new int[] {0,1},new int[] {1,0}} };
         private Piece2() : this(false) { }
         public Piece2(bool available) : base(available) { }
-    }
+       }
 
     public class Piece3 : Piece
     {
