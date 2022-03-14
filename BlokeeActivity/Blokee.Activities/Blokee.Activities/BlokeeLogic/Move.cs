@@ -14,7 +14,8 @@ namespace Blokee
     {
 
         public static int PieceSizeConstant = 2;
-        public static int ZonesOfInfluenceConstant = 1;
+        public static double ZonesOfInfluenceConstant = 0.5;
+        public static double CornerConstant = 0.1;
 
         public int CornerRow { get; set; }
         public int CornerColumn { get; set; }
@@ -83,27 +84,112 @@ namespace Blokee
 
         public double GetMoveScore(Game game)
         {
-            double MoveScore;
+            int playerId = game.NextPlayer;
+            int[] currentScores = game.GetCurrentScores();
+            int enemyScoreTotal = currentScores.Sum() - currentScores[playerId];
+            game.PlayMove(this);
+            //File.WriteAllText("testBoard.txt", game.Board.ToString());
 
-            MoveScore = PieceSizeConstant * this.Player.Pieces[this.PieceId].Points.Length;
+            double MoveScore = PieceSizeConstant * this.Player.Pieces[this.PieceId].Points.Length;
+            try
+            {
+                //we will compose a score that should roughly tell us how good a move is
+                int piecesAvailable = this.Player.Pieces.Where(piece => piece.IsAvailable == true).Count();
+                int[] zonesOfInFluence = GetZonesOfInfluence(game);
+                MoveScore += piecesAvailable * ZonesOfInfluenceConstant * ((double)zonesOfInFluence[playerId] / zonesOfInFluence.Sum());
 
-            //we will compose a score that should roughly tell us how good a move is
-            int piecesAvailable = this.Player.Pieces.Where(piece => piece.IsAvailable == true).Count();
-            int[] zonesOfInFluence = GetZonesOfInfluence(game);
-            MoveScore += piecesAvailable / 2 * ZonesOfInfluenceConstant * ((double)zonesOfInFluence[game.NextPlayer] / zonesOfInFluence.Sum());
-               
+                //next, we will compose a score based on the situation of the corners on the board
+                double playerCornerScore = 0, enemyCornerScore = 0;
+                foreach (Player p in game.Players)
+                {
+                    if(p.Id == playerId)
+                        playerCornerScore = GetCornersScores(game, p);
+                    else
+                    {
+                        enemyCornerScore += GetCornersScores(game, p) * currentScores[p.Id] / enemyScoreTotal;
+                    }
+                }
+                MoveScore += (playerCornerScore - enemyCornerScore) * CornerConstant;
+
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("Found exception while playing game: " + e.ToString());
+                throw;
+            }
+            finally
+            {
+                game.UndoMove(this);
+            }
             return MoveScore;
         }
+
+        public double GetCornersScores(Game game, Player player)
+        {
+            //first we play the move
+            //to Asses how it would divide the board into "areas of influence" for the players
+            double score = 0;
+            Board densityBoard = new Board(); //(int?[,])game.Board._board.Clone();
+            densityBoard._board.FillArray(0);
+            int[][] corners = game.Board.GetAllAvailableCorners(player.Id);
+            Piece[] availablePieces = Player.Pieces.Where(piece => piece.IsAvailable == true).ToArray();
+
+            //let's see exactly how many pieces we can fit in each workflow
+            foreach (var corner in corners)
+            {
+                int piecesCounter = 0;
+                //create a new board that will keep track how this corner can spread
+                Board dummyBoard = new Board();
+
+                foreach (var piece in availablePieces)
+                {
+                    bool pieceFits = false;
+                    foreach (var orientation in piece.Orientations)
+                    {
+                        foreach (var point in piece.AllVariations[orientation])
+                        {
+                            Move currentMove = new Move(player, piece, orientation, corner[0], corner[1], point[0], point[1]);
+                            if (game.Board.IsLegalMove(currentMove))
+                            {
+                                //validMoves.Add(currentMove);
+                                pieceFits = true;
+                                dummyBoard.MakeMove(currentMove);
+                                piecesCounter++;
+                                break;
+                            }
+                        }
+                        if (pieceFits) break;
+                    }
+                }
+
+                //take all of the points on the dummy board and use them to fill the density matrix
+                int spread = 0; double density = 0;
+                for(int i=0; i<Board.rowCount; i++)
+                {
+                    for (int j = 0; j < Board.colCount; j++)
+                    {
+                        if (dummyBoard._board[i, j] != null)
+                        {
+                            densityBoard._board[i, j]++;
+                            density += densityBoard._board[i, j].Value;
+                            spread++;
+                        }
+                    }
+                }
+                if(piecesCounter>0)
+                    score += (piecesCounter * spread) / density;
+            }
+            //File.WriteAllText("testCornersTempBoard.txt", densityBoard.ToString());
+            return score;
+        }
+
 
         public int[] GetZonesOfInfluence(Game game)
         {
             //first we play the move
             //to Asses how it would divide the board into "areas of influence" for the players
-            game.PlayMove(this);
-            File.WriteAllText("testBoard.txt", game.Board.ToString());
-
-            try
-            {
+           
                 int?[,] tempBoard = (int?[,])game.Board._board.Clone();
                 int currentPlayer = game.NextPlayer;
                 //adding all corners in a queue, from there we will expand the influence zone for each player
@@ -136,19 +222,8 @@ namespace Blokee
                         }
                     }
                 }
-                File.WriteAllText("testTempBoard.txt", new Board(tempBoard).ToString());
+                //File.WriteAllText("testTempBoard.txt", new Board(tempBoard).ToString());
                 return GetZonesOfInfluenceScore(tempBoard);
-            }
-            catch(Exception e)
-            {
-
-                Console.WriteLine("Found exception while playing game: " + e.ToString());
-                throw;
-            }
-            finally
-            {
-                game.UndoMove(this);
-            }
         }
 
         public int[] GetZonesOfInfluenceScore(int?[,] _board = null)

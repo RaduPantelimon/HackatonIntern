@@ -32,7 +32,7 @@ namespace TestConsoleApplication
                 {
                     Console.WriteLine("Barasona Over!!!");
                 }
-                Console.WriteLine("Playing Move: " + move.ToString());
+                if(move!= null) Console.WriteLine("Playing Move: " + move.ToString());
                 Console.WriteLine(Environment.NewLine + game.Board.ToString());
                 /*
                 if (move!= null)

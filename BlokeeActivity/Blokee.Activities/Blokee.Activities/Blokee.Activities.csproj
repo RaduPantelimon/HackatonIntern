@@ -55,6 +55,7 @@
     <Compile Include="BlokeeLogic\Move.cs" />
     <Compile Include="BlokeeLogic\Piece.cs" />
     <Compile Include="BlokeeLogic\Player.cs" />
+    <Compile Include="BlokeeLogic\Utils\Utils.cs" />
     <Compile Include="PlayBlokeeMove.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
