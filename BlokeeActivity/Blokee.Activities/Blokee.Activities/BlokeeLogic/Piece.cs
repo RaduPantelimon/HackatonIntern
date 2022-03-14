@@ -323,7 +323,7 @@ namespace Blokee
     {
         public override int Id => 17;
         public override int Size => this.Points.Length;
-        public override int Weight => 10;
+        public override int Weight => 5;
         public override int[][] Points => new int[][] { new int[] { 0, 0 } };
         public override int[] Orientations => new int[] { 0 };
         public override int[][][] AllVariations =>  new int[][][] {

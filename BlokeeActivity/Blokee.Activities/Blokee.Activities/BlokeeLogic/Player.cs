@@ -22,7 +22,7 @@ namespace Blokee
         {
             this.Id = Id;
             this.Difficulty = difficulty;
-            availability = availability ?? Enumerable.Repeat(true,21).ToArray();
+            availability = availability ?? Enumerable.Repeat(true, 21).ToArray();
             this.Pieces = new Piece[]
             {
                 new Piece0(availability[0]),
@@ -56,7 +56,7 @@ namespace Blokee
             this.Difficulty = originalPlayer.Difficulty;
         }
 
-        private Move GetBarosanaMove(bool getAndPLay = true)
+        private Move GetBarosanaMove(Game game, bool getAndPLay = true)
         {
             int pieceIndex, orientation, row, col, piecePointRow = 0, piecePointColumn = 0;
             if (currentMoveCount == 0)
@@ -198,8 +198,11 @@ namespace Blokee
                 }
             }
             //if we also want to play the move asap
-            if(getAndPLay)this.Pieces[pieceIndex].IsAvailable = false;
-            return new Move(this, this.Pieces[pieceIndex], orientation, row, col, piecePointRow, piecePointColumn); //{ this.Pieces[pieceIndex].Id, orientation, row, col };
+            var newMove = new Move(this, this.Pieces[pieceIndex], orientation, row, col, piecePointRow, piecePointColumn);
+            var moveIsValid = game.Board.IsLegalMove(newMove);
+
+            if (getAndPLay && moveIsValid) this.Pieces[pieceIndex].IsAvailable = false;
+            return moveIsValid ? newMove : GetDifficultyBasedMove(game, true); //{ this.Pieces[pieceIndex].Id, orientation, row, col };
         }
 
         public List<Move> GetValidMoves(Board board, Piece piece, int[][] corners)
@@ -237,7 +240,7 @@ namespace Blokee
             if (moves.Any())
             {
                 Move selectedMove = moves[new Random().Next(moves.Count)];
-                if(getAndPLay) selectedMove.Player.Pieces[selectedMove.PieceId].IsAvailable = false;
+                if (getAndPLay) selectedMove.Player.Pieces[selectedMove.PieceId].IsAvailable = false;
                 return selectedMove;
             }
             return null;
@@ -260,17 +263,22 @@ namespace Blokee
             return null;
         }
 
-        public Move GetMove(Game game, bool getAndPLay = true)
+        public Move GetDifficultyBasedMove(Game game, bool getAndPLay)
         {
-            currentMoveCount = Pieces.Where(piece => piece.IsAvailable ==false).Count();
-            if (currentMoveCount < 4)
-            {
-                return GetBarosanaMove();
-            }
-
             if (Difficulty == DifficultyLevel.Basic) return GetGreedyMove(game, getAndPLay);
             if (Difficulty == DifficultyLevel.Intermediate) return GetGreedyAdvancedMove(game, getAndPLay);
             return null;
+        }
+
+        public Move GetMove(Game game, bool getAndPLay = true)
+        {
+            currentMoveCount = Pieces.Where(piece => piece.IsAvailable == false).Count();
+            if (currentMoveCount < 4)
+            {
+                return GetBarosanaMove(game);
+            }
+
+            return GetDifficultyBasedMove(game, getAndPLay);
         }
 
         public bool[] GetPieceAvailability()
