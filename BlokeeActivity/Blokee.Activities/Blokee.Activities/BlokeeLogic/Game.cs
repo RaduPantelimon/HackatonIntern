@@ -20,7 +20,7 @@ namespace Blokee
         
         //private Minimax minimaxStrategy;
 
-        public Game(JObject gameProperties, int nextPlayer) {
+        public Game(JObject gameProperties, int nextPlayer, String gameMode) {
             //determine who's turn is next
             if (nextPlayer >= playerCount || nextPlayer < 0)
                 throw new Exception("Next player is invalid. It needs to be a number between 0 and the total number of players");
@@ -29,6 +29,20 @@ namespace Blokee
             //init board based on the game Properties received
             this.Board = new Board();
             Board.RefreshBoard(gameProperties["gameBoard"].ToString());
+            
+            DifficultyLevel dl;
+            switch(gameMode)
+            {
+                case "greedy":
+                    dl = DifficultyLevel.Basic;
+                    break;
+                case "minimax" :
+                    dl = DifficultyLevel.Advanced;
+                    break;
+                default:
+                    dl = DifficultyLevel.Intermediate;
+                    break;
+            }
 
             //init players
             Players = new Player[playerCount];
@@ -38,7 +52,7 @@ namespace Blokee
                 {   
                     bool[] pieceAvailability = Enumerable.Repeat(true, 21).ToArray();
                     gameProperties["enemyMoves"][index].ToList().ForEach(id => pieceAvailability[(int)id] = false);
-                    Players[index] = new Player(index, pieceAvailability);
+                    Players[index] = new Player(index, pieceAvailability, dl);
                 });
         }
 

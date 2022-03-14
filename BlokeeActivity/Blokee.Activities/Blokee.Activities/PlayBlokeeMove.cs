@@ -14,6 +14,7 @@ namespace Blokee.Activities
         public OutArgument<bool[]> AvailablePieces { get; set; }
         public InArgument<string> GameStatusJson { get; set; }
         public InArgument<int> PlayerId { get; set; }
+        public InArgument<String> GameMode { get; set; } = "greedy-advanced";
 
         public OutArgument<bool> MoveExists { get; set; }
         public OutArgument<int> PieceId { get; set; }
@@ -26,7 +27,9 @@ namespace Blokee.Activities
         {
             JObject gameProperties = JObject.Parse(GameStatusJson.Get(context));
             int playerId = PlayerId.Get(context);
-            Game game = new Game(gameProperties, playerId);
+            string gameMode = GameMode.Get(context);
+
+            Game game = new Game(gameProperties, playerId, gameMode);
             var nextMove = game.PlayNextMove();
 
             if(nextMove == null)
