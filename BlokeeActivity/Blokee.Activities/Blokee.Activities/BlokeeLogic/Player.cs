@@ -8,6 +8,7 @@ namespace Blokee
     {
         Basic,
         Intermediate,
+        Advanced
     }
 
     public class Player
@@ -17,6 +18,8 @@ namespace Blokee
         public int score = 0;
         public int currentMoveCount = 0;
         private readonly DifficultyLevel Difficulty;
+
+        private Minimax minimax;
 
         public Player(int Id, bool[] availability, DifficultyLevel difficulty = DifficultyLevel.Intermediate)
         {
@@ -47,6 +50,7 @@ namespace Blokee
                 new Piece19(availability[19]),
                 new Piece20(availability[20])
             };
+            minimax = new Minimax(this);
         }
 
         //copy constructor
@@ -267,6 +271,7 @@ namespace Blokee
         {
             if (Difficulty == DifficultyLevel.Basic) return GetGreedyMove(game, getAndPLay);
             if (Difficulty == DifficultyLevel.Intermediate) return GetGreedyAdvancedMove(game, getAndPLay);
+            if (Difficulty == DifficultyLevel.Advanced) {return minimax.GetMinimaxMove(game, getAndPLay);};
             return null;
         }
 

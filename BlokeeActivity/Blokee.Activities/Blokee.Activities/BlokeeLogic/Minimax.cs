@@ -17,14 +17,31 @@ namespace Blokee
             this.game = g;
             this.board = g.Board;
         }
-
-        public Move GetMinimax(Board b)
+        public Minimax(Player p)
         {
-            this.board = b;
-            return GetMinimax();
+            this.currentPlayer = p;
         }
 
-        private Move GetMinimax()
+        public Move GetMinimaxMove(Board b, bool getAndPlay)
+        {
+            this.board = b;
+            
+            Move selectedMove = GetMinimaxMove();
+            if (getAndPlay) selectedMove.Player.Pieces[selectedMove.PieceId].IsAvailable = false;
+            return selectedMove;
+        }
+
+        public Move GetMinimaxMove(Game g, bool getAndPlay)
+        {
+            this.board = g.Board;
+            this.game = g;
+            
+            Move selectedMove = GetMinimaxMove();
+            if (getAndPlay) selectedMove.Player.Pieces[selectedMove.PieceId].IsAvailable = false;
+            return selectedMove;
+        }
+
+        private Move GetMinimaxMove()
         {
             var availableCorners = board.GetAllAvailableCorners(this.currentPlayer.Id);
             //get a copy of the current pieces
@@ -37,13 +54,13 @@ namespace Blokee
             {
                 allPossibleMoves.AddRange(this.currentPlayer.GetValidMoves(this.board, piece, availableCorners));
             }
-
+            
             //calculate the scores
             foreach(var move in allPossibleMoves)
             {
                 move.Score = this.evalMove(move, currentPlayer, this.board);
             }
-
+            
             List<Move> finalMoves = new List<Move>();
 
             if (allPossibleMoves.Any())
@@ -74,14 +91,14 @@ namespace Blokee
                     }
 
                     //create a copy of the pieces that the current player has
-                    var availableLocalPieces = currentTestPlayer.Pieces.Where(localPiece => localPiece.IsAvailable ).OrderByDescending(localPiece => localPiece.Weight);
+                    var availableLocalPieces = currentTestPlayer.Pieces.Where(localPiece => localPiece.IsAvailable ).OrderByDescending(localPiece => localPiece.Weight).ToList();
 
-                    //ponenent's turn to place piece
+                    //opponents's turn to place piece
                     foreach (var opponent in opponents)
                     {
                         //create list of opponents pieces and sort them by size
                         //! I used weight
-                        var availableLocalOpponentPieces = opponent.Pieces.Where(localPiece => localPiece.IsAvailable).OrderByDescending(localPiece => localPiece.Weight);
+                        var availableLocalOpponentPieces = opponent.Pieces.Where(localPiece => localPiece.IsAvailable).OrderByDescending(localPiece => localPiece.Weight).ToList();
 
                         //create list of all possible moves
                         var allPossibleOpponentMoves = new List<Move>();
@@ -89,28 +106,31 @@ namespace Blokee
                         {
                             allPossibleOpponentMoves.AddRange(currentTestPlayer.GetValidMoves(boardCopy, opponentPiece, boardCopy.GetAllAvailableCorners(opponent.Id)));
                         }
-                        /*
+                        
                         //calculate the scores
                         foreach (var opponentMove in allPossibleOpponentMoves)
                         {
                             opponentMove.Score = this.evalMove(opponentMove, currentPlayer, boardCopy);
                         }
-                        */
-                        allPossibleOpponentMoves.OrderByDescending(localOpponentPiece => localOpponentPiece.Score);
+                        
+                        allPossibleOpponentMoves = allPossibleOpponentMoves.OrderByDescending(localOpponentPiece => localOpponentPiece.Score).ToList();
 
                         if (allPossibleOpponentMoves.Any())
                         {
 
                             var final_moves_op = new List<Move>();
+                            
+                            /*
                             // evaluate each move
                             foreach(var opponentMove in final_moves_op)
                             {
                                 move.Score = this.evalMove(opponentMove, currentPlayer, boardCopy);
                             }
-
+                            
                             //sort moves by score
                             final_moves_op.OrderByDescending(m => m.Score);
-
+                            */
+                            final_moves_op = allPossibleOpponentMoves;
                             //take the highest scoring move
                             var topMove = final_moves_op.First();
                             if(topMove != null)
@@ -147,25 +167,27 @@ namespace Blokee
                         {
                             localMove.Score = this.evalMove(localMove, currentPlayer, boardCopy);
                         }
-                        possibleMoves.OrderByDescending(m => m.Score);
+                        var final_moves2 = possibleMoves.OrderByDescending(m => m.Score).ToList();
 
                         //# calculate the best score for each initial piece (can be weighted differently)
                         //best_score = weights[3] * by_score_2[0][1] + weights[4] * score
                         //# append initial piece plus potential score to final_choices
                         //final_choices.append((piece, best_score))
-                        finalMoves.Add(possibleMoves.First());//+score for this
+
+                        finalMoves.Add(move);//+score for this
                     }
                     else
                     {
+                        //no more possible moves left
                         //add the first played piece to the final choices list
-                        return null;
+                        finalMoves.Add(move);
                     }
 
 
                 }
 
                 //sort by the highest score
-                return finalMoves.First();
+                return finalMoves.OrderByDescending(p => p.Score).First();
 
             }
 
