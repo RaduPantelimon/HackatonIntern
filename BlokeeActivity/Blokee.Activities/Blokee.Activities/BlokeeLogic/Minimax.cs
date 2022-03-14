@@ -7,9 +7,11 @@ namespace Blokee
 {
     public class Minimax
     {
-        private Player currentPlayer;
-        private Game game;
-        private Board board;
+        private Player currentPlayer { get; set; }
+        private Game game { get; set; }
+        private Board board { get; set; }
+
+        public Minimax() { }
 
         public Minimax(Player p, Game g)
         {
@@ -22,23 +24,20 @@ namespace Blokee
             this.currentPlayer = p;
         }
 
-        public Move GetMinimaxMove(Board b, bool getAndPlay)
+        public Move GetMinimaxMove(Board b)
         {
             this.board = b;
             
-            Move selectedMove = GetMinimaxMove();
-            if (getAndPlay) selectedMove.Player.Pieces[selectedMove.PieceId].IsAvailable = false;
-            return selectedMove;
+            return GetMinimaxMove();
         }
 
-        public Move GetMinimaxMove(Game g, bool getAndPlay)
+        public Move GetMinimaxMove(Player p,Game g)
         {
-            this.board = g.Board;
+            this.board = new Board((int?[,])g.Board._board.Clone());
             this.game = g;
-            
-            Move selectedMove = GetMinimaxMove();
-            if (getAndPlay) selectedMove.Player.Pieces[selectedMove.PieceId].IsAvailable = false;
-            return selectedMove;
+            this.currentPlayer = p;
+
+            return GetMinimaxMove();
         }
 
         private Move GetMinimaxMove()
@@ -49,6 +48,7 @@ namespace Blokee
 
             List<Move> allPossibleMoves = new List<Move>();
 
+            Console.WriteLine("Calculating all possible moves for the current player");
             //calculate the moves
             foreach (var piece in availablePieces)
             {
@@ -60,7 +60,7 @@ namespace Blokee
             {
                 move.Score = this.evalMove(move, currentPlayer, this.board);
             }
-            
+
             List<Move> finalMoves = new List<Move>();
 
             if (allPossibleMoves.Any())
@@ -70,20 +70,33 @@ namespace Blokee
 
                 foreach (var move in top_by_score)
                 {
-                    var boardCopy = new Board(this.board);
-                    var gameCopy = JsonConvert.DeserializeObject<Game>(JsonConvert.SerializeObject(this.game));
+                    Console.WriteLine("Creating a copy of the whole game");
+
+                    var boardCopy = new Board((int?[,])this.game.Board._board.Clone());
+                    if(boardCopy == null )
+                    {
+                        throw new Exception("Couldn't create a copy of the board");
+                    }
+                    var gameCopy = new Game(boardCopy, currentPlayer.Id, this.game.Players );
                     var playersCopy = gameCopy.Players;
-                    var opponents = playersCopy.Where(p => p.Id != currentPlayer.Id);
+
+                    var opponents = new List<Player>();
+                    playersCopy.Where(p => p.Id != currentPlayer.Id).ToList().ForEach(o => opponents.Add(new Player(o)) );
                     var currentTestPlayer = new Player(this.currentPlayer);
 
+                    Console.WriteLine("Placing a move in the mocked game");
+                    Console.WriteLine(move.ToString());
                     boardCopy.MakeMove(move);
                     //remove the used piece from the options
+                    Console.WriteLine("Removing the used piece from the options");
                     currentTestPlayer.Pieces[move.PieceId].IsAvailable = false;
 
                     //update corners
+                    Console.WriteLine("Updating the corners");
                     var currentTestPlayeravailableCorners = boardCopy.GetAllAvailableCorners(currentTestPlayer.Id);
 
                     //update corners for opponents
+                    Console.WriteLine("Update corners for opponents");
                     var opponentCorners = new List<int[][]>();
                     foreach (var opponent in opponents)
                     {

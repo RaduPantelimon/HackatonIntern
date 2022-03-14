@@ -20,6 +20,13 @@ namespace Blokee
         
         //private Minimax minimaxStrategy;
 
+        public Game(Board b, int nextPlayer, Player[] players)
+        {
+            this.Board = b;
+            this.NextPlayer = nextPlayer;
+            this.Players = players;
+        }
+
         public Game(JObject gameProperties, int nextPlayer, String gameMode) {
             //determine who's turn is next
             if (nextPlayer >= playerCount || nextPlayer < 0)
@@ -30,7 +37,7 @@ namespace Blokee
             this.Board = new Board();
             Board.RefreshBoard(gameProperties["gameBoard"].ToString());
             
-            DifficultyLevel dl;
+            DifficultyLevel dl = DifficultyLevel.Advanced;
             switch(gameMode)
             {
                 case "greedy":
@@ -43,6 +50,7 @@ namespace Blokee
                     dl = DifficultyLevel.Intermediate;
                     break;
             }
+            Console.WriteLine("Difficulty: " + gameMode);
 
             //init players
             Players = new Player[playerCount];
@@ -53,6 +61,7 @@ namespace Blokee
                     bool[] pieceAvailability = Enumerable.Repeat(true, 21).ToArray();
                     gameProperties["enemyMoves"][index].ToList().ForEach(id => pieceAvailability[(int)id] = false);
                     Players[index] = new Player(index, pieceAvailability, dl);
+                    
                 });
         }
 
