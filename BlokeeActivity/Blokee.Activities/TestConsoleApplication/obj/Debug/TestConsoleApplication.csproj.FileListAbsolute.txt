@@ -15,3 +15,17 @@ C:\Users\rares.ont\Source\Repos\HackatonIntern\BlokeeActivity\Blokee.Activities\
 C:\Users\rares.ont\Source\Repos\HackatonIntern\BlokeeActivity\Blokee.Activities\TestConsoleApplication\obj\Debug\TestConsoleApplication.csproj.CoreCompileInputs.cache
 C:\Users\rares.ont\Source\Repos\HackatonIntern\BlokeeActivity\Blokee.Activities\TestConsoleApplication\obj\Debug\TestConsoleApplication.exe
 C:\Users\rares.ont\Source\Repos\HackatonIntern\BlokeeActivity\Blokee.Activities\TestConsoleApplication\obj\Debug\TestConsoleApplication.pdb
+C:\Work\source\_HackatonIntern\BlokeeActivity\Blokee.Activities\TestConsoleApplication\bin\Debug\test resources\latestValues.txt
+C:\Work\source\_HackatonIntern\BlokeeActivity\Blokee.Activities\TestConsoleApplication\bin\Debug\TestConsoleApplication.exe.config
+C:\Work\source\_HackatonIntern\BlokeeActivity\Blokee.Activities\TestConsoleApplication\bin\Debug\TestConsoleApplication.exe
+C:\Work\source\_HackatonIntern\BlokeeActivity\Blokee.Activities\TestConsoleApplication\bin\Debug\TestConsoleApplication.pdb
+C:\Work\source\_HackatonIntern\BlokeeActivity\Blokee.Activities\TestConsoleApplication\bin\Debug\Blokee.Activities.dll
+C:\Work\source\_HackatonIntern\BlokeeActivity\Blokee.Activities\TestConsoleApplication\bin\Debug\Newtonsoft.Json.dll
+C:\Work\source\_HackatonIntern\BlokeeActivity\Blokee.Activities\TestConsoleApplication\bin\Debug\Blokee.Activities.pdb
+C:\Work\source\_HackatonIntern\BlokeeActivity\Blokee.Activities\TestConsoleApplication\bin\Debug\Newtonsoft.Json.xml
+C:\Work\source\_HackatonIntern\BlokeeActivity\Blokee.Activities\TestConsoleApplication\obj\Debug\TestConsoleApplication.csproj.AssemblyReference.cache
+C:\Work\source\_HackatonIntern\BlokeeActivity\Blokee.Activities\TestConsoleApplication\obj\Debug\TestConsoleApplication.csproj.SuggestedBindingRedirects.cache
+C:\Work\source\_HackatonIntern\BlokeeActivity\Blokee.Activities\TestConsoleApplication\obj\Debug\TestConsoleApplication.csproj.CoreCompileInputs.cache
+C:\Work\source\_HackatonIntern\BlokeeActivity\Blokee.Activities\TestConsoleApplication\obj\Debug\TestConsoleApplication.csproj.CopyComplete
+C:\Work\source\_HackatonIntern\BlokeeActivity\Blokee.Activities\TestConsoleApplication\obj\Debug\TestConsoleApplication.exe
+C:\Work\source\_HackatonIntern\BlokeeActivity\Blokee.Activities\TestConsoleApplication\obj\Debug\TestConsoleApplication.pdb

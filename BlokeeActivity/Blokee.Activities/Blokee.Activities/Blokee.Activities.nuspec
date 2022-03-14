@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Blokee.Activities</id>
-    <version>0.0.2</version>
+    <version>$version$</version>
     <title>$title$</title>
     <authors>Alex</authors>
 	<owners>$author$</owners>
