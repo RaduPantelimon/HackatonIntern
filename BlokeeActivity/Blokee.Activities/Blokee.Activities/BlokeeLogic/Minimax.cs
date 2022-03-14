@@ -58,7 +58,7 @@ namespace Blokee
             //calculate the scores
             foreach(var move in allPossibleMoves)
             {
-                move.Score = this.evalMove(move, currentPlayer, this.board);
+                move.Score = move.GetMoveScore(game);// this.evalMove(move, currentPlayer, this.board);
             }
 
             List<Move> finalMoves = new List<Move>();
@@ -81,19 +81,19 @@ namespace Blokee
                     var playersCopy = gameCopy.Players;
 
                     var opponents = new List<Player>();
-                    playersCopy.Where(p => p.Id != currentPlayer.Id).ToList().ForEach(o => opponents.Add(new Player(o)) );
-                    var currentTestPlayer = new Player(this.currentPlayer);
+                    playersCopy.Where(p => p.Id != currentPlayer.Id).ToList().ForEach(o => opponents.Add(o) );
+                    //var currentTestPlayer = new Player(this.currentPlayer);
 
                     Console.WriteLine("Placing a move in the mocked game");
                     Console.WriteLine(move.ToString());
                     boardCopy.MakeMove(move);
                     //remove the used piece from the options
                     Console.WriteLine("Removing the used piece from the options");
-                    currentTestPlayer.Pieces[move.PieceId].IsAvailable = false;
+                    currentPlayer.Pieces[move.PieceId].IsAvailable = false;
 
                     //update corners
                     Console.WriteLine("Updating the corners");
-                    var currentTestPlayeravailableCorners = boardCopy.GetAllAvailableCorners(currentTestPlayer.Id);
+                    var currentTestPlayeravailableCorners = boardCopy.GetAllAvailableCorners(currentPlayer.Id);
 
                     //update corners for opponents
                     Console.WriteLine("Update corners for opponents");
@@ -104,8 +104,9 @@ namespace Blokee
                     }
 
                     //create a copy of the pieces that the current player has
-                    var availableLocalPieces = currentTestPlayer.Pieces.Where(localPiece => localPiece.IsAvailable ).OrderByDescending(localPiece => localPiece.Weight).ToList();
+                    var availableLocalPieces = currentPlayer.Pieces.Where(localPiece => localPiece.IsAvailable ).OrderByDescending(localPiece => localPiece.Weight).ToList();
 
+                    var movedByOpponents = new List<Move>();
                     //opponents's turn to place piece
                     foreach (var opponent in opponents)
                     {
@@ -117,13 +118,13 @@ namespace Blokee
                         var allPossibleOpponentMoves = new List<Move>();
                         foreach (var opponentPiece in availableLocalOpponentPieces)
                         {
-                            allPossibleOpponentMoves.AddRange(currentTestPlayer.GetValidMoves(boardCopy, opponentPiece, boardCopy.GetAllAvailableCorners(opponent.Id)));
+                            allPossibleOpponentMoves.AddRange(currentPlayer.GetValidMoves(boardCopy, opponentPiece, boardCopy.GetAllAvailableCorners(opponent.Id)));
                         }
                         
                         //calculate the scores
                         foreach (var opponentMove in allPossibleOpponentMoves)
                         {
-                            opponentMove.Score = this.evalMove(opponentMove, currentPlayer, boardCopy);
+                            opponentMove.Score = opponentMove.GetMoveScore(gameCopy);// this.evalMove(opponentMove, currentPlayer, boardCopy);
                         }
                         
                         allPossibleOpponentMoves = allPossibleOpponentMoves.OrderByDescending(localOpponentPiece => localOpponentPiece.Score).ToList();
@@ -146,18 +147,23 @@ namespace Blokee
                             final_moves_op = allPossibleOpponentMoves;
                             //take the highest scoring move
                             var topMove = final_moves_op.First();
-                            if(topMove != null)
+                            if (topMove != null)
+                            {
                                 //update the board with the highest scoring move
                                 boardCopy.MakeMove(topMove);
+                                movedByOpponents.Add(topMove);
+                            }
                             //create a list of the other opponents
                             var other_opponents = opponents.Where(op => op.Id != opponent.Id);
                             //update the corners of the other opponents
+                            /*
                             foreach(var op in other_opponents)
                             {
                                 opponentCorners[op.Id] = boardCopy.GetAllAvailableCorners(op.Id);
                             }
-                            currentTestPlayeravailableCorners = boardCopy.GetAllAvailableCorners(currentTestPlayer.Id);
-                        }
+                            */
+                            currentTestPlayeravailableCorners = boardCopy.GetAllAvailableCorners(currentPlayer.Id);
+                        }//MAPPPPPPPPPPPPPPPPPp
                         else
                         {
                             //return pieace of no possible moves
@@ -166,6 +172,7 @@ namespace Blokee
                     }
                     //finished opponents turns
 
+                    //MUTAREA 2 in FATA
                     var possibleMoves = new List<Move>();
                     //calculate the moves
                     foreach (var localPiece in availableLocalPieces)
@@ -186,7 +193,7 @@ namespace Blokee
                         //best_score = weights[3] * by_score_2[0][1] + weights[4] * score
                         //# append initial piece plus potential score to final_choices
                         //final_choices.append((piece, best_score))
-
+                       
                         finalMoves.Add(move);//+score for this
                     }
                     else
@@ -196,6 +203,11 @@ namespace Blokee
                         finalMoves.Add(move);
                     }
 
+                    gameCopy.UndoMove(move);
+                    foreach(var opMove in movedByOpponents)
+                    {
+                        gameCopy.UndoMove(opMove);
+                    }
 
                 }
 

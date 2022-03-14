@@ -271,8 +271,9 @@ namespace Blokee
             if (Difficulty == DifficultyLevel.Basic) return GetGreedyMove(game, getAndPLay);
             if (Difficulty == DifficultyLevel.Intermediate) return GetGreedyAdvancedMove(game, getAndPLay);
             if (Difficulty == DifficultyLevel.Advanced) {
-                Move mv = minimax.GetMinimaxMove(this,game);
-                if (getAndPLay) mv.Player.Pieces[mv.PieceId].IsAvailable = false;
+                //Move mv = minimax.GetMinimaxMove(this,game);
+                ///if (getAndPLay) mv.Player.Pieces[mv.PieceId].IsAvailable = false;
+                return minimax.GetMinimaxMove(this,game);;
             };
             return null;
         }
