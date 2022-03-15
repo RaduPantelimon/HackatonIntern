@@ -14,7 +14,7 @@
           "lib/net45/ICSharpCode.AvalonEdit.dll": {}
         }
       },
-      "Blokee.Activities/1.1.8108.31320": {
+      "Blokee.Activities/1.1.8108.40744": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "11.0.2"
@@ -1378,7 +1378,7 @@
         }
       }
     },
-    ".NETFramework,Version=v4.6.1/win10-x64": {
+    ".NETFramework,Version=v4.6.1/win7-x86": {
       "AvalonEdit/6.0.1": {
         "type": "package",
         "frameworkAssemblies": [
@@ -1391,7 +1391,7 @@
           "lib/net45/ICSharpCode.AvalonEdit.dll": {}
         }
       },
-      "Blokee.Activities/1.1.8108.31320": {
+      "Blokee.Activities/1.1.8108.40744": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "11.0.2"
@@ -2774,13 +2774,13 @@
         "lib/netcoreapp3.0/ICSharpCode.AvalonEdit.xml"
       ]
     },
-    "Blokee.Activities/1.1.8108.31320": {
-      "sha512": "ta3PZj8Ocr+39nhFRimUFEI0fly2sZcfQ72/3kaCj8U1rCYI2xIhSa1TQLaX3okxIpr8ifH29YrBAUwv1K6hYQ==",
+    "Blokee.Activities/1.1.8108.40744": {
+      "sha512": "W/PaJHGRmZPKYge99mvqq0dLxUR+jLwm7Wm2FknVVKCByckmHnbdVIiw83oZ1XX/GlvZZJ+256C40pll+w5sUg==",
       "type": "package",
-      "path": "blokee.activities/1.1.8108.31320",
+      "path": "blokee.activities/1.1.8108.40744",
       "files": [
         ".nupkg.metadata",
-        "blokee.activities.1.1.8108.31320.nupkg.sha512",
+        "blokee.activities.1.1.8108.40744.nupkg.sha512",
         "blokee.activities.nuspec",
         "lib/net452/Blokee.Activities.dll"
       ]
@@ -3392,7 +3392,7 @@
       ]
     },
     "System.ComponentModel.Annotations/4.7.0": {
-      "sha512": "0YFqjhp/mYkDGpU0Ye1GjE53HMp9UVfGN7seGpAMttAC0C40v5gw598jCgpbBLMmCo0E5YRLBv5Z2doypO49ZQ==",
+      "sha512": "oG58v7FkIMewZU1tNyqKbnilEobW6I4W0xy0Q/hztjVbTVr83oXNPHwrvS24JJKrDylLingIlI/zmCHCZ5vq1A==",
       "type": "package",
       "path": "system.componentmodel.annotations/4.7.0",
       "files": [
@@ -3481,7 +3481,7 @@
       ]
     },
     "System.IO.Abstractions/3.0.10": {
-      "sha512": "15N2bCO8DLGzrnDyPwQ0653bTCmyJW4Ajw6yeFkJR74VptVvnGINcU5ibX4isxGkvi+YevK7JyVyjiJh6X91kA==",
+      "sha512": "ktD52mRLUb3WqRHkejz11mWcq9PvDc/WQIfYwq9EXZ0H9AuH2cKjpADzHAYydu+v1Ln23slMT9WJmmdz+zNGbw==",
       "type": "package",
       "path": "system.io.abstractions/3.0.10",
       "files": [
@@ -3557,7 +3557,7 @@
       ]
     },
     "System.Numerics.Vectors/4.5.0": {
-      "sha512": "QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
+      "sha512": "nATsBTD2CKr4AYN6eRszhX4sptImWmBJwB/U6XKCWWfnCcrTBw8XSCm3QA9gjppkHTr8OkXUY21MR91D3QZXsw==",
       "type": "package",
       "path": "system.numerics.vectors/4.5.0",
       "files": [
@@ -4366,7 +4366,7 @@
   "projectFileDependencyGroups": {
     "": [],
     ".NETFramework,Version=v4.6.1": [
-      "Blokee.Activities >= 1.1.8108.31320 <= 1.1.8108.31320",
+      "Blokee.Activities >= 1.1.8108.40744 <= 1.1.8108.40744",
       "UiPath.Excel.Activities >= 2.10.4 <= 2.10.4",
       "UiPath.System.Activities >= 21.4.1 <= 21.4.1",
       "UiPath.UIAutomation.Activities >= 21.4.4 <= 21.4.4",
@@ -4374,15 +4374,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\alexandru-ionel.luca\\.nuget\\packages\\": {}
+    "C:\\Users\\radu.bucur\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "BlokeeAutomation",
       "projectName": "BlokeeAutomation",
-      "projectPath": "C:\\Work\\source\\_HackatonIntern\\BlokeeAutomation\\.local",
-      "packagesPath": "C:\\Users\\alexandru-ionel.luca\\.nuget\\packages\\",
-      "outputPath": "C:\\Work\\source\\_HackatonIntern\\BlokeeAutomation\\.local"
+      "projectPath": "C:\\UiPath\\Projects\\Hackaton\\Code\\BlokeeAutomation\\.local",
+      "packagesPath": "C:\\Users\\radu.bucur\\.nuget\\packages\\",
+      "outputPath": "C:\\UiPath\\Projects\\Hackaton\\Code\\BlokeeAutomation\\.local"
     },
     "frameworks": {
       "net461": {
@@ -4390,7 +4390,7 @@
           "Blokee.Activities": {
             "include": "Runtime",
             "target": "Package",
-            "version": "[1.1.8108.31320, 1.1.8108.31320]"
+            "version": "[1.1.8108.40744, 1.1.8108.40744]"
           },
           "UiPath.Excel.Activities": {
             "include": "Runtime",
@@ -4413,12 +4413,7 @@
             "version": "[1.9.2, 1.9.2]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\UiPath\\Studio\\runtime.json"
-      }
-    },
-    "runtimes": {
-      "win10-x64": {
-        "#import": []
+        "runtimeIdentifierGraphPath": "C:\\Users\\radu.bucur\\AppData\\Local\\UiPath\\app-21.4.4\\runtime.json"
       }
     }
   }

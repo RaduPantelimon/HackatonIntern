@@ -25,10 +25,15 @@ function(element, input){
 					if (event.data.indexOf("Started") != -1 && event.data.indexOf("gameId")!= -1)
 					{
 						//save the game id if this is the Game Started Payload
-						window.gameId = msgObj.fields.gameId
+						window.gameId = msgObj.fields.gameId;
 						
-					}else if(event.data.indexOf("board") != -1)
+					} else if(event.data.indexOf("board") != -1)
 					{
+						if(event.data.indexOf("INPROGRESS") != -1 && event.data.indexOf("Id")!= -1)
+						{
+							//save the game id if this is the Game Started Payload
+							window.gameId = msgObj.id;
+						}
 						// whenver we detect a board update, we will refresh the board and 
 						window.gameBoard = msgObj.fields.data.board;
 						

@@ -22,7 +22,7 @@ namespace TestConsoleApplication
             int moveIdx= 0;
 
             //init a new game
-            Game game = new Game(gameProperties,0);
+            Game game = new Game(gameProperties,0, "greedy-advanced");
             //play moves until game is over
             while(!game.IsOver)
             {
