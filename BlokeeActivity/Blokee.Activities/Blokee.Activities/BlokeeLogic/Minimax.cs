@@ -195,7 +195,7 @@ namespace Blokee
                         //best_score = weights[3] * by_score_2[0][1] + weights[4] * score
                         //# append initial piece plus potential score to final_choices
                         //final_choices.append((piece, best_score))
-                        move.Score = final_moves2.Score;
+                        move.Score += final_moves2.Score;
                         finalMoves.Add(move);//+score for this
                     }
                     else
