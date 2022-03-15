@@ -13,10 +13,10 @@ namespace Blokee
     public class Move
     {
 
-        public static int PieceSizeConstant = 2;
-        public static double ZonesOfInfluenceConstant = 0.5;
-        public static double CornerConstant = 0.1;
-
+        public static double PieceSizeConstant = 1.75;
+        public static double ZonesOfInfluenceConstant = 0.6;
+        public static double CornerConstant = 2;
+        
         public int CornerRow { get; set; }
         public int CornerColumn { get; set; }
 
@@ -178,7 +178,7 @@ namespace Blokee
                     }
                 }
                 if(piecesCounter>0)
-                    score += (piecesCounter * spread) / density;
+                    score += (piecesCounter * spread) / (availablePieces.Length * density * Math.Sqrt(density));
             }
             //File.WriteAllText("testCornersTempBoard.txt", densityBoard.ToString());
             return score;
