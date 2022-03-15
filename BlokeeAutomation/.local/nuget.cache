@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ezEniiN9/hWVoc1t/l7wKeE6OWU+/y99x7pOs/U/0QhK2SS3+sytwcku8SgclNqYizUFdii8kZX26JnEJbezVA==",
+  "dgSpecHash": "hiMPomFL5O2udltgBezdS3C+ZMX0t2qo07m4T022/BhgKrV1kOM/B9ALHsZSmvpbRG0m5jtjWZe5h5vb1gWPtw==",
   "success": true,
   "projectFilePath": "C:\\Work\\source\\_HackatonIntern\\BlokeeAutomation\\.local\\",
   "expectedPackageFiles": [
@@ -60,18 +60,5 @@
     "C:\\Users\\alexandru-ionel.luca\\.nuget\\packages\\uipath.vision\\3.0.1\\uipath.vision.3.0.1.nupkg.sha512",
     "C:\\Users\\alexandru-ionel.luca\\.nuget\\packages\\uipath.webapi.activities\\1.9.2\\uipath.webapi.activities.1.9.2.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "filePath": "C:\\Work\\source\\_HackatonIntern\\BlokeeAutomation\\.local",
-      "message": "BlokeeAutomation depends on Blokee.Activities (>= 1.1.8108.40744) but Blokee.Activities 1.1.8108.40744 was not found. An approximate best match of Blokee.Activities 1.1.8109.22036 was resolved.",
-      "libraryId": "Blokee.Activities",
-      "targetGraphs": [
-        ".NETFramework,Version=v4.6.1",
-        ".NETFramework,Version=v4.6.1/win10-x64"
-      ]
-    }
-  ]
+  "logs": []
 }

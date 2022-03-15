@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1680.44444444444,2980</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1680.44444444444,3031.55555555556</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>OpenBlokus_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -85,7 +85,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="OpenBlokus" sap:VirtualizedContainerService.HintSize="1690.66666666667,2915.11111111111" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="OpenBlokus" sap:VirtualizedContainerService.HintSize="1690.66666666667,2966.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="rawUsername" />
       <Variable x:TypeArguments="x:String" Name="scriptResult" />
@@ -95,10 +95,10 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="1648.88888888889,2822.66666666667" sap2010:WorkflowViewState.IdRef="RetryScope_1">
+    <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="1648.88888888889,2874.22222222222" sap2010:WorkflowViewState.IdRef="RetryScope_1">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
-          <Sequence sap:VirtualizedContainerService.HintSize="1607.11111111111,2645.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_13">
+          <Sequence sap:VirtualizedContainerService.HintSize="1607.11111111111,2696.88888888889" sap2010:WorkflowViewState.IdRef="Sequence_13">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -109,13 +109,13 @@
                 <scg:Dictionary x:TypeArguments="x:String, Argument" />
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
-            <uix:NApplicationCard sap2010:Annotation.AnnotationText="OPEN The Blokus Site&#xA;TO DO: Add Retry Mechanism" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Blokee - Inspired by Blokus - Online Board Game" sap:VirtualizedContainerService.HintSize="1565.33333333333,2399.11111111111" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="IfNotOpen" OutUiElement="[out_BrowserWindow]" Version="V1" WindowResize="Maximize">
+            <uix:NApplicationCard sap2010:Annotation.AnnotationText="OPEN The Blokus Site&#xA;TO DO: Add Retry Mechanism" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Blokee - Inspired by Blokus - Online Board Game" sap:VirtualizedContainerService.HintSize="1565.33333333333,2450.66666666667" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="IfNotOpen" OutUiElement="[out_BrowserWindow]" Version="V1" WindowResize="Maximize">
               <uix:NApplicationCard.Body>
                 <ActivityAction x:TypeArguments="x:Object">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1531.55555555556,2096.88888888889" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1531.55555555556,2188.44444444444" sap2010:WorkflowViewState.IdRef="Sequence_2">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -159,8 +159,8 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </uix:NClick>
-                    <Pick sap:VirtualizedContainerService.HintSize="1489.77777777778,1210.66666666667" sap2010:WorkflowViewState.IdRef="Pick_1">
-                      <PickBranch sap:VirtualizedContainerService.HintSize="425.333333333333,1164.44444444444" sap2010:WorkflowViewState.IdRef="PickBranch_3">
+                    <Pick sap:VirtualizedContainerService.HintSize="1489.77777777778,1302.22222222222" sap2010:WorkflowViewState.IdRef="Pick_1">
+                      <PickBranch sap:VirtualizedContainerService.HintSize="425.333333333333,1256" sap2010:WorkflowViewState.IdRef="PickBranch_3">
                         <PickBranch.Trigger>
                           <uix:NCheckState Exists="{x:Null}" DisplayName="Wait for the Lobby  Menu To Appear" EnableIfNotExists="False" sap:VirtualizedContainerService.HintSize="333.777777777778,261.777777777778" sap2010:WorkflowViewState.IdRef="NCheckState_5" Timeout="[cint(in_Config(&quot;Blokus_Loading_Timeout&quot;))]">
                             <uix:NCheckState.Target>
@@ -214,7 +214,7 @@
                           </ui:MultipleAssign>
                         </Sequence>
                       </PickBranch>
-                      <PickBranch sap:VirtualizedContainerService.HintSize="425.333333333333,1164.44444444444" sap2010:WorkflowViewState.IdRef="PickBranch_2">
+                      <PickBranch sap:VirtualizedContainerService.HintSize="425.333333333333,1256" sap2010:WorkflowViewState.IdRef="PickBranch_2">
                         <PickBranch.Trigger>
                           <uix:NCheckState Exists="{x:Null}" DisplayName="Wait for the Game Interface To Appear" EnableIfNotExists="False" sap:VirtualizedContainerService.HintSize="333.777777777778,261.777777777778" sap2010:WorkflowViewState.IdRef="NCheckState_3" Timeout="[cint(in_Config(&quot;Blokus_Loading_Timeout&quot;))]">
                             <uix:NCheckState.Target>
@@ -222,7 +222,7 @@
                             </uix:NCheckState.Target>
                           </uix:NCheckState>
                         </PickBranch.Trigger>
-                        <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="375.555555555556,669.777777777778" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                        <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="375.555555555556,792.444444444444" sap2010:WorkflowViewState.IdRef="Sequence_7">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -258,9 +258,10 @@
                               </scg:List>
                             </ui:MultipleAssign.AssignOperations>
                           </ui:MultipleAssign>
+                          <uix:NGoToUrl DisplayName="Go To URL - Reload Home Page for Inject" sap:VirtualizedContainerService.HintSize="333.777777777778,82.6666666666667" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[in_Config(&quot;Blokus_URL_General&quot;).ToString]" />
                         </Sequence>
                       </PickBranch>
-                      <PickBranch sap:VirtualizedContainerService.HintSize="425.333333333333,1164.44444444444" sap2010:WorkflowViewState.IdRef="PickBranch_1">
+                      <PickBranch sap:VirtualizedContainerService.HintSize="425.333333333333,1256" sap2010:WorkflowViewState.IdRef="PickBranch_1">
                         <PickBranch.Trigger>
                           <Delay DisplayName="Delay TIMEOUT - 1 seconds" Duration="[TimeSpan.FromSeconds(cint(in_Config(&quot;Blokus_Loading_Timeout&quot;)) - 1)]" sap:VirtualizedContainerService.HintSize="200,22.2222222222222" sap2010:WorkflowViewState.IdRef="Delay_1" />
                         </PickBranch.Trigger>
