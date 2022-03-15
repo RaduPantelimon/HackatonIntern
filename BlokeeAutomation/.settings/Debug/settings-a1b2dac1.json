@@ -4,7 +4,7 @@
   "UiPath.UIAutomationNext.Activities.Generic.Timeout": "30",
   "UiPath.UIAutomationNext.Activities.Generic.WaitForReady": "Interactive",
   "UiPath.UIAutomationNext.Activities.SearchStepsWeb.InteractionMode": "Simulate",
-  "UiPath.UIAutomationNext.Activities.SearchStepsWeb.FullSelector": "False",
+  "UiPath.UIAutomationNext.Activities.SearchStepsWeb.FullSelector": "True",
   "UiPath.UIAutomationNext.Activities.SearchStepsWeb.FuzzySelector": "True",
   "UiPath.UIAutomationNext.Activities.SearchStepsWeb.Image": "True",
   "UiPath.UIAutomationNext.Activities.SearchStepsWeb.Anchors": "True",

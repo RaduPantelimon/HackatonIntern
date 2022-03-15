@@ -1,0 +1,126 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="JoinRoomAsGuest" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_RoomNo" Type="InArgument(x:String)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="io_BrowserWindow" Type="InOutArgument(ui:UiElement)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>716.888888888889,881.333333333333</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>JoinRoomAsGuest_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="JoinRoomAsGuest" sap:VirtualizedContainerService.HintSize="475.555555555556,816.444444444444" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Application/Browser" sap:VirtualizedContainerService.HintSize="433.777777777778,724" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[io_BrowserWindow]" InteractionMode="Simulate" OutUiElement="[io_BrowserWindow]" Version="V1">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.555555555556,545.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NClick sap2010:Annotation.AnnotationText="Timeout = 10s - room should already exist (otherwise we wouldn't know the number) " ClickType="Single" ContinueOnError="True" DisplayName="Click 'Join'" sap:VirtualizedContainerService.HintSize="333.777777777778,212.444444444444" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" Timeout="[cint(in_Config(&quot;Blokus_Loading_Timeout&quot;))]">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://blokee.mattle.online/lobby/rooms" DesignTimeRectangle="899, 703, 88, 42" ElementType="Button" FriendlyName="'Join'" FullSelectorArgument="[String.Format(&quot;&lt;webctrl tag='H2' aaname='Room {0}' class='title' /&gt;&lt;nav up='1' /&gt;&lt;webctrl aaname='Join' tag='BUTTON' /&gt;&quot;, in_RoomNo)]" FuzzySelectorArgument="&lt;webctrl tag='H2' aaname='Room 836' class='title' /&gt;&lt;nav up='1' /&gt;&lt;webctrl aaname='Join' tag='BUTTON' type='' check:text='Join' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFwAAAAuCAYAAAClBX6SAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAITcAACE3ATNYn3oAAAQ4SURBVHhe7ZhPTttAFId7rl4jF+gFWHGBrLJj1UWVVVmRBVmggqoGIaBSFbUCKUJWaUPSGpQoQpGTtNhKMMH69c0/JzbGhIYOUvVG+tTGnhmPv5l588yL4XAIxh4s3DIs3DKx8Jelz8w/goVbhoVbhoVbhoVbhoVbhoVbhoVbhoVbhoVbhoVbhoVbhoVbhoVb5nmE7/2GD8A9ybj3n/NkwgtbPdS9W4QRmTRlegu33UPxTao+C19O+OrJGKEUfINm20PNUdR7N2oCpmNsb861YeFLCN8ZwSN54XCAtfRKJgpbHtwpVQhGKJnrLPzvhW9ckjlc43B+BadY/XZNdSI4n/Q1I9xpodrRu0AUEYIcF6/m22/eDVXheIz6p9NZndJ3bLTH8MXEihJF8PteYgG8Pr8FJr/x+o2LWp/+L8sYJ+0b+pfGX5nVNRTPxL0b1Hf0tfRY9HgLqXZ5LCn8AscTevCvAVYy72sqA/Somn9+oX5r4eFUiBmhetBCcbeLGoUgUfyfup7pfzLGYd1F8V0La3UPx30S/tH0f4rtPhmIKJw5XaxRnXLDh5faVUp4AOcXPTcIUJdhr4uS3qHeWUv3Z2ihHqg+iuJ3pa93aoCaHEsH22KxyLY/Um3vZ0nhNAh6YCzyXrQ4r69+a+G4GmA1Ua+BqtgxUYCqXJ2q/9zQ89Gnl47Q/NJIXC8cCVug6+q3FE4lpDEkn5kSa9AT0fumdlK5Q5M6DbCRCJuz8W7E1/J5VuF3VxXRGIs30OGnA0csIVrhtf3TzK0rRUZ0n1a22AEx7/Wu+unO6uEWx3t3+1j5KkLeXOggSjrU1GSoMeP3ks8gSk3RlvrdnbXN41mFZ67c1L3CBzp0xRyIMqGw0ewm0sxtsQxzihmbEk7Zkm6XoOLJyfHaJjT8UKuexqsmWb3n/SV7IrNYUrgW+ZcxfBHhigZW9vs4pgNLlikdch9UCJHCxWEY180mV7gJDaYfPYbmkQlTiy6sh1lS+COzFHPQ6Rcy2z1BIqTcJU4z9epTIrOzjHnyhZuYr1aqrBufI4IFF9YCLC184TycBhsfVlp4IjeXUMYhOku8bJoGakPVVh5y8tBUqy8vPXtI+MtSD006F/1z2kkkN+x2E/floSkmZD95OD+W5YUT6S9NkeaVj+hLs3MNX4yT0rFqxpemPxFp4QDru+IA6sT5cZxm7Y3Qu6IUrqHSveI7F+tNyrfn65i0kEqcYlJfVWeE5pWPqn7mw8K1VEqyRdYT70aDSQsj8eeKS5TFeA4uUWsH8LqXybo5PIlwweP/lkIZwFv1EXLvh0Slm91n+uOo5GDNoRcX294UqufRx4+J7YsIN7sFoY9y1n0xXvpWkItIl5AOcvfr4rH9yYQzi8HCLcPCLcPCLcPCLcPCLcPCLcPCLcPCLcPCLcPCLcPCLcPCLcPCLcPCLTMTPsQf9cb1M4ul3J8AAAAASUVORK5CYII=" InformativeScreenshot="d3881ed42d94d489ad644635e8eac529.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Blokee - Inspired by Blokus - Online Board Game' /&gt;" SearchSteps="Selector" />
+              </uix:NClick.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NClick>
+            <uix:NClick sap2010:Annotation.AnnotationText="Timeout = infinity :) - wait for start" ClickType="Single" DisplayName="Click 'Ready!'" sap:VirtualizedContainerService.HintSize="333.777777777778,198.666666666667" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" Timeout="999999">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://blokee.mattle.online/lobby/rooms" DesignTimeRectangle="1574, 725, 105, 60" ElementType="Button" FriendlyName="'Ready!'" FullSelectorArgument="&lt;webctrl aaname='Ready!' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Ready!' tag='BUTTON' type='' check:text='Ready!' /&gt;" ImageBase64="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" InformativeScreenshot="4f367fb2a2992cdb6faaa8b75b9f021a.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='!!! Ready to Start' /&gt;" SearchSteps="Selector" />
+              </uix:NClick.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NClick>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="0, 0, 0, 0" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
