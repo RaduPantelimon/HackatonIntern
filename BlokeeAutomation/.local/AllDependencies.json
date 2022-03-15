@@ -4366,7 +4366,7 @@
   "projectFileDependencyGroups": {
     "": [],
     ".NETFramework,Version=v4.6.1": [
-      "Blokee.Activities >= 1.1.8108.40744",
+      "Blokee.Activities >= 1.1.8109.22036 <= 1.1.8109.22036",
       "UiPath.Excel.Activities >= 2.10.4 <= 2.10.4",
       "UiPath.System.Activities >= 21.4.1 <= 21.4.1",
       "UiPath.UIAutomation.Activities >= 21.4.4 <= 21.4.4",
@@ -4390,7 +4390,7 @@
           "Blokee.Activities": {
             "include": "Runtime",
             "target": "Package",
-            "version": "[1.1.8108.40744, )"
+            "version": "[1.1.8109.22036, 1.1.8109.22036]"
           },
           "UiPath.Excel.Activities": {
             "include": "Runtime",
@@ -4421,18 +4421,5 @@
         "#import": []
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "BlokeeAutomation depends on Blokee.Activities (>= 1.1.8108.40744) but Blokee.Activities 1.1.8108.40744 was not found. An approximate best match of Blokee.Activities 1.1.8109.22036 was resolved.",
-      "libraryId": "Blokee.Activities",
-      "targetGraphs": [
-        ".NETFramework,Version=v4.6.1",
-        ".NETFramework,Version=v4.6.1/win10-x64"
-      ]
-    }
-  ]
+  }
 }
