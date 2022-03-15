@@ -285,6 +285,10 @@ namespace Blokee
             {
                 return GetBarosanaMove(game);
             }
+            if(currentMoveCount < 8)
+            {
+                return GetGreedyAdvancedMove(game, getAndPLay);
+            }
 
             return GetDifficultyBasedMove(game, getAndPLay);
         }

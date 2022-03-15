@@ -115,6 +115,7 @@ namespace Blokee
                         var availableLocalOpponentPieces = opponent.Pieces.Where(localPiece => localPiece.IsAvailable).OrderByDescending(localPiece => localPiece.Weight).ToList();
 
                         //create list of all possible moves
+                        Console.WriteLine("Creating a list with the opponent's moves");
                         var allPossibleOpponentMoves = new List<Move>();
                         foreach (var opponentPiece in availableLocalOpponentPieces)
                         {
@@ -122,9 +123,10 @@ namespace Blokee
                         }
                         
                         //calculate the scores
+                        Console.WriteLine("Calculating the score for the moves");
                         foreach (var opponentMove in allPossibleOpponentMoves)
                         {
-                            opponentMove.Score = opponentMove.GetMoveScore(gameCopy);// this.evalMove(opponentMove, currentPlayer, boardCopy);
+                            opponentMove.Score = opponentMove.GetCornersScores(gameCopy, opponent);// this.evalMove(opponentMove, currentPlayer, boardCopy);
                         }
                         
                         allPossibleOpponentMoves = allPossibleOpponentMoves.OrderByDescending(localOpponentPiece => localOpponentPiece.Score).ToList();
@@ -187,13 +189,13 @@ namespace Blokee
                         {
                             localMove.Score = this.evalMove(localMove, currentPlayer, boardCopy);
                         }
-                        var final_moves2 = possibleMoves.OrderByDescending(m => m.Score).ToList();
+                        var final_moves2 = possibleMoves.OrderByDescending(m => m.Score).First();
 
                         //# calculate the best score for each initial piece (can be weighted differently)
                         //best_score = weights[3] * by_score_2[0][1] + weights[4] * score
                         //# append initial piece plus potential score to final_choices
                         //final_choices.append((piece, best_score))
-                       
+                        move.Score = final_moves2.Score;
                         finalMoves.Add(move);//+score for this
                     }
                     else
