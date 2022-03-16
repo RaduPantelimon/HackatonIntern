@@ -273,7 +273,7 @@ namespace Blokee
             if (Difficulty == DifficultyLevel.Advanced) {
                 //Move mv = minimax.GetMinimaxMove(this,game);
                 ///if (getAndPLay) mv.Player.Pieces[mv.PieceId].IsAvailable = false;
-                return minimax.GetMinimaxMove(this,game);;
+                return minimax.GetMinimaxMove(this,game);
             };
             return null;
         }

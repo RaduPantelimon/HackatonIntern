@@ -15,7 +15,7 @@ namespace Blokee
 
         public static double PieceSizeConstant = 1.75;
         public static double ZonesOfInfluenceConstant = 0.6;
-        public static double CornerConstant = 2;
+        public static double CornerConstant = 2.2;
         
         public int CornerRow { get; set; }
         public int CornerColumn { get; set; }
@@ -125,7 +125,7 @@ namespace Blokee
             return MoveScore;
         }
 
-        public double GetCornersScores(Game game, Player player)
+        public static double GetCornersScores(Game game, Player player)
         {
             //first we play the move
             //to Asses how it would divide the board into "areas of influence" for the players
@@ -133,7 +133,7 @@ namespace Blokee
             Board densityBoard = new Board(); //(int?[,])game.Board._board.Clone();
             densityBoard._board.FillArray(0);
             int[][] corners = game.Board.GetAllAvailableCorners(player.Id);
-            Piece[] availablePieces = Player.Pieces.Where(piece => piece.IsAvailable == true).ToArray();
+            Piece[] availablePieces = player.Pieces.Where(piece => piece.IsAvailable == true).ToArray();
 
             //let's see exactly how many pieces we can fit in each workflow
             foreach (var corner in corners)

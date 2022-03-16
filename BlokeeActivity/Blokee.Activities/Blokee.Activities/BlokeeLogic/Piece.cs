@@ -29,7 +29,7 @@ namespace Blokee
     {
         public override int Id => 0;
         public override int Size => this.Points.Length;
-        public override int Weight => 40;
+        public override int Weight => 4;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 0, 2 }, new int[] { 0, 3 } };
         public override int[] Orientations => new int[] { 0, 1 };
         public override int[][][] AllVariations => new int[][][] {
@@ -44,7 +44,7 @@ namespace Blokee
     {
         public override int Id => 1;
         public override int Size => this.Points.Length;
-        public override int Weight => 50;
+        public override int Weight => 5;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 0, 2 }, new int[] { 0, 3 }, new int[] { 1, 3 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
         public override int[][][] AllVariations => new int[][][] {
@@ -64,7 +64,7 @@ namespace Blokee
     {
         public override int Id => 2;
         public override int Size => this.Points.Length;
-        public override int Weight => 50;
+        public override int Weight => 5;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 0, 2 }, new int[] { 0, 3 }, new int[] { 1, 2 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
         public override int[][][] AllVariations => new int[][][] {
@@ -84,7 +84,7 @@ namespace Blokee
     {
         public override int Id => 3;
         public override int Size => this.Points.Length;
-        public override int Weight => 40;
+        public override int Weight => 4;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 1, 0 }, new int[] { 2, 0 }, new int[] { 2, 1 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
         public override int[][][] AllVariations => new int[][][] {
@@ -104,7 +104,7 @@ namespace Blokee
     {
         public override int Id => 4;
         public override int Size => this.Points.Length;
-        public override int Weight => 50;
+        public override int Weight => 5;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 1, 0 }, new int[] { 1, 1 }, new int[] { 2, 0 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
         public override int[][][] AllVariations => new int[][][] {
@@ -124,7 +124,7 @@ namespace Blokee
     {
         public override int Id => 5;
         public override int Size => this.Points.Length;
-        public override int Weight => 50;
+        public override int Weight => 5;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 1, 0 }, new int[] { 2, 0 }, new int[] { 2, 1 }, new int[] { 2, 2 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3 };
         public override int[][][] AllVariations => new int[][][] {
@@ -140,7 +140,7 @@ namespace Blokee
     {
         public override int Id => 6;
         public override int Size => this.Points.Length;
-        public override int Weight => 50;
+        public override int Weight => 5;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 1, 1 }, new int[] { 2, 1 }, new int[] { 2, 2 } };
         public override int[] Orientations => new int[] { 0, 1, 4, 5 };
         public override int[][][] AllVariations => new int[][][] {
@@ -158,7 +158,7 @@ namespace Blokee
     {
         public override int Id => 7;
         public override int Size => this.Points.Length;
-        public override int Weight => 50;
+        public override int Weight => 5;
         public override int[][] Points => new int[][] { new int[] { 0, 1 }, new int[] { 1, 0 }, new int[] { 1, 1 }, new int[] { 1, 2 }, new int[] { 2, 1 } };
         public override int[] Orientations => new int[] { 0 };
         public override int[][][] AllVariations => new int[][][] {
@@ -172,7 +172,7 @@ namespace Blokee
     {
         public override int Id => 8;
         public override int Size => this.Points.Length;
-        public override int Weight => 40;
+        public override int Weight => 4;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 1, 0 }, new int[] { 1, 1 }, new int[] { 2, 0 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3 };
         public override int[][][] AllVariations => new int[][][] {
@@ -188,7 +188,7 @@ namespace Blokee
     {
         public override int Id => 9;
         public override int Size => this.Points.Length;
-        public override int Weight => 50;
+        public override int Weight => 5;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 1, 0 }, new int[] { 2, 0 }, new int[] { 2, 1 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3 };
         public override int[][][] AllVariations => new int[][][] {
@@ -204,7 +204,7 @@ namespace Blokee
     {
         public override int Id => 10;
         public override int Size => this.Points.Length;
-        public override int Weight => 50;
+        public override int Weight => 5;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 1, 0 }, new int[] { 1, 1 }, new int[] { 2, 1 }, new int[] { 2, 2 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3 };
         public override int[][][] AllVariations => new int[][][] {
@@ -220,7 +220,7 @@ namespace Blokee
     {
         public override int Id => 11;
         public override int Size => this.Points.Length;
-        public override int Weight => 50;
+        public override int Weight => 5;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 1, 1 }, new int[] { 2, 1 }, new int[] { 0, 2 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3 };
         public override int[][][] AllVariations => new int[][][] {
@@ -236,7 +236,7 @@ namespace Blokee
     {
         public override int Id => 12;
         public override int Size => this.Points.Length;
-        public override int Weight => 50;
+        public override int Weight => 5;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 1, 1 }, new int[] { 1, 2 }, new int[] { 2, 1 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
         public override int[][][] AllVariations => new int[][][] {
@@ -256,7 +256,7 @@ namespace Blokee
     {
         public override int Id => 13;
         public override int Size => this.Points.Length;
-        public override int Weight => 50;
+        public override int Weight => 5;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 0, 2 }, new int[] { 1, 2 }, new int[] { 1, 3 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
         public override int[][][] AllVariations => new int[][][] {
@@ -276,7 +276,7 @@ namespace Blokee
     {
         public override int Id => 14;
         public override int Size => this.Points.Length;
-        public override int Weight => 40;
+        public override int Weight => 4;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 1, 1 }, new int[] { 1, 2 } };
         public override int[] Orientations => new int[] { 0, 1, 4, 5 };
         public override int[][][] AllVariations => new int[][][] {
@@ -294,7 +294,7 @@ namespace Blokee
     {
         public override int Id => 15;
         public override int Size => this.Points.Length;
-        public override int Weight => 30;
+        public override int Weight => 3;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 1, 0 }, new int[] { 1, 1 } };
         public override int[] Orientations => new int[] { 0, 1, 2, 3 };
         public override int[][][] AllVariations => new int[][][] {
@@ -310,7 +310,7 @@ namespace Blokee
     {
         public override int Id => 16;
         public override int Size => this.Points.Length;
-        public override int Weight => 40;
+        public override int Weight => 4;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 1, 0 }, new int[] { 1, 1 } };
         public override int[] Orientations => new int[] { 0 };
         public override int[][][] AllVariations => new int[][][] {
@@ -323,7 +323,7 @@ namespace Blokee
     {
         public override int Id => 17;
         public override int Size => this.Points.Length;
-        public override int Weight => 5;
+        public override int Weight => 1;
         public override int[][] Points => new int[][] { new int[] { 0, 0 } };
         public override int[] Orientations => new int[] { 0 };
         public override int[][][] AllVariations =>  new int[][][] {
@@ -336,7 +336,7 @@ namespace Blokee
     {
         public override int Id => 18;
         public override int Size => this.Points.Length;
-        public override int Weight => 50;
+        public override int Weight => 5;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 0, 2 }, new int[] { 0, 3 }, new int[] { 0, 4 } };
         public override int[] Orientations => new int[] { 0, 1 };
         public override int[][][] AllVariations => new int[][][] {
@@ -350,7 +350,7 @@ namespace Blokee
     {
         public override int Id => 19;
         public override int Size => this.Points.Length;
-        public override int Weight => 30;
+        public override int Weight => 3;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 0, 2 } };
         public override int[] Orientations => new int[] { 0, 1 };
         public override int[][][] AllVariations => new int[][][] {
@@ -364,7 +364,7 @@ namespace Blokee
     {
         public override int Id => 20;
         public override int Size => this.Points.Length;
-        public override int Weight => 20;
+        public override int Weight => 2;
         public override int[][] Points => new int[][] { new int[] { 0, 0 }, new int[] { 0, 1 } };
         public override int[] Orientations => new int[] { 0, 1 };
         public override int[][][] AllVariations => new int[][][] {

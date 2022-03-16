@@ -22,9 +22,10 @@ namespace TestConsoleApplication
             int moveIdx= 0;
 
             //init a new game
-            Game game = new Game(gameProperties, 0, "greedy-advanced");//"minimax");
+            //Game game = new Game(gameProperties, 0, "greedy-advanced");
+            Game game = new Game(gameProperties, 0, "minimax");
             //play moves until game is over
-            while(!game.IsOver)
+            while (!game.IsOver)
             {
                 Move move = game.PlayNextMove();
                 //this is just to start debuging when you're fairly late in the game

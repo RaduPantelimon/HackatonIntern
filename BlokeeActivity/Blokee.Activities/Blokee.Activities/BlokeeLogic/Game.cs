@@ -92,6 +92,7 @@ namespace Blokee
             }
             else
             {
+                NextPlayer++;
                 _consecutiveNoValidMoves++;
                 if (_consecutiveNoValidMoves == playerCount) this.IsOver = true;
             }
