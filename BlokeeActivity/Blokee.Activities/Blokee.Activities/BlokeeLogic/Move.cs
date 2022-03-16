@@ -178,7 +178,7 @@ namespace Blokee
                     }
                 }
                 if(piecesCounter>0)
-                    score += (piecesCounter * spread) / (availablePieces.Length * density * Math.Sqrt(density));
+                    score += (piecesCounter * spread) / (availablePieces.Length * density * density);
             }
             //File.WriteAllText("testCornersTempBoard.txt", densityBoard.ToString());
             return score;
@@ -206,7 +206,7 @@ namespace Blokee
                     //next, do the same for the next player;
                     currentPlayer = (currentPlayer + 1) % Game.playerCount;
                 }while (currentPlayer != game.NextPlayer);
-
+            
                 while (pointsQueue.Count > 0)
                 {
                     int[] point = pointsQueue.Dequeue();

@@ -129,13 +129,13 @@
     {
       "Package": {
         "Id": "Blokee.Activities",
-        "Version": "1.1.8110.26967"
+        "Version": "1.1.8110.30869"
       },
       "Assemblies": [
-        "C:\\Users\\radu.bucur\\.nuget\\packages\\blokee.activities/1.1.8110.26967\\lib/net452/Blokee.Activities.dll",
+        "C:\\Users\\radu.bucur\\.nuget\\packages\\blokee.activities/1.1.8110.30869\\lib/net452/Blokee.Activities.dll",
         "C:\\Users\\radu.bucur\\.nuget\\packages\\newtonsoft.json/11.0.2\\lib/net45/Newtonsoft.Json.dll"
       ],
-      "Path": "C:\\Users\\radu.bucur\\.nuget\\packages\\blokee.activities\\1.1.8110.26967"
+      "Path": "C:\\Users\\radu.bucur\\.nuget\\packages\\blokee.activities\\1.1.8110.30869"
     }
   ],
   "Conflicts": [],
@@ -147,7 +147,7 @@
     },
     "Blokee.Activities": {
       "Id": "Blokee.Activities",
-      "Version": "1.1.8110.26967",
+      "Version": "1.1.8110.30869",
       "Dependencies": [
         {
           "Item1": "Newtonsoft.Json",
@@ -846,12 +846,12 @@
     {
       "Package": {
         "Id": "Blokee.Activities",
-        "Version": "1.1.8110.26967"
+        "Version": "1.1.8110.30869"
       },
       "Assemblies": [
-        "C:\\Users\\radu.bucur\\.nuget\\packages\\blokee.activities\\1.1.8110.26967\\lib\\net452\\Blokee.Activities.dll"
+        "C:\\Users\\radu.bucur\\.nuget\\packages\\blokee.activities\\1.1.8110.30869\\lib\\net452\\Blokee.Activities.dll"
       ],
-      "Path": "C:\\Users\\radu.bucur\\.nuget\\packages\\blokee.activities\\1.1.8110.26967"
+      "Path": "C:\\Users\\radu.bucur\\.nuget\\packages\\blokee.activities\\1.1.8110.30869"
     },
     {
       "Package": {

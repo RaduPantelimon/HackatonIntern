@@ -231,6 +231,7 @@
               </ActivityAction>
             </ui:ForEach.Body>
           </ui:ForEach>
+          <ba:PlayBlokeeMove AvailablePieces="[pieceAvailability]" Column="[positionY]" DisplayName="Play blokee move" GameMode="greedy-advanced" GameStatusJson="[result]" sap:VirtualizedContainerService.HintSize="845,22" sap2010:WorkflowViewState.IdRef="PlayBlokeeMove_2" MoveExists="[moveExists]" Orientation="[orientation]" PieceId="[pieceIndex]" PlayerId="[playerIndex]" Row="[positionX]" />
           <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="845,51" sap2010:WorkflowViewState.IdRef="CommentOut_4">
             <ui:CommentOut.Body>
               <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_10">
@@ -239,7 +240,7 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ba:PlayBlokeeMove AvailablePieces="[pieceAvailability]" Column="[positionY]" DisplayName="Play blokee move" GameMode="greedy-advanced" GameStatusJson="[result]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="PlayBlokeeMove_2" MoveExists="[moveExists]" Orientation="[orientation]" PieceId="[pieceIndex]" PlayerId="[playerIndex]" Row="[positionX]" />
+                <ba:PlayBlokeeMove AvailablePieces="[pieceAvailability]" Column="[positionY]" DisplayName="Play blokee move" GameMode="minimax" GameStatusJson="[result]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="PlayBlokeeMove_1" MoveExists="[moveExists]" Orientation="[orientation]" PieceId="[pieceIndex]" PlayerId="[playerIndex]" Row="[positionX]" />
               </Sequence>
             </ui:CommentOut.Body>
             <sap:WorkflowViewStateService.ViewState>
@@ -249,7 +250,6 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:CommentOut>
-          <ba:PlayBlokeeMove AvailablePieces="[pieceAvailability]" Column="[positionY]" DisplayName="Play blokee move" GameMode="minimax" GameStatusJson="[result]" sap:VirtualizedContainerService.HintSize="845,22" sap2010:WorkflowViewState.IdRef="PlayBlokeeMove_1" MoveExists="[moveExists]" Orientation="[orientation]" PieceId="[pieceIndex]" PlayerId="[playerIndex]" Row="[positionX]" />
           <TryCatch DisplayName="Try To Write" sap:VirtualizedContainerService.HintSize="845,1073" sap2010:WorkflowViewState.IdRef="TryCatch_1">
             <TryCatch.Try>
               <Sequence sap:VirtualizedContainerService.HintSize="376,846" sap2010:WorkflowViewState.IdRef="Sequence_8">
@@ -270,7 +270,7 @@
                     </ui:Target>
                   </ui:TakeScreenshot.Target>
                 </ui:TakeScreenshot>
-                <ui:SaveImage DisplayName="Save Image" FileName="[Path.Combine(&quot;Logs&quot;,String.Format(&quot;BoardImgFile-Move{0}.txt&quot;,MoveIndex))]" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="SaveImage_1" Image="[img]" />
+                <ui:SaveImage DisplayName="Save Image" FileName="[Path.Combine(&quot;Logs&quot;,String.Format(&quot;BoardImgFile-Move{0}.png&quot;,MoveIndex))]" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="SaveImage_1" Image="[img]" />
                 <ui:WriteTextFile DisplayName="Write The Map" FileName="map.json" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[&quot;map ='&quot; +BlokusStatus(&quot;gameBoard&quot;).ToString.Replace(vbCrLf ,&quot;&quot;) +&quot;';&quot;]">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">

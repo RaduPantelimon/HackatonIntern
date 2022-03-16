@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "oE1BYAWgDZkhFm/0XyW4FIfmKiBoAwci6dW8sEZuhB8u1ZrKK+VHCiSlQDwJGDlaZ+MuIh/Ta2xyDDv0uLy1Hg==",
+  "dgSpecHash": "Z36VKGFxhaVk7BC9PrZ6VCnjWQoJfjeZDdp9bqWHUUlruuJIga/ObLJlfplUnw1mcVUV1tWupPZrMm9DGXUj5g==",
   "success": true,
   "projectFilePath": "C:\\UiPath\\Projects\\Hackaton\\Code\\BlokeeAutomation\\.local\\",
   "expectedPackageFiles": [
     "C:\\Users\\radu.bucur\\.nuget\\packages\\avalonedit\\6.0.1\\avalonedit.6.0.1.nupkg.sha512",
-    "C:\\Users\\radu.bucur\\.nuget\\packages\\blokee.activities\\1.1.8110.26967\\blokee.activities.1.1.8110.26967.nupkg.sha512",
+    "C:\\Users\\radu.bucur\\.nuget\\packages\\blokee.activities\\1.1.8110.30869\\blokee.activities.1.1.8110.30869.nupkg.sha512",
     "C:\\Users\\radu.bucur\\.nuget\\packages\\closedxml\\0.87.1\\closedxml.0.87.1.nupkg.sha512",
     "C:\\Users\\radu.bucur\\.nuget\\packages\\csvhelper\\16.0.0\\csvhelper.16.0.0.nupkg.sha512",
     "C:\\Users\\radu.bucur\\.nuget\\packages\\documentformat.openxml\\2.5.0\\documentformat.openxml.2.5.0.nupkg.sha512",
