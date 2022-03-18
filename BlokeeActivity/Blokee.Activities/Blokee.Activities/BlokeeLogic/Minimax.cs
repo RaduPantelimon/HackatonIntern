@@ -62,7 +62,7 @@ namespace Blokee
             {   //calculate the scores
                 foreach (var move in allPossibleMoves)
                 {
-                    move.Score = move.GetMoveScore(game);// this.evalMove(move, currentPlayer, this.board);
+                    move.Score = move.GetMoveScore(game);
                 }
 
                 List<Move> finalMoves = new List<Move>();
@@ -157,9 +157,9 @@ namespace Blokee
                             //localMove.Score = this.evalMove(localMove, currentPlayer, boardCopy);
                             localMove.Score = this.evalMoveAdvanced(localMove, currentPlayer, gameCopy);
                         }
-                        var final_moves2 = possibleMoves.OrderByDescending(m => m.Score).First();
+                        var nextfinalMoves = possibleMoves.OrderByDescending(m => m.Score).First();
 
-                        move.Score += final_moves2.Score * SecondMoveConstant;
+                        move.Score += nextfinalMoves.Score * SecondMoveConstant;
                         finalMoves.Add(move);//+score for this
                     }
                     else
@@ -195,9 +195,6 @@ namespace Blokee
             return null;
         }
 
-
-        //evaluate score of a move
-        //can be used by both Greedy and Minimax
         private double evalMoveAdvanced(Move move, Player currentPlayer, Game game)
         {
             double playerCornerScore = 0, enemyCornerScore = 0;
@@ -212,51 +209,8 @@ namespace Blokee
                 }
             }
             game.UndoMove(move);
-            return move.Player.Pieces[move.PieceId].Weight + (playerCornerScore * 3 - enemyCornerScore) * CornerScoreConstant;
+            return move.Player.Pieces[move.PieceId].Weight  * 2 + (playerCornerScore * 3 - enemyCornerScore) * CornerScoreConstant;
         }
 
-
-        //evaluate score of a move
-        //can be used by both Greedy and Minimax
-        private double evalMove(Move move, Player currentPlayer, Board board)
-        {
-            var availableCorners = board.GetAllAvailableCorners(currentPlayer.Id);
-
-            //backup the players
-            var players = new Player[4];
-            Array.Copy(game.Players, players,4);
-
-            var opponents = players.Where(p => p.Id != currentPlayer.Id).ToList();
-
-            var test_board = new Board(board);
-            
-            //update the board with the move
-            test_board.MakeMove(move);
-            //copy the current player
-            var test_player = new Player(currentPlayer);
-
-            var availableCornersForCurrentTestPlayer = test_board.GetAllAvailableCorners(test_player.Id);
-
-            var oponnentsCorners = new List<int[][]>();
-
-            foreach(var opponent in opponents)
-            {
-                oponnentsCorners.Add(test_board.GetAllAvailableCorners(opponent.Id));
-            }
-
-            //  calculate the corners of the opponents
-            // find the difference between the number of corners the current player has and and the 
-            // mean number of corners the opponents have
-            double corner_difference = 0;
-            foreach (var oponnentCorners in oponnentsCorners)
-            {
-                    corner_difference += (availableCornersForCurrentTestPlayer.Length - oponnentCorners.Length);
-            }
-            corner_difference /= 3;
-
-            // # return the score = size + difference in the number of corners
-            // return (piece, weights[0] * piece.size + weights[1] * corner_difference)
-            return currentPlayer.Pieces.Where(piece => piece.Id == move.PieceId).First().Weight + corner_difference;
-        }
     }
 }

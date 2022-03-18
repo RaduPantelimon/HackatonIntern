@@ -259,6 +259,11 @@ namespace Blokee
 
             if (moves.Any())
             {
+                //if only the Point piece can be moved, use the MiniMax Algorithm ;)
+                //var eligiblePieces = moves.Select(x => x.PieceId).Distinct();
+                //if (eligiblePieces.Count() == 1 && eligiblePieces.First() == 17)
+                    //return minimax.GetMinimaxMove(this, game);
+
                 //return move with the best score (TO DO: make this sligthtly more efficient)
                 double[] scores = moves.Select(move => move.GetMoveScore(game)).ToArray();
                 return moves[Array.IndexOf(scores, scores.Max())];
@@ -271,8 +276,6 @@ namespace Blokee
             if (Difficulty == DifficultyLevel.Basic) return GetGreedyMove(game, getAndPLay);
             if (Difficulty == DifficultyLevel.Intermediate) return GetGreedyAdvancedMove(game, getAndPLay);
             if (Difficulty == DifficultyLevel.Advanced) {
-                //Move mv = minimax.GetMinimaxMove(this,game);
-                ///if (getAndPLay) mv.Player.Pieces[mv.PieceId].IsAvailable = false;
                 return minimax.GetMinimaxMove(this,game);
             };
             return null;

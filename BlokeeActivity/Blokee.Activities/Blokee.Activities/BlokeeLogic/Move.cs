@@ -15,7 +15,7 @@ namespace Blokee
 
         public static double PieceSizeConstant = 1.75;
         public static double ZonesOfInfluenceConstant = 0.6;
-        public static double CornerConstant = 2.2;
+        public static double CornerConstant = 1.9;
         
         public int CornerRow { get; set; }
         public int CornerColumn { get; set; }
@@ -72,18 +72,20 @@ namespace Blokee
         //this will help us with the debugging 
         public override string ToString()
         {
-            return String.Format("CornerRow:{0}; CornerColumn:{1}; Piece:{2}; Orientation:{3}; PiecePointRow: {4}; PiecePointColumn: {5}; PlayerID: {6}",
+            return String.Format("CornerRow:{0}; CornerColumn:{1}; Piece:{2}; Orientation:{3}; PiecePointRow: {4}; PiecePointColumn: {5}; PlayerID: {6}; Score: {7}",
                 CornerRow,
                 CornerColumn,
                 PieceId,
                 Orientation,
                 PiecePointRow,
                 PiecePointColumn,
-                Player.Id);
+                Player.Id,
+                Score);
         }
 
         public double GetMoveScore(Game game)
         {
+            //we will compose a score that should roughly tell us how good a move is
             int playerId = game.NextPlayer;
             int[] currentScores = game.GetCurrentScores();
             int enemyScoreTotal = currentScores.Sum() - currentScores[playerId];
@@ -93,10 +95,14 @@ namespace Blokee
             double MoveScore = PieceSizeConstant * this.Player.Pieces[this.PieceId].Points.Length;
             try
             {
-                //we will compose a score that should roughly tell us how good a move is
                 int piecesAvailable = this.Player.Pieces.Where(piece => piece.IsAvailable == true).Count();
-                int[] zonesOfInFluence = GetZonesOfInfluence(game);
-                MoveScore += piecesAvailable * ZonesOfInfluenceConstant * ((double)zonesOfInFluence[playerId] / zonesOfInFluence.Sum());
+
+                if (piecesAvailable > 7)
+                {
+                    //this formula emphasizes expansion, which is highly encouraged in the early-mid game
+                    int[] zonesOfInFluence = GetZonesOfInfluence(game);
+                    MoveScore += piecesAvailable * ZonesOfInfluenceConstant * ((double)zonesOfInFluence[playerId] / zonesOfInFluence.Sum());
+                }
 
                 //next, we will compose a score based on the situation of the corners on the board
                 double playerCornerScore = 0, enemyCornerScore = 0;
@@ -122,6 +128,7 @@ namespace Blokee
             {
                 game.UndoMove(this);
             }
+            this.Score = MoveScore;
             return MoveScore;
         }
 
@@ -169,7 +176,7 @@ namespace Blokee
                 {
                     for (int j = 0; j < Board.colCount; j++)
                     {
-                        if (dummyBoard._board[i, j] != null)
+                        if (dummyBoard._board[i, j] != null && dummyBoard._board[i, j] != -1)
                         {
                             densityBoard._board[i, j]++;
                             density += densityBoard._board[i, j].Value;
@@ -178,7 +185,7 @@ namespace Blokee
                     }
                 }
                 if(piecesCounter>0)
-                    score += (piecesCounter * spread) / (availablePieces.Length * density * density);
+                    score += (piecesCounter<4?1:Math.Sqrt(Math.Sqrt(piecesCounter/4))) * piecesCounter * spread /(availablePieces.Length * density); /// Math.Sqrt(density)
             }
             //File.WriteAllText("testCornersTempBoard.txt", densityBoard.ToString());
             return score;

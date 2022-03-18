@@ -23,4 +23,3 @@ C:\Users\rares.ont\Source\Repos\HackatonIntern\BlokeeActivity\Blokee.Activities\
 C:\Users\rares.ont\Source\Repos\HackatonIntern\BlokeeActivity\Output\bin\Debug\Blokee.Activities.dll
 C:\Users\rares.ont\Source\Repos\HackatonIntern\BlokeeActivity\Output\bin\Debug\Blokee.Activities.pdb
 C:\Users\rares.ont\Source\Repos\HackatonIntern\BlokeeActivity\Blokee.Activities\Blokee.Activities\obj\Debug\Blokee.Activities.csproj.CopyComplete
-C:\UiPath\Projects\Hackaton\Code\BlokeeActivity\Blokee.Activities\Blokee.Activities\obj\Debug\Blokee.Activities.csprojAssemblyReference.cache
